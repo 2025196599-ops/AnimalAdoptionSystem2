@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Edit Pet</title>
+    <link rel="stylesheet" href="../css/admin-style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="edit-pet-container">
+        <!-- Header -->
+        <header class="edit-page-header">
+            <div class="header-content">
+                <h1><i class="fas fa-edit"></i> Edit Pet Information</h1>
+                <p>Update the pet's information. Fields marked with * are required.</p>
+            </div>
+            <a href="pet-list.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Pet List
+            </a>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Form Container -->
+            <div class="form-container">
+                <section class="form-section">
+                    <div class="form-header">
+                        <h2><i class="fas fa-paw"></i> Edit Pet Details</h2>
+                        <p>Make changes to the pet's information below</p>
+                    </div>
+                    
+                    <div class="required-note">
+                        <i class="fas fa-asterisk" style="color: #ef4444;"></i> 
+                        <span style="color: #ef4444;">Indicates required field</span>
+                    </div>
+                    
+                    <form action="#" method="POST" enctype="multipart/form-data" class="pet-form" id="editPetForm">
+                        <!-- Form Grid -->
+                        <div class="form-grid">
+                            <!-- Pet Name -->
+                            <div class="form-group">
+                                <label for="petName">
+                                    <i class="fas fa-dog"></i> Pet Name
+                                </label>
+                                <input type="text" id="petName" name="petName" value="Fluffy" required 
+                                       placeholder="Enter pet's name">
+                                <div class="form-error">
+                                    <i class="fas fa-exclamation-circle"></i> Pet name is required
+                                </div>
+                            </div>
+                            
+                            <!-- Pet Type -->
+                            <div class="form-group">
+                                <label for="petType">
+                                    <i class="fas fa-cat"></i> Pet Type
+                                </label>
+                                <select id="petType" name="petType" required>
+                                    <option value="">Select Type</option>
+                                    <option value="dog">Dog</option>
+                                    <option value="cat" selected>Cat</option>
+                                    <option value="bird">Bird</option>
+                                    <option value="rabbit">Rabbit</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="form-error">
+                                    <i class="fas fa-exclamation-circle"></i> Please select a pet type
+                                </div>
+                            </div>
+                            
+                            <!-- Breed -->
+                            <div class="form-group">
+                                <label for="breed">
+                                    <i class="fas fa-dna"></i> Breed
+                                </label>
+                                <input type="text" id="breed" name="breed" value="Persian" required 
+                                       placeholder="Enter breed">
+                                <div class="form-error">
+                                    <i class="fas fa-exclamation-circle"></i> Breed is required
+                                </div>
+                            </div>
+                            
+                            <!-- Age -->
+                            <div class="form-group">
+                                <label for="age">
+                                    <i class="fas fa-birthday-cake"></i> Age (years)
+                                </label>
+                                <input type="number" id="age" name="age" value="2" min="0" step="0.1" required 
+                                       placeholder="0.0">
+                                <div class="form-error">
+                                    <i class="fas fa-exclamation-circle"></i> Please enter a valid age
+                                </div>
+                            </div>
+                            
+                            <!-- Gender -->
+                            <div class="form-group">
+                                <label for="gender">
+                                    <i class="fas fa-venus-mars"></i> Gender
+                                </label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female" selected>Female</option>
+                                </select>
+                                <div class="form-error">
+                                    <i class="fas fa-exclamation-circle"></i> Please select gender
+                                </div>
+                            </div>
+                            
+                            <!-- Color -->
+                            <div class="form-group">
+                                <label for="color">
+                                    <i class="fas fa-palette"></i> Color
+                                </label>
+                                <input type="text" id="color" name="color" value="White" required 
+                                       placeholder="Enter color">
+                                <div class="form-error">
+                                    <i class="fas fa-exclamation-circle"></i> Color is required
+                                </div>
+                            </div>
+                            
+                            <!-- Size -->
+                            <div class="form-group">
+                                <label for="size">
+                                    <i class="fas fa-expand-alt"></i> Size
+                                </label>
+                                <select id="size" name="size" required>
+                                    <option value="">Select Size</option>
+                                    <option value="small">Small</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="large">Large</option>
+                                </select>
+                                <div class="form-error">
+                                    <i class="fas fa-exclamation-circle"></i> Please select size
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <div class="form-group full-width">
+                                <label for="description">
+                                    <i class="fas fa-file-alt"></i> Description
+                                </label>
+                                <textarea id="description" name="description" required 
+                                          placeholder="Describe the pet's personality, behavior, and any special characteristics...">Fluffy is a beautiful Persian cat with a calm temperament. She loves to cuddle and is great with children.</textarea>
+                                <div class="form-error">
+                                    <i class="fas fa-exclamation-circle"></i> Description is required
+                                </div>
+                            </div>
+                            
+                            <!-- Health Status -->
+                            <div class="form-group full-width">
+                                <label for="healthStatus">
+                                    <i class="fas fa-heartbeat"></i> Health Status
+                                </label>
+                                <textarea id="healthStatus" name="healthStatus" required 
+                                          placeholder="Describe the pet's health condition, medical history, and any special needs...">Healthy, vaccinated, and spayed. Regular vet checkups completed.</textarea>
+                                <div class="form-error">
+                                    <i class="fas fa-exclamation-circle"></i> Health status is required
+                                </div>
+                            </div>
+                            
+                            <!-- Vaccinated -->
+                            <div class="form-group">
+                                <label for="vaccinated">
+                                    <i class="fas fa-syringe"></i> Vaccinated
+                                </label>
+                                <select id="vaccinated" name="vaccinated" required>
+                                    <option value="">Select Option</option>
+                                    <option value="yes" selected>Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="form-error">
+                                    <i class="fas fa-exclamation-circle"></i> Please select vaccination status
+                                </div>
+                            </div>
+                            
+                            <!-- Current Image Preview -->
+                            <div class="form-group">
+                                <label>
+                                    <i class="fas fa-image"></i> Current Image
+                                </label>
+                                <div class="image-preview-container">
+                                    <div class="image-comparison">
+                                        <div class="image-comparison-item">
+                                            <div class="image-comparison-label">Current Image</div>
+                                            <img src="https://images.unsplash.com/photo-1514888286974-6d03bde4ba4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                                 alt="Current Pet Image" class="current-image">
+                                        </div>
+                                        <div class="image-comparison-item">
+                                            <div class="image-comparison-label">New Image Preview</div>
+                                            <div class="file-preview" id="newImagePreview">
+                                                <img src="" alt="New Image Preview" class="current-image">
+                                                <p>No new image selected</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Change Image -->
+                            <div class="form-group optional">
+                                <label for="petImage">
+                                    <i class="fas fa-camera"></i> Change Pet Image
+                                </label>
+                                <input type="file" id="petImage" name="petImage" accept="image/*">
+                                <div class="form-hint">
+                                    <i class="fas fa-lightbulb"></i> Optional: Upload a new photo (JPG, PNG, GIF up to 5MB)
+                                </div>
+                            </div>
+                            
+                            <!-- Adoption Status -->
+                            <div class="form-group">
+                                <label for="status">
+                                    <i class="fas fa-home"></i> Adoption Status
+                                </label>
+                                <select id="status" name="status" required>
+                                    <option value="available" selected>Available</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="adopted">Adopted</option>
+                                </select>
+                                <div class="form-error">
+                                    <i class="fas fa-exclamation-circle"></i> Please select adoption status
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Buttons -->
+                        <!-- Buttons -->
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Update Pet
+                                </button>
+                                <a href="pet-list.html" class="btn btn-secondary">
+                                    <i class="fas fa-times"></i> Cancel
+                                </a>
+                                <button type="button" class="btn btn-danger" id="resetFormBtn">
+                                    <i class="fas fa-undo"></i> Reset Changes
+                                </button>
+                            </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript for form enhancements -->
+    <script>
+        // Image preview functionality
+        const imageInput = document.getElementById('petImage');
+        const newImagePreview = document.getElementById('newImagePreview');
+        
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                // Check file size (5MB limit)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size must be less than 5MB');
+                    this.value = '';
+                    return;
+                }
+                
+                // Check file type
+                const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+                if (!validTypes.includes(file.type)) {
+                    alert('Please upload a valid image file (JPG, PNG, GIF)');
+                    this.value = '';
+                    return;
+                }
+                
+                const reader = new FileReader();
+                
+                reader.addEventListener('load', function() {
+                    newImagePreview.querySelector('img').src = reader.result;
+                    newImagePreview.classList.add('active');
+                    newImagePreview.querySelector('p').style.display = 'none';
+                });
+                
+                reader.readAsDataURL(file);
+            } else {
+                newImagePreview.classList.remove('active');
+                newImagePreview.querySelector('p').style.display = 'block';
+                newImagePreview.querySelector('img').src = '';
+            }
+        });
+
+        // Form validation
+        const editForm = document.getElementById('editPetForm');
+        const formInputs = editForm.querySelectorAll('input, select, textarea');
+        
+        function validateField(field) {
+            const errorElement = field.parentElement.querySelector('.form-error');
+            
+            if (field.hasAttribute('required') && !field.value.trim()) {
+                field.classList.add('invalid');
+                errorElement.classList.add('active');
+                return false;
+            } else {
+                field.classList.remove('invalid');
+                errorElement.classList.remove('active');
+                return true;
+            }
+        }
+        
+        // Real-time validation
+        formInputs.forEach(input => {
+            input.addEventListener('blur', () => validateField(input));
+            input.addEventListener('input', () => {
+                if (input.classList.contains('invalid')) {
+                    validateField(input);
+                }
+            });
+        });
+        
+        // Form submission
+        editForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            formInputs.forEach(input => {
+                if (!validateField(input)) {
+                    isValid = false;
+                }
+            });
+            
+            if (isValid) {
+                // Show loading state
+                const submitBtn = this.querySelector('.btn-primary');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    alert('Pet information updated successfully!');
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    // You can redirect or stay on page
+                    // window.location.href = 'pet-list.html';
+                }, 1500);
+            } else {
+                // Scroll to first error
+                const firstError = editForm.querySelector('.form-error.active');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+        
+        // Reset form button
+        document.getElementById('resetFormBtn').addEventListener('click', function() {
+            if (confirm('Are you sure you want to reset all changes? This will restore original values.')) {
+                editForm.reset();
+                newImagePreview.classList.remove('active');
+                newImagePreview.querySelector('p').style.display = 'block';
+                newImagePreview.querySelector('img').src = '';
+                
+                // Clear validation errors
+                editForm.querySelectorAll('.form-error').forEach(error => {
+                    error.classList.remove('active');
+                });
+                editForm.querySelectorAll('.invalid').forEach(field => {
+                    field.classList.remove('invalid');
+                });
+                
+                alert('Form reset to original values');
+            }
+        });
+        
+        // Auto-save draft (optional feature)
+        let autoSaveTimeout;
+        editForm.addEventListener('input', function() {
+            clearTimeout(autoSaveTimeout);
+            autoSaveTimeout = setTimeout(() => {
+                const formData = new FormData(editForm);
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+                
+                // Save to localStorage
+                localStorage.setItem('petEditDraft', JSON.stringify(data));
+                console.log('Draft saved');
+            }, 2000);
+        });
+        
+        // Load draft on page load (optional)
+        window.addEventListener('load', function() {
+            const savedDraft = localStorage.getItem('petEditDraft');
+            if (savedDraft) {
+                if (confirm('Found unsaved changes. Would you like to restore them?')) {
+                    const data = JSON.parse(savedDraft);
+                    // Restore form data here
+                }
+            }
+        });
+    </script>
+</body>
+</html>

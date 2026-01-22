@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ariniqo Buddies - View Pet Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user-style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>Ariniqo Buddies</span>
+            </a>
+            
+            <!-- Navigation Container -->
+            <div class="nav-container">
+                <!-- Feature Buttons (Desktop) -->
+                <div class="feature-buttons">
+                    <a href="index.html" class="feature-btn active">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="user-pet-list.html" class="feature-btn">
+                        <i class="fas fa-paw"></i> Pet Listing
+                    </a>
+                    <a href="adoption-form.html" class="feature-btn">
+                        <i class="fas fa-heart"></i> Adoption
+                    </a>
+                    <a href="user-lost-found.html" class="feature-btn">
+                        <i class="fas fa-search"></i> Lost & Found
+                    </a>
+                    <a href="user-rescue-articles.html" class="feature-btn">
+                        <i class="fas fa-newspaper"></i> Articles
+                    </a>
+                </div>
+
+                    <!-- After (User Profile & Logout): -->
+                    <div class="user-actions">
+                        <div class="user-profile-header">
+                            <span class="user-welcome">
+                                <i class="fas fa-user"></i> Welcome, John Doe
+                            </span>
+                            <a href="../login.html" class="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Feature Buttons -->
+    <div class="feature-buttons-mobile">
+        <a href="index.html" class="feature-btn">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="user-pet-list.html" class="feature-btn">
+            <i class="fas fa-paw"></i>
+            <span>Pet Listing</span>
+        </a>
+        <a href="adoption-form.html" class="feature-btn">
+            <i class="fas fa-heart"></i>
+            <span>Adoption Form</span>
+        </a>
+        <a href="user-lost-found.html" class="feature-btn">
+            <i class="fas fa-search"></i>
+            <span>Lost & Found</span>
+        </a>
+        <a href="user-rescue-articles.html" class="feature-btn">
+            <i class="fas fa-newspaper"></i>
+            <span>Rescue Articles</span>
+        </a>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="pet-detail-container">
+                <div class="pet-detail-card">
+                    <div class="pet-image-container">
+                        <img src="../images/pet1.jpg" alt="Fluffy" class="pet-detail-image" onerror="this.src='https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+                        <div class="pet-image-badge">
+                            <i class="fas fa-star"></i> Featured Pet
+                        </div>
+                    </div>
+                    
+                    <div class="pet-info-container">
+                        <div class="pet-status status-available">Available for Adoption</div>
+                        <h1 class="pet-name">Fluffy</h1>
+                        <div class="pet-breed">
+                            <i class="fas fa-cat"></i> Persian Cat • ID: PET-00123
+                        </div>
+                        
+                        <div class="pet-details-grid">
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-birthday-cake"></i> Age
+                                </div>
+                                <div class="pet-detail-value">2 years old</div>
+                            </div>
+                            
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-venus-mars"></i> Gender
+                                </div>
+                                <div class="pet-detail-value">Female</div>
+                            </div>
+                            
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-ruler"></i> Size
+                                </div>
+                                <div class="pet-detail-value">Medium (4kg)</div>
+                            </div>
+                            
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-syringe"></i> Vaccination Status
+                                </div>
+                                <div class="pet-detail-value">Fully Vaccinated</div>
+                            </div>
+                            
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-stethoscope"></i> Health Condition
+                                </div>
+                                <div class="pet-detail-value">Excellent</div>
+                            </div>
+                            
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-calendar-alt"></i> Arrival Date
+                                </div>
+                                <div class="pet-detail-value">March 15, 2024</div>
+                            </div>
+                            
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-spa"></i> Spayed/Neutered
+                                </div>
+                                <div class="pet-detail-value">Yes</div>
+                            </div>
+                            
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-microchip"></i> Microchipped
+                                </div>
+                                <div class="pet-detail-value">Yes</div>
+                            </div>
+                        </div>
+                        
+                        <div class="pet-description-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-info-circle"></i> About Fluffy
+                            </h3>
+                            <div class="pet-description">
+                                Fluffy is a beautiful Persian cat with a calm and affectionate personality. She was rescued from a neglectful situation and has blossomed into a loving companion. Fluffy enjoys gentle petting sessions and will happily curl up on your lap for hours. She's fully litter-trained, spayed, and up-to-date on all vaccinations.
+                            </div>
+                        </div>
+                        
+                        <div class="pet-personality">
+                            <h3 class="section-title">
+                                <i class="fas fa-heart"></i> Personality Traits
+                            </h3>
+                            <div class="personality-tags">
+                                <span class="personality-tag">Affectionate</span>
+                                <span class="personality-tag">Calm</span>
+                                <span class="personality-tag">Gentle</span>
+                                <span class="personality-tag">Quiet</span>
+                                <span class="personality-tag">Lap Cat</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pet-requirements">
+                            <h3 class="section-title">
+                                <i class="fas fa-home"></i> Ideal Home Environment
+                            </h3>
+                            <ul class="requirements-list">
+                                <li><i class="fas fa-check-circle"></i> <strong>Indoor-only</strong> environment preferred</li>
+                                <li><i class="fas fa-check-circle"></i> Family with <strong>older children (8+)</strong></li>
+                                <li><i class="fas fa-check-circle"></i> <strong>Regular grooming</strong> required (daily brushing)</li>
+                                <li><i class="fas fa-check-circle"></i> <strong>Quiet household</strong> preferred</li>
+                                <li><i class="fas fa-check-circle"></i> Can live with <strong>other cats</strong></li>
+                                <li><i class="fas fa-check-circle"></i> <strong>No dogs</strong> in household</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="care-requirements">
+                            <h3 class="section-title">
+                                <i class="fas fa-clipboard-list"></i> Care Requirements
+                            </h3>
+                            <div class="care-grid">
+                                <div class="care-item">
+                                    <div class="care-icon">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    <div class="care-content">
+                                        <h4>Diet</h4>
+                                        <p>High-quality dry food for Persian cats, served twice daily</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="care-item">
+                                    <div class="care-icon">
+                                        <i class="fas fa-paw"></i>
+                                    </div>
+                                    <div class="care-content">
+                                        <h4>Exercise</h4>
+                                        <p>Moderate play with feather toys, 20-30 minutes daily</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="care-item">
+                                    <div class="care-icon">
+                                        <i class="fas fa-user-md"></i>
+                                    </div>
+                                    <div class="care-content">
+                                        <h4>Veterinary Care</h4>
+                                        <p>Annual checkups, regular dental care</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="care-item">
+                                    <div class="care-icon">
+                                        <i class="fas fa-spa"></i>
+                                    </div>
+                                    <div class="care-content">
+                                        <h4>Grooming</h4>
+                                        <p>Daily brushing to prevent matting, monthly baths</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Adoption Action Buttons -->
+                        <div class="action-buttons">
+                            <div class="adoption-link-container">
+                                <a href="adoption-form.html?pet=Fluffy&type=cat&id=PET-00123" class="adoption-link">
+                                    <i class="fas fa-heart"></i> Apply to Adopt Fluffy
+                                </a>
+                            </div>
+                            <div class="additional-actions">
+                                <button class="btn-secondary" onclick="saveToFavorites()">
+                                    <i class="far fa-bookmark"></i> Save to Favorites
+                                </button>
+                                <a href="user-pet-list.html" class="back-link">
+                                    <i class="fas fa-arrow-left"></i> Back to Pets
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Adoption Process Info -->
+                        <div class="adoption-process">
+                            <h3 class="section-title">
+                                <i class="fas fa-clipboard-check"></i> Adoption Process
+                            </h3>
+                            <div class="process-steps">
+                                <div class="process-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>Submit Application</h4>
+                                        <p>Fill out the adoption form with your details</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="process-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>Application Review</h4>
+                                        <p>Our team reviews your application (3-5 business days)</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="process-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>Home Visit (Optional)</h4>
+                                        <p>Schedule a home visit to ensure a good match</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="process-step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h4>Meet & Greet</h4>
+                                        <p>Meet Fluffy at our facility</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="process-step">
+                                    <div class="step-number">5</div>
+                                    <div class="step-content">
+                                        <h4>Adoption Finalization</h4>
+                                        <p>Complete paperwork and bring Fluffy home!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <style>
+        .pet-image-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff7e5f, #ff9a8b);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(255, 126, 95, 0.3);
+        }
+        
+        .pet-personality {
+            margin: 30px 0;
+        }
+        
+        .personality-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .personality-tag {
+            background: rgba(93, 106, 251, 0.1);
+            color: var(--secondary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .care-requirements {
+            margin: 30px 0;
+        }
+        
+        .care-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .care-item {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            background: var(--gray-light);
+            border-radius: var(--radius);
+        }
+        
+        .care-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .care-content h4 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .care-content p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .additional-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn-secondary {
+            padding: 12px 25px;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .adoption-process {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-border);
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .process-step {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-light);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .step-content h4 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .step-content p {
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 768px) {
+            .pet-details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .care-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .additional-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn-secondary, .back-link {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get pet ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const petId = urlParams.get('id');
+            
+            // Load saved favorites
+            const savedPets = JSON.parse(localStorage.getItem('favoritePets') || '[]');
+            const isFavorite = savedPets.includes('PET-00123');
+            
+            // Update favorite button if pet is already saved
+            if (isFavorite) {
+                const favBtn = document.querySelector('.btn-secondary');
+                if (favBtn) {
+                    favBtn.innerHTML = '<i class="fas fa-bookmark"></i> Saved to Favorites';
+                    favBtn.style.background = 'var(--primary)';
+                    favBtn.style.color = 'white';
+                }
+            }
+            
+            // Add hover effects to pet detail items
+            const petDetailItems = document.querySelectorAll('.pet-detail-item');
+            petDetailItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                    this.style.boxShadow = 'var(--shadow-light)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+        
+        function saveToFavorites() {
+            const savedPets = JSON.parse(localStorage.getItem('favoritePets') || '[]');
+            const petId = 'PET-00123';
+            const petName = 'Fluffy';
+            
+            if (savedPets.includes(petId)) {
+                // Remove from favorites
+                const index = savedPets.indexOf(petId);
+                savedPets.splice(index, 1);
+                localStorage.setItem('favoritePets', JSON.stringify(savedPets));
+                
+                // Update button
+                const favBtn = document.querySelector('.btn-secondary');
+                favBtn.innerHTML = '<i class="far fa-bookmark"></i> Save to Favorites';
+                favBtn.style.background = 'transparent';
+                favBtn.style.color = 'var(--primary)';
+                
+                alert(`${petName} removed from your favorites`);
+            } else {
+                // Add to favorites
+                savedPets.push(petId);
+                localStorage.setItem('favoritePets', JSON.stringify(savedPets));
+                
+                // Update button
+                const favBtn = document.querySelector('.btn-secondary');
+                favBtn.innerHTML = '<i class="fas fa-bookmark"></i> Saved to Favorites';
+                favBtn.style.background = 'var(--primary)';
+                favBtn.style.color = 'white';
+                
+                alert(`${petName} added to your favorites!`);
+            }
+        }
+        
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = '../index.html';
+            }
+        }
+    </script>
+</body>
+</html>

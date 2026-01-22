@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Ariniqo Buddies</title>
+    <link rel="stylesheet" href="css/login-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="signup-container">
+        <!-- Brand Header -->
+        <div class="brand-header">
+            <a href="../index.html" class="brand-logo">
+                <i class="fas fa-paw"></i>
+                Ariniqo Buddies
+            </a>
+            <p class="brand-tagline">Join our pet adoption community</p>
+        </div>
+        
+        <!-- Signup Form -->
+        <div class="signup-header">
+            <h2><i class="fas fa-user-plus"></i> Create Account</h2>
+            <p>Fill in your details to get started</p>
+        </div>
+        
+        <form id="signupForm">
+            <!-- Role Selection -->
+            <div class="form-group">
+                <label for="userRole">
+                    <i class="fas fa-user-tag"></i> Account Type
+                </label>
+                <div class="role-options">
+                    <div class="role-option admin selected" data-role="user">
+                        <i class="fas fa-user"></i>
+                        <span>Pet Adopter</span>
+                    </div>
+                    <div class="role-option user" data-role="shelter">
+                        <i class="fas fa-home"></i>
+                        <span>Shelter Staff</span>
+                    </div>
+                </div>
+                <input type="hidden" id="userRole" name="userRole" value="user" class="role-input">
+            </div>
+            
+            <!-- Name Fields -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">
+                        <i class="fas fa-user"></i> First Name
+                    </label>
+                    <input type="text" id="firstName" class="form-control" placeholder="John" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastName">
+                        <i class="fas fa-user"></i> Last Name
+                    </label>
+                    <input type="text" id="lastName" class="form-control" placeholder="Doe" required>
+                </div>
+            </div>
+            
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">
+                    <i class="fas fa-envelope"></i> Email Address
+                </label>
+                <input type="email" id="email" class="form-control" placeholder="your.email@example.com" required>
+            </div>
+            
+            <!-- Password Fields -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i> Password
+                    </label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" class="form-control" placeholder="Create a password" required>
+                        <button type="button" class="password-toggle">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-meter" id="strengthMeter"></div>
+                    </div>
+                    <div class="password-requirements">
+                        <ul>
+                            <li id="reqLength" class="invalid">
+                                <i class="fas fa-circle"></i> At least 8 characters
+                            </li>
+                            <li id="reqUppercase" class="invalid">
+                                <i class="fas fa-circle"></i> One uppercase letter
+                            </li>
+                            <li id="reqNumber" class="invalid">
+                                <i class="fas fa-circle"></i> One number
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">
+                        <i class="fas fa-lock"></i> Confirm Password
+                    </label>
+                    <div class="password-wrapper">
+                        <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+                        <button type="button" class="password-toggle">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div id="passwordMatch" class="error-message" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i> Passwords do not match
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Terms -->
+            <div class="terms-checkbox">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">
+                    I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+                </label>
+            </div>
+            
+            <!-- Submit -->
+            <button type="submit" class="btn-submit">
+                <i class="fas fa-user-plus"></i> Create Account
+            </button>
+        </form>
+        
+        <!-- Login Link -->
+        <div class="link-container">
+            Already have an account? <a href="login.html">Sign in here</a>
+        </div>
+    </div>
+    
+    <!-- Pet Decorations -->
+    <div class="pet-decoration cat-icon">
+        <i class="fas fa-cat"></i>
+    </div>
+    <div class="pet-decoration dog-icon">
+        <i class="fas fa-dog"></i>
+    </div>
+    
+    <script>
+        // Role Selection
+        document.querySelectorAll('.role-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.role-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                document.getElementById('userRole').value = this.getAttribute('data-role');
+            });
+        });
+        
+        // Password toggles
+        document.querySelectorAll('.password-toggle').forEach((toggle, index) => {
+            toggle.addEventListener('click', function() {
+                const passwordInput = index === 0 ? 
+                    document.getElementById('password') : 
+                    document.getElementById('confirmPassword');
+                const icon = this.querySelector('i');
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+        
+        // Password strength
+        const passwordInput = document.getElementById('password');
+        const strengthMeter = document.getElementById('strengthMeter');
+        const reqLength = document.getElementById('reqLength');
+        const reqUppercase = document.getElementById('reqUppercase');
+        const reqNumber = document.getElementById('reqNumber');
+        
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            const hasLength = password.length >= 8;
+            const hasUppercase = /[A-Z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+            
+            reqLength.className = hasLength ? 'valid' : 'invalid';
+            reqUppercase.className = hasUppercase ? 'valid' : 'invalid';
+            reqNumber.className = hasNumber ? 'valid' : 'invalid';
+            
+            reqLength.querySelector('i').className = hasLength ? 'fas fa-check-circle' : 'fas fa-circle';
+            reqUppercase.querySelector('i').className = hasUppercase ? 'fas fa-check-circle' : 'fas fa-circle';
+            reqNumber.querySelector('i').className = hasNumber ? 'fas fa-check-circle' : 'fas fa-circle';
+            
+            let strength = 0;
+            if (hasLength) strength++;
+            if (hasUppercase) strength++;
+            if (hasNumber) strength++;
+            
+            strengthMeter.className = 'strength-meter';
+            if (strength === 1) strengthMeter.classList.add('weak');
+            else if (strength === 2) strengthMeter.classList.add('medium');
+            else if (strength === 3) strengthMeter.classList.add('strong');
+        });
+        
+        // Password confirmation
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const passwordMatch = document.getElementById('passwordMatch');
+        
+        confirmPasswordInput.addEventListener('input', function() {
+            const password = passwordInput.value;
+            const confirmPassword = this.value;
+            
+            if (confirmPassword && password !== confirmPassword) {
+                passwordMatch.style.display = 'flex';
+                this.classList.add('error');
+            } else {
+                passwordMatch.style.display = 'none';
+                this.classList.remove('error');
+                if (password && confirmPassword && password === confirmPassword) {
+                    this.classList.add('success');
+                }
+            }
+        });
+        
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+            const terms = document.getElementById('terms').checked;
+            const role = document.getElementById('userRole').value;
+            
+            // Validation
+            const hasLength = password.length >= 8;
+            const hasUppercase = /[A-Z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+            
+            if (!hasLength || !hasUppercase || !hasNumber) {
+                alert('Password must meet all requirements');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            if (!terms) {
+                alert('Please agree to the Terms and Privacy Policy');
+                return;
+            }
+            
+            // Save user data (in real app, send to server)
+            const userData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                role: role,
+                createdAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem('userData', JSON.stringify(userData));
+            
+            alert('Account created successfully!');
+            
+            // Redirect based on role
+            if (role === 'shelter') {
+                window.location.href = 'login.html?demo=admin';
+            } else {
+                window.location.href = 'login.html?demo=user';
+            }
+        });
+    </script>
+</body>
+</html>

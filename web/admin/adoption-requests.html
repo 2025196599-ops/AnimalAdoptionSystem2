@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Adoption Requests</title>
+    <link rel="stylesheet" href="../css/admin-style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="adoption-requests-container">
+        <!-- Header -->
+        <header class="adoption-header">
+            <div class="header-content">
+                <h1><i class="fas fa-heart"></i> Adoption Requests</h1>
+                <p>Review and manage all adoption applications submitted by users</p>
+            </div>
+            
+        </header>
+
+        <!-- Filter Section -->
+        <div class="adoption-filter-section">
+            <div class="adoption-filter-row">
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-search"></i> Search Applicant/Pet
+                    </label>
+                    <input type="text" class="filter-input" placeholder="Search by name, email, or pet name...">
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-filter"></i> Status
+                    </label>
+                    <select class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-calendar"></i> Date Range
+                    </label>
+                    <input type="date" class="filter-input" placeholder="From Date">
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-calendar"></i> To
+                    </label>
+                    <input type="date" class="filter-input" placeholder="To Date">
+                </div>
+                
+                <div class="filter-group">
+                    <button type="button" class="filter-btn">
+                        <i class="fas fa-filter"></i> Filter
+                    </button>
+                    <button type="button" class="reset-btn">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Requests Table -->
+        <div class="requests-table-container">
+            <div class="requests-table-header">
+                <h3 class="requests-table-title">All Adoption Requests</h3>
+                <div class="total-requests">
+                    <i class="fas fa-list"></i> 12 Total Requests
+                </div>
+            </div>
+
+            <table class="requests-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Applicant</th>
+                        <th>Pet</th>
+                        <th>Applied Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Request 1 -->
+                    <tr>
+                        <td>#AD-2023-001</td>
+                        <td>
+                            <div class="user-info">
+                                <div class="user-avatar">JS</div>
+                                <div class="user-details">
+                                    <div class="user-name">John Smith</div>
+                                    <div class="user-email">john@email.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="user-info">
+                                <div class="user-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                    <i class="fas fa-dog"></i>
+                                </div>
+                                <div class="user-details">
+                                    <div class="user-name">Max</div>
+                                    <div class="user-email">Golden Retriever</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Jan 15, 2024</td>
+                        <td>
+                            <span class="adoption-status-badge status-pending">
+                                <i class="fas fa-clock"></i> Pending
+                            </span>
+                        </td>
+                        <td>
+                            <div class="adoption-actions">
+                                <a href="adoption-request-detail.html?id=1" class="adoption-action-btn btn-review">
+                                    <i class="fas fa-eye"></i> Review
+                                </a>
+                                <button type="button" class="adoption-action-btn btn-approve">
+                                    <i class="fas fa-check"></i> Approve
+                                </button>
+                                <button type="button" class="adoption-action-btn btn-reject">
+                                    <i class="fas fa-times"></i> Reject
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Request 2 -->
+                    <tr>
+                        <td>#AD-2023-002</td>
+                        <td>
+                            <div class="user-info">
+                                <div class="user-avatar">MD</div>
+                                <div class="user-details">
+                                    <div class="user-name">Maria Davis</div>
+                                    <div class="user-email">maria@email.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="user-info">
+                                <div class="user-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                                    <i class="fas fa-cat"></i>
+                                </div>
+                                <div class="user-details">
+                                    <div class="user-name">Luna</div>
+                                    <div class="user-email">Persian Cat</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Jan 14, 2024</td>
+                        <td>
+                            <span class="adoption-status-badge status-approved">
+                                <i class="fas fa-check-circle"></i> Approved
+                            </span>
+                        </td>
+                        <td>
+                            <div class="adoption-actions">
+                                <a href="adoption-detail.html?id=2" class="adoption-action-btn btn-review">
+                                    <i class="fas fa-eye"></i> Review
+                                </a>
+                                <button type="button" class="adoption-action-btn btn-approve" disabled>
+                                    <i class="fas fa-check"></i> Approved
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Request 3 -->
+                    <tr>
+                        <td>#AD-2023-003</td>
+                        <td>
+                            <div class="user-info">
+                                <div class="user-avatar">RJ</div>
+                                <div class="user-details">
+                                    <div class="user-name">Robert Johnson</div>
+                                    <div class="user-email">robert@email.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="user-info">
+                                <div class="user-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                                    <i class="fas fa-dove"></i>
+                                </div>
+                                <div class="user-details">
+                                    <div class="user-name">Sky</div>
+                                    <div class="user-email">Parrot</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Jan 12, 2024</td>
+                        <td>
+                            <span class="adoption-status-badge status-rejected">
+                                <i class="fas fa-times-circle"></i> Rejected
+                            </span>
+                        </td>
+                        <td>
+                            <div class="adoption-actions">
+                                <a href="adoption-detail.html?id=3" class="adoption-action-btn btn-review">
+                                    <i class="fas fa-eye"></i> Review
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Request 4 -->
+                    <tr>
+                        <td>#AD-2023-004</td>
+                        <td>
+                            <div class="user-info">
+                                <div class="user-avatar">SW</div>
+                                <div class="user-details">
+                                    <div class="user-name">Sarah Wilson</div>
+                                    <div class="user-email">sarah@email.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="user-info">
+                                <div class="user-avatar" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                                    <i class="fas fa-rabbit"></i>
+                                </div>
+                                <div class="user-details">
+                                    <div class="user-name">Bunny</div>
+                                    <div class="user-email">Rabbit</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Jan 10, 2024</td>
+                        <td>
+                            <span class="adoption-status-badge status-completed">
+                                <i class="fas fa-check-double"></i> Completed
+                            </span>
+                        </td>
+                        <td>
+                            <div class="adoption-actions">
+                                <a href="adoption-detail.html?id=4" class="adoption-action-btn btn-review">
+                                    <i class="fas fa-eye"></i> Review
+                                </a>
+                                <button type="button" class="adoption-action-btn btn-approve" disabled>
+                                    <i class="fas fa-check-double"></i> Completed
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <div class="adoption-pagination">
+                <button class="page-btn">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="page-numbers">
+                    <span class="page-number active">1</span>
+                    <span class="page-number">2</span>
+                    <span class="page-number">3</span>
+                    <span class="page-number">4</span>
+                </div>
+                <button class="page-btn">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+
+        // Approve/Reject buttons
+        document.querySelectorAll('.btn-approve:not([disabled])').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const requestId = this.closest('tr').querySelector('td:first-child').textContent;
+                if (confirm(`Approve adoption request ${requestId}?`)) {
+                    const statusBadge = this.closest('tr').querySelector('.adoption-status-badge');
+                    const actions = this.closest('.adoption-actions');
+                    
+                    // Update status
+                    statusBadge.className = 'adoption-status-badge status-approved';
+                    statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> Approved';
+                    
+                    // Disable buttons
+                    this.disabled = true;
+                    this.innerHTML = '<i class="fas fa-check"></i> Approved';
+                    
+                    // Remove reject button
+                    const rejectBtn = actions.querySelector('.btn-reject');
+                    if (rejectBtn) rejectBtn.remove();
+                    
+                    alert('Adoption request approved successfully!');
+                }
+            });
+        });
+
+        document.querySelectorAll('.btn-reject').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const requestId = this.closest('tr').querySelector('td:first-child').textContent;
+                if (confirm(`Reject adoption request ${requestId}?`)) {
+                    const statusBadge = this.closest('tr').querySelector('.adoption-status-badge');
+                    const actions = this.closest('.adoption-actions');
+                    
+                    // Update status
+                    statusBadge.className = 'adoption-status-badge status-rejected';
+                    statusBadge.innerHTML = '<i class="fas fa-times-circle"></i> Rejected';
+                    
+                    // Remove action buttons
+                    actions.innerHTML = `
+                        <a href="adoption-detail.html?id=1" class="adoption-action-btn btn-review">
+                            <i class="fas fa-eye"></i> Review
+                        </a>
+                    `;
+                    
+                    alert('Adoption request rejected successfully!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

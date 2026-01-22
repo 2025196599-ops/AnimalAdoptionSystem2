@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+<head>
+    <title>Ariniqo Buddies - Pet Listing</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/user-style.css">
+</head>
+<body>
+        <header class="header">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Ariniqo Buddies</span>
+                </a>
+
+                <!-- Navigation Container -->
+                <div class="nav-container">
+                    <!-- Feature Buttons (Desktop) -->
+                    <div class="feature-buttons">
+                        <a href="index.html" class="feature-btn">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                        <a href="rescue-articles.html" class="feature-btn active">
+                            <i class="fas fa-newspaper"></i> Articles
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Login/Signup on the right -->
+                <div class="user-actions">
+                    <a href="login.html" class="login-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="signup.html" class="signup-btn">
+                        <i class="fas fa-user-plus"></i> Sign Up
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Feature Buttons -->
+        <div class="feature-buttons-mobile">
+            <a href="pet-list.html" class="feature-btn">
+                <i class="fas fa-paw"></i>
+                <span>Pet Listing</span>
+            </a>
+            <a href="#login-required" class="feature-btn require-login" onclick="showLoginRequired()">
+                <i class="fas fa-heart"></i>
+                <span>Adoption</span>
+            </a>
+            <a href="#login-required" class="feature-btn require-login" onclick="showLoginRequired()">
+                <i class="fas fa-search"></i>
+                <span>Lost & Found</span>
+            </a>
+            <a href="rescue-articles.html" class="feature-btn active">
+                <i class="fas fa-newspaper"></i>
+                <span>Articles</span>
+            </a>
+        </div>
+
+
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">Available Pets for Adoption</h1>
+            
+            <div class="pet-grid">
+                <div class="pet-card">
+                    <img src="images/pet1.jpg" alt="Fluffy" class="pet-card-image" />
+                    <div class="pet-card-body">
+                        <h3 class="pet-card-title">Fluffy</h3>
+                        <div class="pet-card-info">Type: Cat | Breed: Persian | Age: 2 years</div>
+                        <div class="pet-card-status status-available">Available</div>
+                        <button class="btn btn-primary" onclick="viewPetDetails('001')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- More available pets can be added here -->
+                <div class="pet-card">
+                    <img src="images/pet2.jpg" alt="Bella" class="pet-card-image" />
+                    <div class="pet-card-body">
+                        <h3 class="pet-card-title">Bella</h3>
+                        <div class="pet-card-info">Type: Dog | Breed: Labrador | Age: 1 year</div>
+                        <div class="pet-card-status status-available">Available</div>
+                        <button class="btn btn-primary" onclick="viewPetDetails('003')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="pet-card">
+                    <img src="images/pet3.jpg" alt="Rocky" class="pet-card-image" />
+                    <div class="pet-card-body">
+                        <h3 class="pet-card-title">Rocky</h3>
+                        <div class="pet-card-info">Type: Dog | Breed: Mixed Breed | Age: 2 years</div>
+                        <div class="pet-card-status status-available">Available</div>
+                        <button class="btn btn-primary" onclick="viewPetDetails('004')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="pet-card">
+                    <img src="images/pet4.jpg" alt="Luna" class="pet-card-image" />
+                    <div class="pet-card-body">
+                        <h3 class="pet-card-title">Luna</h3>
+                        <div class="pet-card-info">Type: Cat | Breed: Siamese | Age: 3 years</div>
+                        <div class="pet-card-status status-available">Available</div>
+                        <button class="btn btn-primary" onclick="viewPetDetails('005')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="pet-card">
+                    <img src="images/pet5.jpg" alt="Charlie" class="pet-card-image" />
+                    <div class="pet-card-body">
+                        <h3 class="pet-card-title">Charlie</h3>
+                        <div class="pet-card-info">Type: Dog | Breed: Beagle | Age: 4 years</div>
+                        <div class="pet-card-status status-available">Available</div>
+                        <button class="btn btn-primary" onclick="viewPetDetails('006')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="pet-card">
+                    <img src="images/pet6.jpg" alt="Whiskers" class="pet-card-image" />
+                    <div class="pet-card-body">
+                        <h3 class="pet-card-title">Whiskers</h3>
+                        <div class="pet-card-info">Type: Cat | Breed: Domestic Shorthair | Age: 1.5 years</div>
+                        <div class="pet-card-status status-available">Available</div>
+                        <button class="btn btn-primary" onclick="viewPetDetails('007')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        function viewPetDetails(petId) {
+            window.location.href = `view-pet.html?id=${petId}`;
+        }
+    </script>
+</body>
+</html>

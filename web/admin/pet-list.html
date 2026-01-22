@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Management - Ariniqo Buddies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin-style.css">
+</head>
+<body class="pet-management-container">
+    <!-- Header -->
+    <header class="pet-management-header">
+        <div>
+            <h1>Pet Management</h1>
+            <p>Manage all pets in the adoption system. Add, edit, or remove pets as needed.</p>
+        </div>
+        <div class="header-actions">
+            <a href="add-pet.html" class="action-btn btn-primary">
+                <i class="fas fa-plus-circle"></i>
+                Add New Pet
+            </a>
+            <a href="dashboard.html" class="action-btn btn-success">
+                <i class="fas fa-arrow-left"></i>
+                Back to Dashboard
+            </a>
+        </div>
+    </header>
+
+    <!-- Filter and Search Section -->
+    <section class="filter-section">
+        <div class="filter-row">
+            <div class="filter-group">
+                <label class="filter-label">
+                    <i class="fas fa-search"></i>
+                    Search Pets
+                </label>
+                <input type="text" class="filter-input" placeholder="Search by name, breed, or ID...">
+            </div>
+            
+            <div class="filter-group">
+                <label class="filter-label">
+                    <i class="fas fa-filter"></i>
+                    Pet Type
+                </label>
+                <select class="filter-select">
+                    <option value="">All Types</option>
+                    <option value="dog">Dogs</option>
+                    <option value="cat">Cats</option>
+                    <option value="small">Small Pets</option>
+                    <option value="bird">Birds</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label class="filter-label">
+                    <i class="fas fa-heart"></i>
+                    Status
+                </label>
+                <select class="filter-select">
+                    <option value="">All Status</option>
+                    <option value="available">Available</option>
+                    <option value="adopted">Adopted</option>
+                    <option value="pending">Pending</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label class="filter-label">
+                    <i class="fas fa-sort"></i>
+                    Sort By
+                </label>
+                <select class="filter-select">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="name">Name A-Z</option>
+                    <option value="age">Age</option>
+                </select>
+            </div>
+            
+            <div style="display: flex; gap: 10px; align-items: end;">
+                <button class="filter-btn">
+                    <i class="fas fa-search"></i>
+                    Search
+                </button>
+                <button class="reset-btn">
+                    <i class="fas fa-redo"></i>
+                    Reset
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pets Table -->
+    <section class="pets-table-container">
+        <div class="table-header">
+            <h2 class="table-title">All Pets</h2>
+            <div class="total-pets">
+                <i class="fas fa-paw"></i>
+                Total: 142 Pets
+            </div>
+        </div>
+
+        <table class="pets-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Pet</th>
+                    <th>Type</th>
+                    <th>Breed</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PET001</td>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-dog"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; color: #2d3436;">Max</div>
+                                <div style="font-size: 12px; color: #94a3b8;">Golden Retriever</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="pet-type">
+                            <div class="type-icon type-dog">
+                                <i class="fas fa-dog"></i>
+                            </div>
+                            <span>Dog</span>
+                        </div>
+                    </td>
+                    <td>Golden Retriever</td>
+                    <td>3 years</td>
+                    <td>
+                        <span style="color: #667eea; font-weight: 600;">
+                            <i class="fas fa-mars"></i> Male
+                        </span>
+                    </td>
+                    <td>
+                        <span class="status-badge status-available">Available</span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <a href="view-pet.html?id=001" class="action-btn btn-view">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <a href="edit-pet.html?id=001" class="action-btn btn-edit">
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </a>
+                            <button class="action-btn btn-delete" onclick="deletePet('PET001')">
+                                <i class="fas fa-trash"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>PET002</td>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #f093fb, #f5576c); display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-cat"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; color: #2d3436;">Luna</div>
+                                <div style="font-size: 12px; color: #94a3b8;">Persian Cat</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="pet-type">
+                            <div class="type-icon type-cat">
+                                <i class="fas fa-cat"></i>
+                            </div>
+                            <span>Cat</span>
+                        </div>
+                    </td>
+                    <td>Persian</td>
+                    <td>2 years</td>
+                    <td>
+                        <span style="color: #f093fb; font-weight: 600;">
+                            <i class="fas fa-venus"></i> Female
+                        </span>
+                    </td>
+                    <td>
+                        <span class="status-badge status-adopted">Adopted</span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <a href="view-pet.html?id=002" class="action-btn btn-view">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <a href="edit-pet.html?id=002" class="action-btn btn-edit">
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </a>
+                            <button class="action-btn btn-delete" onclick="deletePet('PET002')">
+                                <i class="fas fa-trash"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>PET003</td>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #4facfe, #00f2fe); display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-rabbit"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; color: #2d3436;">Snowy</div>
+                                <div style="font-size: 12px; color: #94a3b8;">Rabbit</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="pet-type">
+                            <div class="type-icon type-small">
+                                <i class="fas fa-rabbit"></i>
+                            </div>
+                            <span>Small Pet</span>
+                        </div>
+                    </td>
+                    <td>Rabbit</td>
+                    <td>1 year</td>
+                    <td>
+                        <span style="color: #4facfe; font-weight: 600;">
+                            <i class="fas fa-venus"></i> Female
+                        </span>
+                    </td>
+                    <td>
+                        <span class="status-badge status-pending">Pending</span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <a href="view-pet.html?id=003" class="action-btn btn-view">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <a href="edit-pet.html?id=003" class="action-btn btn-edit">
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </a>
+                            <button class="action-btn btn-delete" onclick="deletePet('PET003')">
+                                <i class="fas fa-trash"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>PET004</td>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #43e97b, #38f9d7); display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-dove"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; color: #2d3436;">Sky</div>
+                                <div style="font-size: 12px; color: #94a3b8;">Parrot</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="pet-type">
+                            <div class="type-icon type-bird">
+                                <i class="fas fa-dove"></i>
+                            </div>
+                            <span>Bird</span>
+                        </div>
+                    </td>
+                    <td>Parrot</td>
+                    <td>4 months</td>
+                    <td>
+                        <span style="color: #43e97b; font-weight: 600;">
+                            <i class="fas fa-mars"></i> Male
+                        </span>
+                    </td>
+                    <td>
+                        <span class="status-badge status-available">Available</span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <a href="view-pet.html?id=004" class="action-btn btn-view">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <a href="edit-pet.html?id=004" class="action-btn btn-edit">
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </a>
+                            <button class="action-btn btn-delete" onclick="deletePet('PET004')">
+                                <i class="fas fa-trash"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="page-btn">
+                <i class="fas fa-chevron-left"></i>
+                Previous
+            </button>
+            
+            <div class="page-numbers">
+                <span class="page-number active">1</span>
+                <span class="page-number">2</span>
+                <span class="page-number">3</span>
+                <span class="page-number">4</span>
+                <span class="page-number">5</span>
+            </div>
+            
+            <button class="page-btn">
+                Next
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <script>
+        function deletePet(petId) {
+            if(confirm(`Are you sure you want to delete pet ${petId}? This action cannot be undone.`)) {
+                // Show loading state
+                const deleteBtn = event.target;
+                const originalText = deleteBtn.innerHTML;
+                deleteBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting...';
+                deleteBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    alert(`Pet ${petId} has been deleted successfully!`);
+                    deleteBtn.innerHTML = originalText;
+                    deleteBtn.disabled = false;
+                    
+                    // In real app, you would remove the table row here
+                    // event.target.closest('tr').remove();
+                }, 1000);
+            }
+        }
+
+        // Add row hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const tableRows = document.querySelectorAll('.pets-table tbody tr');
+            
+            tableRows.forEach(row => {
+                row.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                row.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Filter functionality
+            const searchInput = document.querySelector('.filter-input');
+            const filterBtn = document.querySelector('.filter-btn');
+            const resetBtn = document.querySelector('.reset-btn');
+            
+            filterBtn.addEventListener('click', function() {
+                alert('Applying filters... (This would filter the table in a real application)');
+            });
+            
+            resetBtn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-input, .filter-select').forEach(input => {
+                    if(input.tagName === 'INPUT') {
+                        input.value = '';
+                    } else {
+                        input.selectedIndex = 0;
+                    }
+                });
+                alert('Filters reset!');
+            });
+        });
+    </script>
+</body>
+</html>

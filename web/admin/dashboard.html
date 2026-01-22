@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Ariniqo Buddies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin-style.css">
+</head>
+<body class="admin-dashboard">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <h1>Admin Dashboard</h1>
+            <p>Manage your pet adoption platform with ease and efficiency</p>
+        </div>
+        <div class="admin-info">
+            <div class="admin-avatar">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <div class="admin-details">
+                <h3>System Administrator</h3>
+                <p>Full Access</p>
+            </div>
+            <a href="../login.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </a>
+        </div>
+    </header>
+
+    <!-- Statistics -->
+    <div class="stats-container">
+        <div class="stat-card stat-1">
+            <div class="stat-content">
+                <div class="stat-icon">
+                    <i class="fas fa-paw"></i>
+                </div>
+                <div class="stat-numbers">
+                    <h2>142</h2>
+                    <p>Total Pets</p>
+                    <div class="stat-trend trend-up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+12 this week</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card stat-2">
+            <div class="stat-content">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-numbers">
+                    <h2>856</h2>
+                    <p>Registered Users</p>
+                    <div class="stat-trend trend-up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+28 today</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card stat-3">
+            <div class="stat-content">
+                <div class="stat-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="stat-numbers">
+                    <h2>324</h2>
+                    <p>Successful Adoptions</p>
+                    <div class="stat-trend trend-up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+5 today</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card stat-4">
+            <div class="stat-content">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-numbers">
+                    <h2>18</h2>
+                    <p>Pending Approvals</p>
+                    <div class="stat-trend trend-down">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Requires attention</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Management Sections -->
+    <div class="management-grid">
+        <!-- Articles Management -->
+        <section class="section-card articles-card">
+            <h2 class="articles-title">
+                <i class="fas fa-newspaper"></i>
+                Articles Management
+            </h2>
+            <div class="articles-grid">
+                <a href="admin-article-approval.html" class="article-btn">
+                    <div class="article-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <p class="article-text">View Articles</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Pet Management -->
+        <section class="section-card adoption-card-section">
+            <h2 class="adoption-title">
+                <i class="fas fa-paw"></i>
+                Pet Management
+            </h2>
+            <div class="adoption-grid">
+                <a href="pet-list.html" class="adoption-btn">
+                    <div class="adoption-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <p class="adoption-text">View Pet List</p>
+                </a>
+
+                <a href="add-pet.html" class="adoption-btn">
+                    <div class="adoption-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <p class="adoption-text">Add New Pet</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Adoption Management -->
+        <section class="section-card lostfound-card">
+            <h2 class="lostfound-title">
+                <i class="fas fa-heart"></i>
+                Adoption Management
+            </h2>
+            <div class="lostfound-grid">
+                <a href="adoption-requests.html" class="lostfound-btn">
+                    <div class="lostfound-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <p class="lostfound-text">View Adoption Requests</p>
+                </a>
+
+                <a href="adoption-reports.html" class="lostfound-btn">
+                    <div class="lostfound-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <p class="lostfound-text">Adoption Reports</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Lost & Found Management -->
+        <section class="section-card users-card">
+            <h2 class="users-title">
+                <i class="fas fa-search"></i>
+                Lost & Found
+            </h2>
+            <div class="users-grid">
+                <a href="lost-found-dashboard.html" class="user-btn">
+                    <div class="user-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <p class="user-text">View Reports</p>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Chart + User Management Row -->
+    <div class="chart-user-row">
+        
+        <section class="user-management-section">
+            <h2>
+                <i class="fas fa-users-cog"></i>
+                User Management
+            </h2>
+            <div class="user-management-buttons">
+                <a href="user-management.html" class="user-management-btn">
+                    <div class="user-management-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <p class="user-management-text">View Users</p>
+                </a>
+            </div>
+        </section>
+        <!-- Analytics Section -->
+        <section class="chart-card">
+            <h2 class="chart-title">
+                <i class="fas fa-chart-bar"></i>
+                Adoption Statistics
+            </h2>
+            <div class="chart-visual">
+                <div class="chart-bar">
+                    <div class="bar" style="height: 180px;" data-value="65"></div>
+                    <span class="bar-label">Available</span>
+                </div>
+                <div class="chart-bar">
+                    <div class="bar" style="height: 250px;" data-value="324"></div>
+                    <span class="bar-label">Adopted</span>
+                </div>
+                <div class="chart-bar">
+                    <div class="bar" style="height: 120px;" data-value="18"></div>
+                    <span class="bar-label">Pending</span>
+                </div>
+            </div>
+            <div class="chart-legend">
+                <div class="legend-item">
+                    <div class="legend-dot dot-1"></div>
+                    <span class="legend-text">Available for Adoption</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot dot-2"></div>
+                    <span class="legend-text">Successfully Adopted</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot dot-3"></div>
+                    <span class="legend-text">Pending Approval</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Management Section -->
+        
+    </div>
+
+    
+
+    <script>
+        // Set current date
+        const now = new Date();
+        document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+
+        // Animate counters
+        function animateCounter(element, target, duration = 1000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start);
+                }
+            }, 16);
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate stats
+            const stats = document.querySelectorAll('.stat-numbers h2');
+            stats.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                stat.textContent = '0';
+                setTimeout(() => animateCounter(stat, target), 300);
+            });
+
+            // Add hover effect to buttons
+            const buttons = document.querySelectorAll('.article-btn, .adoption-btn, .lostfound-btn, .user-btn, .user-management-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

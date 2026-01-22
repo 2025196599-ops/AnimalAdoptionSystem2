@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ariniqo Buddies - Adoption Form</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user-style.css">
+    <link rel="stylesheet" href="../css/adoption-form.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>Ariniqo Buddies</span>
+            </a>
+            
+            <!-- Navigation Container -->
+            <div class="nav-container">
+                <!-- Feature Buttons (Desktop) -->
+                <div class="feature-buttons">
+                    <a href="index.html" class="feature-btn active">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="user-pet-list.html" class="feature-btn">
+                        <i class="fas fa-paw"></i> Pet Listing
+                    </a>
+                    <a href="adoption-form.html" class="feature-btn">
+                        <i class="fas fa-heart"></i> Adoption
+                    </a>
+                    <a href="user-lost-found.html" class="feature-btn">
+                        <i class="fas fa-search"></i> Lost & Found
+                    </a>
+                    <a href="user-rescue-articles.html" class="feature-btn">
+                        <i class="fas fa-newspaper"></i> Articles
+                    </a>
+                </div>
+
+                    <!-- After (User Profile & Logout): -->
+                    <div class="user-actions">
+                        <div class="user-profile-header">
+                            <span class="user-welcome">
+                                <i class="fas fa-user"></i> Welcome, John Doe
+                            </span>
+                            <a href="../login.html" class="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Feature Buttons -->
+    <div class="feature-buttons-mobile">
+        <a href="index.html" class="feature-btn">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="user-pet-list.html" class="feature-btn">
+            <i class="fas fa-paw"></i>
+            <span>Pet Listing</span>
+        </a>
+        <a href="adoption-form.html" class="feature-btn active">
+            <i class="fas fa-heart"></i>
+            <span>Adoption Form</span>
+        </a>
+        <a href="user-lost-found.html" class="feature-btn">
+            <i class="fas fa-search"></i>
+            <span>Lost & Found</span>
+        </a>
+        <a href="user-rescue-articles.html" class="feature-btn">
+            <i class="fas fa-newspaper"></i>
+            <span>Rescue Articles</span>
+        </a>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="form-section">
+                <div class="form-header">
+                    <h1 class="form-title"><i class="fas fa-heart"></i> Adoption Application Form</h1>
+                    <p class="form-subtitle">Thank you for your interest in adopting a pet! Please fill out this form completely to help us find the perfect match for you and your new companion.</p>
+                </div>
+                
+                <div class="form-container">
+                    <form id="adoptionForm">
+                        <!-- Personal Information Section -->
+                        <div class="form-section-header">
+                            <h2><i class="fas fa-user"></i> Personal Information</h2>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName" class="required">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name" value="John Doe" readonly>
+                                <span class="form-help"><i class="fas fa-info-circle"></i> Pre-filled from your profile</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="required">Email Address</label>
+                                <input type="email" id="email" name="email" required placeholder="Enter your email address" value="john@example.com" readonly>
+                                <span class="form-help"><i class="fas fa-info-circle"></i> Pre-filled from your profile</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="required">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number" value="+6012-345-6789">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address" class="required">Home Address</label>
+                                <textarea id="address" name="address" required placeholder="Enter your full address" rows="3">123 Pet Lover Street, Kuala Lumpur</textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Pet Information Section -->
+                        <div class="form-section-header">
+                            <h2><i class="fas fa-paw"></i> Pet Information</h2>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="petId">Pet ID (if known)</label>
+                                <input type="text" id="petId" name="petId" placeholder="e.g., PET-00123">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="petName" class="required">Pet Name</label>
+                                <input type="text" id="petName" name="petName" required placeholder="Which pet are you interested in?">
+                                <span class="form-help"><i class="fas fa-info-circle"></i> Browse <a href="user-pet-list.html" style="color: var(--primary);">pets here</a> if unsure</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="petType" class="required">Type of Pet</label>
+                                <select id="petType" name="petType" required>
+                                    <option value="">Select pet type</option>
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="rabbit">Rabbit</option>
+                                    <option value="bird">Bird</option>
+                                    <option value="small">Small Animal</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="breed">Breed (if known)</label>
+                                <input type="text" id="breed" name="breed" placeholder="e.g., Golden Retriever, Persian, etc.">
+                            </div>
+                        </div>
+                        
+                        <!-- Living Situation Section -->
+                        <div class="form-section-header">
+                            <h2><i class="fas fa-home"></i> Living Situation</h2>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="houseType" class="required">Type of Housing</label>
+                                <select id="houseType" name="houseType" required>
+                                    <option value="">Select Housing Type</option>
+                                    <option value="apartment">Apartment</option>
+                                    <option value="terrace">Terrace House</option>
+                                    <option value="semi_d">Semi-Detached House</option>
+                                    <option value="bungalow">Bungalow</option>
+                                    <option value="condo">Condominium</option>
+                                    <option value="townhouse">Townhouse</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="homeSize">Home Size (sq ft)</label>
+                                <input type="number" id="homeSize" name="homeSize" min="100" max="10000" placeholder="Approximate square footage">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="yardSize">Yard/Fenced Area</label>
+                                <select id="yardSize" name="yardSize">
+                                    <option value="">Select option</option>
+                                    <option value="none">No yard/fenced area</option>
+                                    <option value="small">Small yard/fenced area</option>
+                                    <option value="medium">Medium yard/fenced area</option>
+                                    <option value="large">Large yard/fenced area</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="homeOwnership" class="required">Home Ownership</label>
+                                <select id="homeOwnership" name="homeOwnership" required>
+                                    <option value="">Select option</option>
+                                    <option value="own">Own</option>
+                                    <option value="rent">Rent</option>
+                                    <option value="living_with_family">Living with Family</option>
+                                </select>
+                                <span class="form-help"><i class="fas fa-info-circle"></i> If renting, landlord approval may be required</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Family & Pets Section -->
+                        <div class="form-section-header">
+                            <h2><i class="fas fa-users"></i> Family & Current Pets</h2>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="householdSize" class="required">Number of People in Household</label>
+                                <input type="number" id="householdSize" name="householdSize" min="1" max="20" required placeholder="Including yourself">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="livingWithChildren">Do you live with children?</label>
+                                <select id="livingWithChildren" name="livingWithChildren">
+                                    <option value="">Select Option</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group" id="childrenAgesGroup" style="display: none;">
+                                <label for="childrenAges">Children Ages (if applicable)</label>
+                                <input type="text" id="childrenAges" name="childrenAges" placeholder="e.g., 5, 8, 12">
+                                <span class="form-help"><i class="fas fa-info-circle"></i> Separate ages with commas</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="livingWithPets">Do you currently have pets?</label>
+                                <select id="livingWithPets" name="livingWithPets">
+                                    <option value="">Select Option</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group" id="currentPetsGroup" style="display: none;">
+                                <label for="currentPets">Current Pets Details</label>
+                                <textarea id="currentPets" name="currentPets" placeholder="Please list current pets: type, breed, age, spayed/neutered status, etc."></textarea>
+                                <span class="form-help"><i class="fas fa-info-circle"></i> Include all pets in the household</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="vetName">Current Veterinarian (if any)</label>
+                                <input type="text" id="vetName" name="vetName" placeholder="Veterinary clinic name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="vetPhone">Veterinarian Phone</label>
+                                <input type="tel" id="vetPhone" name="vetPhone" placeholder="Veterinary clinic phone number">
+                            </div>
+                        </div>
+                        
+                        <!-- Experience & Lifestyle Section -->
+                        <div class="form-section-header">
+                            <h2><i class="fas fa-graduation-cap"></i> Experience & Lifestyle</h2>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="experience" class="required">Previous Pet Experience</label>
+                                <select id="experience" name="experience" required>
+                                    <option value="">Select Experience</option>
+                                    <option value="none">None - First time pet owner</option>
+                                    <option value="some">Some - Had pets as a child</option>
+                                    <option value="moderate">Moderate - Owned pets in the past</option>
+                                    <option value="extensive">Extensive - Experienced pet owner</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="employmentStatus" class="required">Employment Status</label>
+                                <select id="employmentStatus" name="employmentStatus" required>
+                                    <option value="">Select Employment Status</option>
+                                    <option value="employed">Employed Full-time</option>
+                                    <option value="part_time">Employed Part-time</option>
+                                    <option value="selfEmployed">Self-Employed</option>
+                                    <option value="student">Student</option>
+                                    <option value="retired">Retired</option>
+                                    <option value="work_from_home">Work from Home</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="workHours" class="required">Average Hours Away from Home</label>
+                                <select id="workHours" name="workHours" required>
+                                    <option value="">Select hours per day</option>
+                                    <option value="0-4">0-4 hours</option>
+                                    <option value="5-8">5-8 hours</option>
+                                    <option value="9-12">9-12 hours</option>
+                                    <option value="12+">More than 12 hours</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="monthlyBudget">Monthly Pet Budget (MYR)</label>
+                                <input type="number" id="monthlyBudget" name="monthlyBudget" min="100" placeholder="Estimated monthly expenses for pet">
+                                <span class="form-help"><i class="fas fa-info-circle"></i> Food, vet care, grooming, etc.</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="exercisePlan">Exercise Plan for Pet</label>
+                                <textarea id="exercisePlan" name="exercisePlan" placeholder="How will you ensure your pet gets enough exercise?"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="aloneTimePlan">Plan for When You're Away</label>
+                                <textarea id="aloneTimePlan" name="aloneTimePlan" placeholder="What arrangements will you make when you're not home?"></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Information Section -->
+                        <div class="form-section-header">
+                            <h2><i class="fas fa-comment"></i> Additional Information</h2>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reason" class="required">Reason for Adoption</label>
+                            <textarea id="reason" name="reason" required placeholder="Why do you want to adopt a pet? What are you looking for in a companion?" rows="4"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="preparation">How have you prepared for a new pet?</label>
+                            <textarea id="preparation" name="preparation" placeholder="What preparations have you made? (food, toys, bed, safety measures, etc.)" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emergencyPlan">Emergency/Care Plan</label>
+                            <textarea id="emergencyPlan" name="emergencyPlan" placeholder="Who will care for your pet if you're away or in an emergency?" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="additionalInfo" class="optional">Additional Information</label>
+                            <textarea id="additionalInfo" name="additionalInfo" placeholder="Any other information you'd like to share about yourself or your application" rows="3"></textarea>
+                        </div>
+                        
+                        <!-- Agreement Section -->
+                        <div class="form-section-header">
+                            <h2><i class="fas fa-file-signature"></i> Agreement & Commitment</h2>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="agreement-box">
+                                <p><strong>By submitting this application, I agree to the following:</strong></p>
+                                
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="consent1" name="consent1" required>
+                                    <label for="consent1">I understand that pets require time, money, and commitment for their entire lives (10-20 years)</label>
+                                </div>
+                                
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="consent2" name="consent2" required>
+                                    <label for="consent2">I agree to provide proper veterinary care, nutrition, exercise, and socialization</label>
+                                </div>
+                                
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="consent3" name="consent3" required>
+                                    <label for="consent3">I consent to a home visit, reference checks, and follow-up visits as part of the adoption process</label>
+                                </div>
+                                
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="consent4" name="consent4" required>
+                                    <label for="consent4">I agree to return the pet to Ariniqo Buddies if I can no longer provide proper care</label>
+                                </div>
+                                
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="consent5" name="consent5" required>
+                                    <label for="consent5">I understand that the adoption fee is non-refundable and helps support other animals in need</label>
+                                </div>
+                                
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="consent6" name="consent6" required>
+                                    <label for="consent6">I certify that all information provided is true and accurate to the best of my knowledge</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-paper-plane"></i> Submit Application
+                            </button>
+                            <a href="user-pet-list.html" class="btn-cancel">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                            <p style="text-align: center; color: var(--text-light); font-size: 14px; margin-top: 15px; width: 100%;">
+                                <i class="fas fa-clock"></i> Processing time: 3-5 business days
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const adoptionForm = document.getElementById('adoptionForm');
+            
+            // Show/hide children ages field
+            const childrenSelect = document.getElementById('livingWithChildren');
+            const childrenAgesGroup = document.getElementById('childrenAgesGroup');
+            
+            if (childrenSelect && childrenAgesGroup) {
+                childrenSelect.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        childrenAgesGroup.style.display = 'block';
+                    } else {
+                        childrenAgesGroup.style.display = 'none';
+                        document.getElementById('childrenAges').value = '';
+                    }
+                });
+            }
+            
+            // Show/hide current pets field
+            const petsSelect = document.getElementById('livingWithPets');
+            const currentPetsGroup = document.getElementById('currentPetsGroup');
+            
+            if (petsSelect && currentPetsGroup) {
+                petsSelect.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        currentPetsGroup.style.display = 'block';
+                    } else {
+                        currentPetsGroup.style.display = 'none';
+                        document.getElementById('currentPets').value = '';
+                    }
+                });
+            }
+            
+            // Form submission
+            adoptionForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic form validation
+                const requiredFields = this.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (field.type === 'checkbox') {
+                        if (!field.checked) {
+                            isValid = false;
+                            field.parentElement.style.color = '#ff7e5f';
+                        } else {
+                            field.parentElement.style.color = '';
+                        }
+                    } else if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#ff7e5f';
+                    } else {
+                        field.style.borderColor = '#e0e0e0';
+                    }
+                });
+                
+                if (isValid) {
+                    // Show success message
+                    const applicationData = new FormData(this);
+                    const applicationObj = {};
+                    applicationData.forEach((value, key) => {
+                        applicationObj[key] = value;
+                    });
+                    
+                    // Save to localStorage (for demo purposes)
+                    const applications = JSON.parse(localStorage.getItem('adoptionApplications') || '[]');
+                    applicationObj.id = Date.now();
+                    applicationObj.date = new Date().toISOString();
+                    applicationObj.status = 'pending';
+                    applications.push(applicationObj);
+                    localStorage.setItem('adoptionApplications', JSON.stringify(applications));
+                    
+                    // Show success modal
+                    alert('✅ Thank you for your adoption application!\n\nYour application has been submitted successfully. We will review it and contact you within 3-5 business days.\n\nApplication ID: ' + applicationObj.id);
+                    
+                    // Redirect to user dashboard after 2 seconds
+                    setTimeout(function() {
+                        window.location.href = 'index.html';
+                    }, 2000);
+                } else {
+                    alert('⚠️ Please fill in all required fields marked with * and check all agreement boxes.');
+                }
+            });
+            
+            // Logout function
+            window.logout = function() {
+                if (confirm('Are you sure you want to logout? Any unsaved form data will be lost.')) {
+                    window.location.href = '../index.html';
+                }
+            };
+        });
+    </script>
+</body>
+</html>

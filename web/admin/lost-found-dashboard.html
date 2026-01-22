@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Lost & Found Reports</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin-style.css">
+</head>
+<body>
+    <div class="lostfound-admin-container">
+        <!-- Header -->
+        <header class="lostfound-header">
+            <div class="header-content">
+                <h1><i class="fas fa-search"></i> Lost & Found Reports Dashboard</h1>
+                <p>Manage and review all lost and found pet reports</p>
+            </div>
+            
+            <div class="admin-user-section">
+                <div class="admin-user">
+                    <div class="admin-avatar">AJ</div>
+                    <div class="admin-info">
+                        <div class="admin-name">Admin John</div>
+                        <div class="admin-role">Administrator</div>
+                    </div>
+                </div>
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Site
+                </a>
+            </div>
+        </header>
+
+        <!-- Stats Cards -->
+        <div class="lostfound-stats">
+            <div class="stat-card card-pending">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>12</h3>
+                    <p>Pending Reports</p>
+                    <span class="stat-label">Needs Review</span>
+                </div>
+            </div>
+            
+            <div class="stat-card card-active">
+                <div class="stat-icon">
+                    <i class="fas fa-spinner"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>45</h3>
+                    <p>Active Reports</p>
+                    <span class="stat-label">Being Investigated</span>
+                </div>
+            </div>
+            
+            <div class="stat-card card-resolved">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>128</h3>
+                    <p>Resolved</p>
+                    <span class="stat-label">This Month</span>
+                </div>
+            </div>
+            
+            <div class="stat-card card-total">
+                <div class="stat-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>843</h3>
+                    <p>Total Reports</p>
+                    <span class="stat-label">All Time</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="lostfound-filter-section">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-filter"></i> Filter Reports
+                    </label>
+                    <select class="filter-select" id="reportTypeFilter">
+                        <option value="all">All Types</option>
+                        <option value="lost">Lost Only</option>
+                        <option value="found">Found Only</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-calendar"></i> Date From
+                    </label>
+                    <input type="date" class="filter-input" id="dateFrom">
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-calendar"></i> Date To
+                    </label>
+                    <input type="date" class="filter-input" id="dateTo">
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-tag"></i> Status
+                    </label>
+                    <select class="filter-select" id="statusFilter">
+                        <option value="all">All Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="active">Active</option>
+                        <option value="resolved">Resolved</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <button class="filter-btn" id="applyFilters">
+                        <i class="fas fa-filter"></i> Apply Filters
+                    </button>
+                    <button class="reset-btn" id="resetFilters">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Table -->
+        <div class="lostfound-table-container">
+            <div class="table-header">
+                <h2><i class="fas fa-list"></i> Recent Reports</h2>
+                
+            </div>
+
+            <table class="lostfound-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Pet Name</th>
+                        <th>Reported By</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#LF-2024-001</td>
+                        <td><span class="type-badge type-lost">Lost</span></td>
+                        <td>Max (Golden Retriever)</td>
+                        <td>Sarah Johnson</td>
+                        <td>2024-03-15</td>
+                        <td><span class="status-badge status-pending">Pending</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-view" onclick="viewReport(1)">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-resolve" onclick="resolveReport(1)">
+                                    <i class="fas fa-check"></i> Resolve
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>#LF-2024-002</td>
+                        <td><span class="type-badge type-found">Found</span></td>
+                        <td>Unknown (Siamese Cat)</td>
+                        <td>Michael Chen</td>
+                        <td>2024-03-14</td>
+                        <td><span class="status-badge status-active">Active</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-view" onclick="viewReport(2)">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-edit" onclick="editReport(2)">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>#LF-2024-003</td>
+                        <td><span class="type-badge type-lost">Lost</span></td>
+                        <td>Bella (Persian Cat)</td>
+                        <td>Robert Davis</td>
+                        <td>2024-03-13</td>
+                        <td><span class="status-badge status-resolved">Resolved</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-view" onclick="viewReport(3)">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-delete" onclick="deleteReport(3)">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>#LF-2024-004</td>
+                        <td><span class="type-badge type-found">Found</span></td>
+                        <td>Unknown (Beagle)</td>
+                        <td>Emma Wilson</td>
+                        <td>2024-03-12</td>
+                        <td><span class="status-badge status-pending">Pending</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-view" onclick="viewReport(4)">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-resolve" onclick="resolveReport(4)">
+                                    <i class="fas fa-check"></i> Resolve
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="page-numbers">
+                    <span class="page-number active">1</span>
+                    <span class="page-number">2</span>
+                    <span class="page-number">3</span>
+                    <span class="page-number">4</span>
+                </div>
+                <button class="page-btn">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        
+            
+            
+    </div>
+
+    <!-- Report Details Modal (Same as before, just with updated classes) -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Report Details - #LF-2024-001</h3>
+                <button class="close-modal" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="report-details-grid">
+                    <div class="report-detail-section">
+                        <h4><i class="fas fa-info-circle"></i> Basic Information</h4>
+                        <div class="report-detail-item">
+                            <div class="report-detail-label">
+                                <i class="fas fa-tag"></i> Report Type
+                            </div>
+                            <div class="report-detail-value">
+                                <span class="type-badge type-lost">Lost Pet</span>
+                            </div>
+                        </div>
+                        <div class="report-detail-item">
+                            <div class="report-detail-label">
+                                <i class="fas fa-paw"></i> Pet Name
+                            </div>
+                            <div class="report-detail-value">Max</div>
+                        </div>
+                        <div class="report-detail-item">
+                            <div class="report-detail-label">
+                                <i class="fas fa-dna"></i> Breed
+                            </div>
+                            <div class="report-detail-value">Golden Retriever</div>
+                        </div>
+                        <div class="report-detail-item">
+                            <div class="report-detail-label">
+                                <i class="fas fa-venus-mars"></i> Gender
+                            </div>
+                            <div class="report-detail-value">Male</div>
+                        </div>
+                    </div>
+
+                    <div class="report-detail-section">
+                        <h4><i class="fas fa-user"></i> Reporter Information</h4>
+                        <div class="report-detail-item">
+                            <div class="report-detail-label">
+                                <i class="fas fa-user"></i> Name
+                            </div>
+                            <div class="report-detail-value">Sarah Johnson</div>
+                        </div>
+                        <div class="report-detail-item">
+                            <div class="report-detail-label">
+                                <i class="fas fa-phone"></i> Phone
+                            </div>
+                            <div class="report-detail-value">+1 (555) 123-4567</div>
+                        </div>
+                        <div class="report-detail-item">
+                            <div class="report-detail-label">
+                                <i class="fas fa-envelope"></i> Email
+                            </div>
+                            <div class="report-detail-value">sarah@email.com</div>
+                        </div>
+                    </div>
+
+                    <div class="report-detail-section">
+                        <h4><i class="fas fa-map-marker-alt"></i> Location Details</h4>
+                        <div class="report-detail-item">
+                            <div class="report-detail-label">
+                                <i class="fas fa-map-pin"></i> Last Seen
+                            </div>
+                            <div class="report-detail-value">Central Park, New York</div>
+                        </div>
+                        <div class="report-detail-item">
+                            <div class="report-detail-label">
+                                <i class="fas fa-calendar"></i> Date Lost
+                            </div>
+                            <div class="report-detail-value">March 14, 2024</div>
+                        </div>
+                        <div class="report-detail-item">
+                            <div class="report-detail-label">
+                                <i class="fas fa-clock"></i> Time Lost
+                            </div>
+                            <div class="report-detail-value">3:00 PM</div>
+                        </div>
+                    </div>
+
+                    <div class="report-detail-section">
+                        <h4><i class="fas fa-image"></i> Pet Images</h4>
+                        <div class="report-images">
+                            <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Max" class="report-image">
+                            <img src="https://via.placeholder.com/150" alt="Pet" class="report-image">
+                            <img src="https://via.placeholder.com/150" alt="Pet" class="report-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-detail-section">
+                    <h4><i class="fas fa-file-alt"></i> Description</h4>
+                    <div class="report-detail-value">
+                        Max is a friendly 3-year-old Golden Retriever. He was last seen wearing a blue collar with his name tag. He's microchipped and responds to his name. He ran off while we were playing in the park.
+                    </div>
+                </div>
+
+                <div class="admin-action-form">
+                    <h4><i class="fas fa-cogs"></i> Admin Actions</h4>
+                    <div class="form-group">
+                        <label for="adminNotes">Admin Notes</label>
+                        <textarea id="adminNotes" placeholder="Add notes about this report..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="statusUpdate">Update Status</label>
+                        <select id="statusUpdate" class="filter-select" style="width: 100%; padding: 12px;">
+                            <option value="pending">Pending Review</option>
+                            <option value="active">Active Investigation</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                        <button class="btn-submit" onclick="saveReportChanges()">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Modal functions
+        function viewReport(reportId) {
+            document.getElementById('reportModal').classList.add('show');
+            // In real app, you would fetch report data based on ID
+            console.log('Viewing report:', reportId);
+        }
+
+        function closeModal() {
+            document.getElementById('reportModal').classList.remove('show');
+        }
+
+        function resolveReport(reportId) {
+            if (confirm('Mark this report as resolved?')) {
+                // Update status in table
+                const row = document.querySelector(`tr:nth-child(${reportId})`);
+                if (row) {
+                    const statusBadge = row.querySelector('.status-badge');
+                    statusBadge.className = 'status-badge status-resolved';
+                    statusBadge.textContent = 'Resolved';
+                    
+                    // Update resolve button
+                    const resolveBtn = row.querySelector('.btn-resolve');
+                    if (resolveBtn) {
+                        resolveBtn.disabled = true;
+                        resolveBtn.innerHTML = '<i class="fas fa-check-circle"></i> Resolved';
+                    }
+                }
+                alert('Report marked as resolved!');
+            }
+        }
+
+        function editReport(reportId) {
+            alert('Edit report: ' + reportId);
+            // In real app, open edit modal or redirect to edit page
+        }
+
+        function deleteReport(reportId) {
+            if (confirm('Are you sure you want to delete this report?')) {
+                // Remove row from table
+                const row = document.querySelector(`tr:nth-child(${reportId})`);
+                if (row) {
+                    row.remove();
+                }
+                alert('Report deleted!');
+            }
+        }
+
+        function saveReportChanges() {
+            const notes = document.getElementById('adminNotes').value;
+            const status = document.getElementById('statusUpdate').value;
+            alert('Changes saved!\nNotes: ' + notes + '\nStatus: ' + status);
+            closeModal();
+        }
+
+        // Filter functionality
+        document.getElementById('applyFilters').addEventListener('click', function() {
+            const type = document.getElementById('reportTypeFilter').value;
+            const status = document.getElementById('statusFilter').value;
+            const dateFrom = document.getElementById('dateFrom').value;
+            const dateTo = document.getElementById('dateTo').value;
+            
+            alert(`Applying filters:\nType: ${type}\nStatus: ${status}\nDate Range: ${dateFrom} to ${dateTo}`);
+            // In real app, filter table rows
+        });
+
+        document.getElementById('resetFilters').addEventListener('click', function() {
+            document.getElementById('reportTypeFilter').value = 'all';
+            document.getElementById('statusFilter').value = 'all';
+            document.getElementById('dateFrom').value = '';
+            document.getElementById('dateTo').value = '';
+            alert('Filters reset!');
+        });
+
+        // Export functionality
+        document.getElementById('exportBtn').addEventListener('click', function() {
+            const exportBtn = this;
+            const originalText = exportBtn.innerHTML;
+            exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Exporting...';
+            exportBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Report exported successfully!');
+                exportBtn.innerHTML = originalText;
+                exportBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('reportModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>All Lost & Found Reports - Ariniqo Buddies</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user-style.css">
+    <link rel="stylesheet" href="../css/view-all-report.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>Ariniqo Buddies</span>
+            </a>
+            
+            <!-- Navigation Container -->
+            <div class="nav-container">
+                <!-- Feature Buttons (Desktop) -->
+                <div class="feature-buttons">
+                    <a href="index.html" class="feature-btn active">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="user-pet-list.html" class="feature-btn">
+                        <i class="fas fa-paw"></i> Pet Listing
+                    </a>
+                    <a href="adoption-form.html" class="feature-btn">
+                        <i class="fas fa-heart"></i> Adoption
+                    </a>
+                    <a href="user-lost-found.html" class="feature-btn">
+                        <i class="fas fa-search"></i> Lost & Found
+                    </a>
+                    <a href="user-rescue-articles.html" class="feature-btn">
+                        <i class="fas fa-newspaper"></i> Articles
+                    </a>
+                </div>
+
+                    <!-- After (User Profile & Logout): -->
+                    <div class="user-actions">
+                        <div class="user-profile-header">
+                            <span class="user-welcome">
+                                <i class="fas fa-user"></i> Welcome, John Doe
+                            </span>
+                            <a href="../login.html" class="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Mobile Feature Buttons -->
+    <div class="feature-buttons-mobile">
+        <a href="user-pet-list.html" class="feature-btn">
+            <i class="fas fa-paw"></i>
+            <span>Pet Listing</span>
+        </a>
+        <a href="adoption-form.html" class="feature-btn">
+            <i class="fas fa-heart"></i>
+            <span>Adoption Form</span>
+        </a>
+        <a href="user-lost-found.html" class="feature-btn">
+            <i class="fas fa-search"></i>
+            <span>Lost & Found</span>
+        </a>
+        <a href="user-rescue-articles.html" class="feature-btn">
+            <i class="fas fa-newspaper"></i>
+            <span>Rescue Articles</span>
+        </a>
+    </div>
+
+    <main class="main-content">
+        <div class="view-reports-container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">
+                    <i class="fas fa-list-alt"></i>
+                    All Lost & Found Reports
+                </h1>
+                <p class="page-subtitle">Browse through all reports. Found a pet? Click "Found It" to help reunite them.</p>
+                
+                <!-- Quick Stats -->
+                <div class="quick-stats">
+                    <div class="stat">
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">Active Reports</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">42</span>
+                        <span class="stat-label">Reunited</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Today's Reports</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Search & Filter Bar -->
+            <div class="filter-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchReports" placeholder="Search by pet name, breed, or location...">
+                </div>
+                
+                <div class="filter-controls">
+                    <select id="filterType">
+                        <option value="all">All Reports</option>
+                        <option value="lost">Lost Pets</option>
+                        <option value="found">Found Pets</option>
+                    </select>
+                    
+                    <select id="filterStatus">
+                        <option value="all">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="resolved">Resolved</option>
+                    </select>
+                    
+                    <select id="filterLocation">
+                        <option value="all">All Locations</option>
+                        <option value="kl">Kuala Lumpur</option>
+                        <option value="pj">Petaling Jaya</option>
+                        <option value="cheras">Cheras</option>
+                        <option value="bangsar">Bangsar</option>
+                    </select>
+                    
+                    <button class="filter-btn" onclick="applyFilters()">
+                        <i class="fas fa-filter"></i> Apply Filters
+                    </button>
+                    
+                    <button class="reset-btn" onclick="resetFilters()">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Reports Grid -->
+            <div class="reports-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-paw"></i>
+                        Recent Reports
+                        <span class="report-count">(Showing 12 reports)</span>
+                    </h2>
+                </div>
+                
+                <!-- Grid View -->
+                <div class="reports-grid" id="reportsGrid">
+                    <!-- Report cards will be loaded here -->
+                </div>
+                
+                <!-- No Results Message -->
+                <div class="no-results" id="noResults" style="display: none;">
+                    <i class="fas fa-search fa-3x"></i>
+                    <h3>No Reports Found</h3>
+                    <p>Try adjusting your search filters or check back later.</p>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="page-btn" onclick="prevPage()">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    
+                    <div class="page-numbers">
+                        <span class="page-number active">1</span>
+                        <span class="page-number">2</span>
+                        <span class="page-number">3</span>
+                        <span class="page-dots">...</span>
+                        <span class="page-number">8</span>
+                    </div>
+                    
+                    <button class="page-btn" onclick="nextPage()">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+        <!-- Update the quick actions section -->
+        <div class="quick-actions">
+            <button class="action-btn lost-btn" onclick="requireLoginForReport('lost')">
+                <i class="fas fa-plus-circle"></i>
+                Report Lost Pet
+            </button>
+            <button class="action-btn found-btn" onclick="requireLoginForReport('found')">
+                <i class="fas fa-plus-circle"></i>
+                Report Found Pet
+            </button>
+        </div>
+
+        <!-- Add login modal -->
+        <div id="loginModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
+            <div style="background: white; padding: 40px; border-radius: 16px; max-width: 500px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+                <div style="font-size: 64px; color: #ff7e5f; margin-bottom: 20px;">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h2 style="font-family: 'Nunito', sans-serif; font-size: 28px; color: #333; margin-bottom: 15px;">
+                    Login Required
+                </h2>
+                <p id="modalMessage" style="color: #777; margin-bottom: 30px; line-height: 1.6;">
+                    To submit a report, you need to be logged in.
+                </p>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <a href="../login.html" style="background: #ff7e5f; color: white; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-sign-in-alt"></i> Login Now
+                    </a>
+                    <a href="../signup.html" style="background: transparent; color: #ff7e5f; border: 2px solid #ff7e5f; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-user-plus"></i> Sign Up
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function requireLoginForReport(type) {
+                const loggedIn = localStorage.getItem('userLoggedIn') === 'true';
+
+                if (!loggedIn) {
+                    const modal = document.getElementById('loginModal');
+                    const message = document.getElementById('modalMessage');
+
+                    if (type === 'lost') {
+                        message.textContent = 'To report a lost pet, you need to be logged in. Please login or create an account.';
+                    } else {
+                        message.textContent = 'To report a found pet, you need to be logged in. Please login or create an account.';
+                    }
+
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+
+                    // Close modal when clicking outside
+                    modal.addEventListener('click', function(e) {
+                        if (e.target === this) {
+                            modal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }
+                    });
+                } else {
+                    // User is logged in, redirect to appropriate form
+                    if (type === 'lost') {
+                        window.location.href = 'report-lost-pet.html';
+                    } else {
+                        window.location.href = 'found-report.html';
+                    }
+                }
+            }
+        </script>
+
+    <script>
+        // Sample reports data
+        const reportsData = [
+            {
+                id: 1,
+                type: 'lost',
+                status: 'active',
+                title: 'Missing Golden Retriever "Max"',
+                breed: 'Golden Retriever',
+                age: '3 years',
+                gender: 'Male',
+                color: 'Golden',
+                location: 'Taman Tun Dr Ismail, KL',
+                date: '2024-03-15',
+                time: '2 days ago',
+                description: 'Friendly golden retriever wearing a blue collar. Last seen near the park.',
+                contact: '012-3456789',
+                reward: true,
+                image: 'dog1.jpg'
+            },
+            {
+                id: 2,
+                type: 'found',
+                status: 'active',
+                title: 'Found Persian Cat',
+                breed: 'Persian',
+                age: '2 years',
+                gender: 'Female',
+                color: 'White',
+                location: 'Bangsar South, KL',
+                date: '2024-03-16',
+                time: '1 day ago',
+                description: 'Found this beautiful Persian cat near the shopping mall. Very friendly.',
+                contact: '013-9876543',
+                reward: false,
+                image: 'cat1.jpg'
+            },
+            {
+                id: 3,
+                type: 'lost',
+                status: 'resolved',
+                title: 'Missing Tabby Cat "Whiskers"',
+                breed: 'Tabby',
+                age: '4 years',
+                gender: 'Male',
+                color: 'Brown/Grey',
+                location: 'Petaling Jaya',
+                date: '2024-03-10',
+                time: 'Resolved yesterday',
+                description: 'Has a distinctive M-shaped mark on forehead. Microchipped.',
+                contact: '011-2233445',
+                reward: true,
+                image: 'cat2.jpg'
+            },
+            {
+                id: 4,
+                type: 'found',
+                status: 'active',
+                title: 'Found Shih Tzu Puppy',
+                breed: 'Shih Tzu',
+                age: '6 months',
+                gender: 'Female',
+                color: 'White & Brown',
+                location: 'Cheras, KL',
+                date: '2024-03-14',
+                time: '3 days ago',
+                description: 'Small shih tzu puppy found wandering alone. No collar.',
+                contact: '016-1122334',
+                reward: false,
+                image: 'dog2.jpg'
+            },
+            {
+                id: 5,
+                type: 'lost',
+                status: 'active',
+                title: 'Missing Siberian Husky "Luna"',
+                breed: 'Siberian Husky',
+                age: '2 years',
+                gender: 'Female',
+                color: 'Grey/White',
+                location: 'Setapak, KL',
+                date: '2024-03-17',
+                time: 'Today',
+                description: 'Blue eyes, very energetic. Last seen wearing a red harness.',
+                contact: '019-5566778',
+                reward: true,
+                image: 'dog3.jpg'
+            },
+            {
+                id: 6,
+                type: 'found',
+                status: 'resolved',
+                title: 'Found Beagle',
+                breed: 'Beagle',
+                age: '5 years',
+                gender: 'Male',
+                color: 'Tri-color',
+                location: 'Subang Jaya',
+                date: '2024-03-08',
+                time: 'Reunited 2 days ago',
+                description: 'Friendly beagle with long ears. Owner has been found.',
+                contact: '017-8899001',
+                reward: false,
+                image: 'dog4.jpg'
+            },
+            {
+                id: 7,
+                type: 'lost',
+                status: 'active',
+                title: 'Missing Poodle "Snowball"',
+                breed: 'Poodle',
+                age: '1 year',
+                gender: 'Female',
+                color: 'White',
+                location: 'Damansara',
+                date: '2024-03-18',
+                time: 'Just now',
+                description: 'Small white poodle, very shy. Last seen in the garden.',
+                contact: '018-3344556',
+                reward: true,
+                image: 'dog5.jpg'
+            },
+            {
+                id: 8,
+                type: 'found',
+                status: 'active',
+                title: 'Found Stray Kitten',
+                breed: 'Domestic Short Hair',
+                age: '3 months',
+                gender: 'Male',
+                color: 'Orange Tabby',
+                location: 'Puchong',
+                date: '2024-03-17',
+                time: 'Yesterday',
+                description: 'Found this tiny kitten crying near the road. No mother around.',
+                contact: '014-6677889',
+                reward: false,
+                image: 'cat3.jpg'
+            }
+        ];
+
+        // Current state
+        let currentReportId = null;
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadReports();
+            setupEventListeners();
+        });
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search input
+            const searchInput = document.getElementById('searchReports');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    filterReports();
+                });
+            }
+            
+            // Filter selects
+            const filterType = document.getElementById('filterType');
+            const filterStatus = document.getElementById('filterStatus');
+            const filterLocation = document.getElementById('filterLocation');
+            
+            if (filterType) filterType.addEventListener('change', filterReports);
+            if (filterStatus) filterStatus.addEventListener('change', filterReports);
+            if (filterLocation) filterLocation.addEventListener('change', filterReports);
+            
+            // Close modal when clicking outside
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.style.display = 'none';
+                    }
+                });
+            });
+        }
+        
+        // Load reports
+        function loadReports() {
+            renderGridReports(reportsData);
+            updateReportCount(reportsData.length);
+        }
+        
+        // Render grid view
+        function renderGridReports(reports) {
+            const gridContainer = document.getElementById('reportsGrid');
+            if (!gridContainer) return;
+            
+            gridContainer.innerHTML = reports.map(report => `
+                <div class="report-card ${report.type} ${report.status}">
+                    <div class="report-card-header">
+                        <div class="report-type ${report.type}">
+                            ${report.type === 'lost' ? 'LOST PET' : 'FOUND PET'}
+                        </div>
+                        <div class="report-status ${report.status}">
+                            ${report.status === 'active' ? 'ACTIVE' : 'RESOLVED'}
+                        </div>
+                    </div>
+                    
+                    <div class="report-image">
+                        <i class="fas fa-${report.type === 'lost' ? 'dog' : 'cat'}"></i>
+                    </div>
+                    
+                    <div class="report-card-body">
+                        <h3 class="report-title">${report.title}</h3>
+                        
+                        <div class="report-info">
+                            <div class="info-item">
+                                <i class="fas fa-paw"></i>
+                                <span>${report.breed}</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${report.location}</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>${report.time}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="report-tags">
+                            <span class="tag">${report.gender}</span>
+                            <span class="tag">${report.color}</span>
+                            <span class="tag">${report.age}</span>
+                            ${report.reward ? '<span class="tag reward">REWARD</span>' : ''}
+                        </div>
+                        
+                        <p class="report-description">${report.description}</p>
+                    </div>
+                    
+                    <div class="report-card-footer">
+                        <button class="view-details-btn" onclick="viewReportDetails(${report.id})">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        
+                        ${report.type === 'lost' && report.status === 'active' ? `
+                        <button class="found-it-btn" onclick="openFoundItModal(${report.id})">
+                            <i class="fas fa-hand-holding-heart"></i> Found It
+                        </button>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Filter reports
+        function filterReports() {
+            const searchTerm = document.getElementById('searchReports').value.toLowerCase();
+            const typeFilter = document.getElementById('filterType').value;
+            const statusFilter = document.getElementById('filterStatus').value;
+            const locationFilter = document.getElementById('filterLocation').value;
+            
+            const filteredReports = reportsData.filter(report => {
+                // Search filter
+                if (searchTerm) {
+                    const matchesSearch = 
+                        report.title.toLowerCase().includes(searchTerm) ||
+                        report.breed.toLowerCase().includes(searchTerm) ||
+                        report.location.toLowerCase().includes(searchTerm) ||
+                        report.description.toLowerCase().includes(searchTerm);
+                    
+                    if (!matchesSearch) return false;
+                }
+                
+                // Type filter
+                if (typeFilter !== 'all' && report.type !== typeFilter) {
+                    return false;
+                }
+                
+                // Status filter
+                if (statusFilter !== 'all' && report.status !== statusFilter) {
+                    return false;
+                }
+                
+                // Location filter
+                if (locationFilter !== 'all' && !report.location.toLowerCase().includes(locationFilter)) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            // Update display
+            renderGridReports(filteredReports);
+            updateReportCount(filteredReports.length);
+            
+            // Show/hide no results message
+            const noResults = document.getElementById('noResults');
+            if (noResults) {
+                noResults.style.display = filteredReports.length === 0 ? 'block' : 'none';
+            }
+        }
+        
+        // Apply filters
+        window.applyFilters = function() {
+            filterReports();
+        };
+        
+        // Reset filters
+        window.resetFilters = function() {
+            document.getElementById('searchReports').value = '';
+            document.getElementById('filterType').value = 'all';
+            document.getElementById('filterStatus').value = 'all';
+            document.getElementById('filterLocation').value = 'all';
+            filterReports();
+        };
+        
+        // Update report count
+        function updateReportCount(count) {
+            const countElement = document.querySelector('.report-count');
+            if (countElement) {
+                countElement.textContent = `(Showing ${count} report${count !== 1 ? 's' : ''})`;
+            }
+        }
+        
+        // View report details
+        window.viewReportDetails = function(reportId) {
+            const report = reportsData.find(r => r.id === reportId);
+            if (!report) return;
+            
+            const modalBody = document.getElementById('modalBody');
+            if (!modalBody) return;
+            
+            modalBody.innerHTML = `
+                <div class="modal-report-details">
+                    <div class="modal-header-info">
+                        <div class="modal-type ${report.type}">
+                            ${report.type === 'lost' ? 'LOST PET REPORT' : 'FOUND PET REPORT'}
+                        </div>
+                        <div class="modal-status ${report.status}">
+                            ${report.status === 'active' ? 'ACTIVE' : 'RESOLVED'}
+                        </div>
+                    </div>
+                    
+                    <h3 class="modal-report-title">${report.title}</h3>
+                    
+                    <div class="modal-image">
+                        <i class="fas fa-${report.type === 'lost' ? 'dog' : 'cat'}"></i>
+                    </div>
+                    
+                    <div class="modal-info-grid">
+                        <div class="info-column">
+                            <h4><i class="fas fa-info-circle"></i> Pet Information</h4>
+                            <div class="info-item">
+                                <strong>Breed:</strong> ${report.breed}
+                            </div>
+                            <div class="info-item">
+                                <strong>Age:</strong> ${report.age}
+                            </div>
+                            <div class="info-item">
+                                <strong>Gender:</strong> ${report.gender}
+                            </div>
+                            <div class="info-item">
+                                <strong>Color:</strong> ${report.color}
+                            </div>
+                        </div>
+                        
+                        <div class="info-column">
+                            <h4><i class="fas fa-map-marker-alt"></i> Location Details</h4>
+                            <div class="info-item">
+                                <strong>Location:</strong> ${report.location}
+                            </div>
+                            <div class="info-item">
+                                <strong>Date:</strong> ${formatDate(report.date)}
+                            </div>
+                            <div class="info-item">
+                                <strong>Status:</strong> ${report.time}
+                            </div>
+                            ${report.reward ? `
+                            <div class="info-item reward">
+                                <strong><i class="fas fa-gift"></i> Reward:</strong> Offered
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                    
+                    <div class="modal-description">
+                        <h4><i class="fas fa-file-alt"></i> Description</h4>
+                        <p>${report.description}</p>
+                    </div>
+                    
+                    ${report.type === 'lost' && report.status === 'active' ? `
+                    <div class="modal-actions">
+                        <button class="modal-action-btn found-it-btn" onclick="openFoundItModal(${report.id})">
+                            <i class="fas fa-hand-holding-heart"></i> I Found This Pet
+                        </button>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+            
+            // Show modal
+            document.getElementById('reportModal').style.display = 'flex';
+        };
+        
+        // Open Found It modal
+        window.openFoundItModal = function(reportId) {
+            currentReportId = reportId;
+            document.getElementById('foundItModal').style.display = 'flex';
+        };
+        
+        // Close Found It modal
+        window.closeFoundItModal = function() {
+            document.getElementById('foundItModal').style.display = 'none';
+        };
+        
+        // Confirm Found It
+        window.confirmFoundIt = function() {
+            if (!currentReportId) return;
+            
+            // In a real app, you would send this to your backend
+            const report = reportsData.find(r => r.id === currentReportId);
+            if (report) {
+                alert(`Thank you! The owner of "${report.title}" has been notified. They will contact you soon.`);
+                
+                // Simulate marking as pending resolution
+                report.status = 'pending';
+                
+                // Reload reports
+                filterReports();
+            }
+            
+            // Close both modals
+            closeFoundItModal();
+            closeModal();
+        };
+        
+        // Close modal
+        window.closeModal = function() {
+            document.getElementById('reportModal').style.display = 'none';
+        };
+        
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+        
+        // Pagination functions (simplified)
+        window.prevPage = function() {
+            alert('Previous page - would load more reports in real app');
+        };
+        
+        window.nextPage = function() {
+            alert('Next page - would load more reports in real app');
+        };
+    </script>
+</body>
+</html>

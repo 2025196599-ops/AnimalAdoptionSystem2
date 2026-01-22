@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Adoption Reports</title>
+    <link rel="stylesheet" href="../css/admin-style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="adoption-reports-container">
+        <!-- Header -->
+        <header class="reports-header">
+            <div class="header-content">
+                <h1><i class="fas fa-chart-line"></i> Adoption Reports</h1>
+                <p>Complete history of all adoption activities and decisions</p>
+            </div>
+            <div class="export-options">
+                <button class="export-btn" id="exportPdfBtn">
+                    <i class="fas fa-file-pdf"></i> Export PDF
+                </button>
+                <div class="export-dropdown">
+                    <button class="export-dropdown-btn">
+                        <i class="fas fa-download"></i> More Formats
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="export-dropdown-content">
+                        <a href="#" class="export-option">
+                            <i class="fas fa-file-excel"></i> Export as Excel
+                        </a>
+                        <a href="#" class="export-option">
+                            <i class="fas fa-file-csv"></i> Export as CSV
+                        </a>
+                        <a href="#" class="export-option">
+                            <i class="fas fa-print"></i> Print Report
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Overview -->
+        <div class="reports-stats">
+            <div class="stat-card-report">
+                <div class="stat-icon-report">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+                <div class="stat-content-report">
+                    <h3>156</h3>
+                    <p>Total Applications</p>
+                </div>
+            </div>
+            
+            <div class="stat-card-report">
+                <div class="stat-icon-report">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-content-report">
+                    <h3>89</h3>
+                    <p>Approved Adoptions</p>
+                </div>
+            </div>
+            
+            <div class="stat-card-report">
+                <div class="stat-icon-report">
+                    <i class="fas fa-times-circle"></i>
+                </div>
+                <div class="stat-content-report">
+                    <h3>42</h3>
+                    <p>Rejected Applications</p>
+                </div>
+            </div>
+            
+            <div class="stat-card-report">
+                <div class="stat-icon-report">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content-report">
+                    <h3>25</h3>
+                    <p>Pending Review</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="reports-filter-section">
+            <div class="reports-filter-row">
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-calendar"></i> Date Range
+                    </label>
+                    <input type="date" class="filter-input" value="2024-01-01">
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-calendar"></i> To
+                    </label>
+                    <input type="date" class="filter-input" value="2024-01-31">
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-filter"></i> Action Type
+                    </label>
+                    <select class="filter-select">
+                        <option value="">All Actions</option>
+                        <option value="submitted">Application Submitted</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="completed">Completed</option>
+                        <option value="updated">Updated</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-user"></i> Admin
+                    </label>
+                    <select class="filter-select">
+                        <option value="">All Admins</option>
+                        <option value="admin1">Sarah Johnson</option>
+                        <option value="admin2">Michael Chen</option>
+                        <option value="admin3">Emma Wilson</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <button type="button" class="filter-btn">
+                        <i class="fas fa-filter"></i> Apply Filters
+                    </button>
+                    <button type="button" class="reset-btn">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Table -->
+        <div class="reports-table-container">
+            <div class="reports-table-header">
+                <h3 class="reports-table-title">Adoption History Log</h3>
+                <div class="total-records">
+                    <i class="fas fa-history"></i> 156 Total Records
+                </div>
+            </div>
+
+            <table class="reports-table">
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Application ID</th>
+                        <th>Applicant</th>
+                        <th>Pet</th>
+                        <th>Action Type</th>
+                        <th>Admin</th>
+                        <th>Comments</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Record 1 -->
+                    <tr>
+                        <td>
+                            <div class="compact-details">
+                                <span class="compact-name">Jan 15, 2024</span>
+                                <span class="compact-email">10:30 AM</span>
+                            </div>
+                        </td>
+                        <td>#AD-2023-001</td>
+                        <td>
+                            <div class="compact-info">
+                                <div class="compact-avatar">JS</div>
+                                <div class="compact-details">
+                                    <span class="compact-name">John Smith</span>
+                                    <span class="compact-email">john@email.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="compact-info">
+                                <div class="compact-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                    <i class="fas fa-dog"></i>
+                                </div>
+                                <div class="compact-details">
+                                    <span class="compact-name">Max</span>
+                                    <span class="compact-email">Golden Retriever</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="action-type-badge action-submitted">
+                                <i class="fas fa-paper-plane"></i> Submitted
+                            </span>
+                        </td>
+                        <td>
+                            <div class="admin-info-compact">
+                                <div class="admin-avatar-small">SJ</div>
+                                <span class="admin-name">System</span>
+                            </div>
+                        </td>
+                        <td class="comment-preview">
+                            Application submitted by user
+                        </td>
+                        <td>
+                            <a href="adoption-detail.html?id=1" class="view-details-link">
+                                <i class="fas fa-external-link-alt"></i> View
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <!-- Record 2 -->
+                    <tr>
+                        <td>
+                            <div class="compact-details">
+                                <span class="compact-name">Jan 16, 2024</span>
+                                <span class="compact-email">02:15 PM</span>
+                            </div>
+                        </td>
+                        <td>#AD-2023-001</td>
+                        <td>
+                            <div class="compact-info">
+                                <div class="compact-avatar">JS</div>
+                                <div class="compact-details">
+                                    <span class="compact-name">John Smith</span>
+                                    <span class="compact-email">john@email.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="compact-info">
+                                <div class="compact-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                    <i class="fas fa-dog"></i>
+                                </div>
+                                <div class="compact-details">
+                                    <span class="compact-name">Max</span>
+                                    <span class="compact-email">Golden Retriever</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="action-type-badge action-approved">
+                                <i class="fas fa-check-circle"></i> Approved
+                            </span>
+                        </td>
+                        <td>
+                            <div class="admin-info-compact">
+                                <div class="admin-avatar-small">SJ</div>
+                                <span class="admin-name">Sarah Johnson</span>
+                            </div>
+                        </td>
+                        <td class="comment-preview">
+                            Applicant has suitable home environment and experience with pets. Good match for Max.
+                        </td>
+                        <td>
+                            <a href="adoption-detail.html?id=1" class="view-details-link">
+                                <i class="fas fa-external-link-alt"></i> View
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <!-- Record 3 -->
+                    <tr>
+                        <td>
+                            <div class="compact-details">
+                                <span class="compact-name">Jan 14, 2024</span>
+                                <span class="compact-email">11:45 AM</span>
+                            </div>
+                        </td>
+                        <td>#AD-2023-002</td>
+                        <td>
+                            <div class="compact-info">
+                                <div class="compact-avatar">MD</div>
+                                <div class="compact-details">
+                                    <span class="compact-name">Maria Davis</span>
+                                    <span class="compact-email">maria@email.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="compact-info">
+                                <div class="compact-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                                    <i class="fas fa-cat"></i>
+                                </div>
+                                <div class="compact-details">
+                                    <span class="compact-name">Luna</span>
+                                    <span class="compact-email">Persian Cat</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="action-type-badge action-rejected">
+                                <i class="fas fa-times-circle"></i> Rejected
+                            </span>
+                        </td>
+                        <td>
+                            <div class="admin-info-compact">
+                                <div class="admin-avatar-small">MC</div>
+                                <span class="admin-name">Michael Chen</span>
+                            </div>
+                        </td>
+                        <td class="comment-preview">
+                            Applicant's living situation not suitable for this specific pet. Suggested alternative pet.
+                        </td>
+                        <td>
+                            <a href="adoption-detail.html?id=2" class="view-details-link">
+                                <i class="fas fa-external-link-alt"></i> View
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <!-- Record 4 -->
+                    <tr>
+                        <td>
+                            <div class="compact-details">
+                                <span class="compact-name">Jan 12, 2024</span>
+                                <span class="compact-email">09:20 AM</span>
+                            </div>
+                        </td>
+                        <td>#AD-2023-003</td>
+                        <td>
+                            <div class="compact-info">
+                                <div class="compact-avatar">RJ</div>
+                                <div class="compact-details">
+                                    <span class="compact-name">Robert Johnson</span>
+                                    <span class="compact-email">robert@email.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="compact-info">
+                                <div class="compact-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                                    <i class="fas fa-dove"></i>
+                                </div>
+                                <div class="compact-details">
+                                    <span class="compact-name">Sky</span>
+                                    <span class="compact-email">Parrot</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="action-type-badge action-completed">
+                                <i class="fas fa-check-double"></i> Completed
+                            </span>
+                        </td>
+                        <td>
+                            <div class="admin-info-compact">
+                                <div class="admin-avatar-small">EW</div>
+                                <span class="admin-name">Emma Wilson</span>
+                            </div>
+                        </td>
+                        <td class="comment-preview">
+                            Adoption process completed successfully. Pet handed over to new owner.
+                        </td>
+                        <td>
+                            <a href="adoption-detail.html?id=3" class="view-details-link">
+                                <i class="fas fa-external-link-alt"></i> View
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <!-- Record 5 -->
+                    <tr>
+                        <td>
+                            <div class="compact-details">
+                                <span class="compact-name">Jan 10, 2024</span>
+                                <span class="compact-email">03:40 PM</span>
+                            </div>
+                        </td>
+                        <td>#AD-2023-004</td>
+                        <td>
+                            <div class="compact-info">
+                                <div class="compact-avatar">SW</div>
+                                <div class="compact-details">
+                                    <span class="compact-name">Sarah Wilson</span>
+                                    <span class="compact-email">sarah@email.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="compact-info">
+                                <div class="compact-avatar" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                                    <i class="fas fa-rabbit"></i>
+                                </div>
+                                <div class="compact-details">
+                                    <span class="compact-name">Bunny</span>
+                                    <span class="compact-email">Rabbit</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="action-type-badge action-updated">
+                                <i class="fas fa-edit"></i> Updated
+                            </span>
+                        </td>
+                        <td>
+                            <div class="admin-info-compact">
+                                <div class="admin-avatar-small">SJ</div>
+                                <span class="admin-name">Sarah Johnson</span>
+                            </div>
+                        </td>
+                        <td class="comment-preview">
+                            Updated application status from pending to under review.
+                        </td>
+                        <td>
+                            <a href="adoption-detail.html?id=4" class="view-details-link">
+                                <i class="fas fa-external-link-alt"></i> View
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <!-- Record 6 -->
+                    <tr>
+                        <td>
+                            <div class="compact-details">
+                                <span class="compact-name">Jan 08, 2024</span>
+                                <span class="compact-email">01:15 PM</span>
+                            </div>
+                        </td>
+                        <td>#AD-2023-005</td>
+                        <td>
+                            <div class="compact-info">
+                                <div class="compact-avatar">TW</div>
+                                <div class="compact-details">
+                                    <span class="compact-name">Thomas White</span>
+                                    <span class="compact-email">thomas@email.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="compact-info">
+                                <div class="compact-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                    <i class="fas fa-dog"></i>
+                                </div>
+                                <div class="compact-details">
+                                    <span class="compact-name">Rocky</span>
+                                    <span class="compact-email">German Shepherd</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="action-type-badge action-cancelled">
+                                <i class="fas fa-ban"></i> Cancelled
+                            </span>
+                        </td>
+                        <td>
+                            <div class="admin-info-compact">
+                                <div class="admin-avatar-small">MC</div>
+                                <span class="admin-name">Michael Chen</span>
+                            </div>
+                        </td>
+                        <td class="comment-preview">
+                            Application cancelled by applicant before review.
+                        </td>
+                        <td>
+                            <a href="adoption-detail.html?id=5" class="view-details-link">
+                                <i class="fas fa-external-link-alt"></i> View
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <div class="reports-pagination">
+                <div class="page-info">
+                    Showing 1 to 10 of 156 records
+                </div>
+                <div class="adoption-pagination">
+                    <button class="page-btn">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <div class="page-numbers">
+                        <span class="page-number active">1</span>
+                        <span class="page-number">2</span>
+                        <span class="page-number">3</span>
+                        <span class="page-number">4</span>
+                    </div>
+                    <button class="page-btn">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Export PDF functionality
+        document.getElementById('exportPdfBtn').addEventListener('click', function() {
+            const exportBtn = this;
+            const originalText = exportBtn.innerHTML;
+            exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+            exportBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('PDF report generated successfully! Starting download...');
+                exportBtn.innerHTML = originalText;
+                exportBtn.disabled = false;
+                
+                // Simulate download
+                const link = document.createElement('a');
+                link.href = '#';
+                link.download = 'adoption-report-' + new Date().toISOString().slice(0,10) + '.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }, 2000);
+        });
+
+        // Filter functionality
+        document.querySelector('.filter-btn').addEventListener('click', function() {
+            const filterBtn = this;
+            const originalText = filterBtn.innerHTML;
+            filterBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Filtering...';
+            
+            setTimeout(() => {
+                filterBtn.innerHTML = originalText;
+                alert('Filters applied successfully!');
+            }, 1000);
+        });
+
+        // Reset filters
+        document.querySelector('.reset-btn').addEventListener('click', function() {
+            const resetBtn = this;
+            const originalText = resetBtn.innerHTML;
+            resetBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Resetting...';
+            
+            // Reset all filter inputs
+            document.querySelectorAll('.filter-input').forEach(input => {
+                input.value = '';
+            });
+            document.querySelectorAll('.filter-select').forEach(select => {
+                select.value = '';
+            });
+            
+            setTimeout(() => {
+                resetBtn.innerHTML = originalText;
+                alert('Filters reset successfully!');
+            }, 500);
+        });
+
+        // Print report
+        document.querySelector('.export-option:nth-child(3)').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Opening print preview...');
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        });
+
+        // View details - highlight row on hover
+        document.querySelectorAll('.view-details-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.closest('tr').style.backgroundColor = '#f0f7ff';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.closest('tr').style.backgroundColor = '';
+            });
+        });
+
+        // Auto-refresh data every 5 minutes (optional)
+        setInterval(() => {
+            console.log('Auto-refreshing adoption reports data...');
+            // In real implementation, this would fetch new data from API
+        }, 300000);
+    </script>
+</body>
+</html>

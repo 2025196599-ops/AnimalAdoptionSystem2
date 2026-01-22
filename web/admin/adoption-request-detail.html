@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Adoption Request Details</title>
+    <link rel="stylesheet" href="../css/admin-style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="adoption-detail-container">
+        <!-- Header -->
+        <header class="adoption-detail-header">
+            <div class="header-content">
+                <h1><i class="fas fa-file-alt"></i> Adoption Request Details</h1>
+                <p>Review application details and make a decision</p>
+            </div>
+            <a href="adoption-requests.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Requests
+            </a>
+        </header>
+
+        <!-- Request Details -->
+        <div class="request-details-grid">
+            <!-- Applicant Information -->
+            <div class="applicant-info-section">
+                <div class="applicant-header">
+                    <div class="applicant-avatar">JS</div>
+                    <div class="applicant-details">
+                        <h2>John Smith</h2>
+                        <p>john.smith@email.com | (555) 123-4567</p>
+                    </div>
+                </div>
+
+                <div class="applicant-info-grid">
+                    <div class="info-row">
+                        <span class="info-label">Application ID:</span>
+                        <span class="info-value">#AD-2023-001</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Applied Date:</span>
+                        <span class="info-value">January 15, 2024</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Age:</span>
+                        <span class="info-value">32 years</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Occupation:</span>
+                        <span class="info-value">Software Engineer</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Address:</span>
+                        <span class="info-value">123 Main St, Anytown, USA</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Home Type:</span>
+                        <span class="info-value">House with Yard</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Family Members:</span>
+                        <span class="info-value">2 Adults, 1 Child (age 8)</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Previous Pets:</span>
+                        <span class="info-value">Had a dog for 10 years</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Information -->
+            <div class="pet-info-section">
+                <div class="pet-header">
+                    <div class="pet-image">
+                        <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Max">
+                    </div>
+                    <div class="pet-details">
+                        <h2>Max</h2>
+                        <p>Golden Retriever • 3 years • Male</p>
+                        <span class="adoption-status-badge status-available" style="margin-top: 10px;">
+                            <i class="fas fa-home"></i> Available for Adoption
+                        </span>
+                    </div>
+                </div>
+
+                <div class="applicant-info-grid">
+                    <div class="info-row">
+                        <span class="info-label">Pet ID:</span>
+                        <span class="info-value">#PET-001</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Breed:</span>
+                        <span class="info-value">Golden Retriever</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Age:</span>
+                        <span class="info-value">3 years</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Size:</span>
+                        <span class="info-value">Large</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Health Status:</span>
+                        <span class="info-value">Healthy, Vaccinated</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Shelter Duration:</span>
+                        <span class="info-value">45 days</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Details -->
+            <div class="application-details-section">
+                <h3 class="section-title" style="color: #f093fb;">
+                    <i class="fas fa-question-circle"></i> Application Questions
+                </h3>
+                
+                <div class="application-questions">
+                    <div class="question-item">
+                        <div class="question">Why do you want to adopt this pet?</div>
+                        <div class="answer">I've always loved Golden Retrievers and have been looking for a family-friendly dog. My daughter has been asking for a pet for years, and I believe Max would be a perfect fit for our active family.</div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <div class="question">Describe your daily routine and how the pet would fit in:</div>
+                        <div class="answer">I work from home 3 days a week, and my wife is a teacher. We have a large fenced backyard and enjoy daily walks. We would take Max for morning and evening walks, and he would have plenty of playtime with our daughter after school.</div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <div class="question">How will you handle veterinary care?</div>
+                        <div class="answer">We have a trusted veterinarian nearby and are prepared for regular checkups, vaccinations, and any emergency care needed. We have budgeted for pet insurance as well.</div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <div class="question">Where will the pet stay when you're away?</div>
+                        <div class="answer">We have a trusted pet sitter who lives nearby. For longer trips, we have family members who are willing to care for the pet, or we would use a reputable boarding facility.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Actions -->
+                        <!-- Admin Actions -->
+            <div class="admin-action-section">
+                <h3 class="section-title" style="color: #4facfe;">
+                    <i class="fas fa-user-cog"></i> Admin Actions
+                </h3>
+                
+                <div class="admin-action-content">
+                    <!-- Status and Action Buttons Row -->
+                    <div class="status-actions-row">
+                        <div class="status-display">
+                            <span class="status-display-label">Current Status:</span>
+                            <span class="adoption-status-badge status-pending">
+                                <i class="fas fa-clock"></i> Pending Review
+                            </span>
+                        </div>
+                        
+                        <div class="action-buttons-group">
+                            <button type="button" class="btn btn-success" id="approveBtn">
+                                <i class="fas fa-check"></i> Approve Adoption
+                            </button>
+                            <button type="button" class="btn btn-danger" id="rejectBtn">
+                                <i class="fas fa-times"></i> Reject Application
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Comment Section -->
+                    <div class="comment-section">
+                        <div class="comment-header">
+                            <label class="comment-label">
+                                <i class="fas fa-comment-dots"></i> Admin Comments/Notes
+                            </label>
+                            <span class="comment-hint">Required for rejection</span>
+                        </div>
+                        <textarea class="comment-textarea" id="adminComment" 
+                                  placeholder="Add your comments, notes, or reasons for decision..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <script>
+        // Approve adoption
+        document.getElementById('approveBtn').addEventListener('click', function() {
+            const comment = document.getElementById('adminComment').value.trim();
+            
+            if (!comment && !confirm('Approve without adding a comment?')) {
+                document.getElementById('adminComment').focus();
+                return;
+            }
+            
+            if (confirm('Are you sure you want to approve this adoption request?')) {
+                const approveBtn = this;
+                const originalText = approveBtn.innerHTML;
+                approveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Approving...';
+                approveBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Update status badge
+                    const statusBadge = document.querySelector('.current-status .adoption-status-badge');
+                    statusBadge.className = 'adoption-status-badge status-approved';
+                    statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> Approved';
+                    
+                    // Add to timeline
+                    const timeline = document.querySelector('.timeline');
+                    const newItem = document.createElement('div');
+                    newItem.className = 'timeline-item';
+                    newItem.innerHTML = `
+                        <div class="timeline-date">${new Date().toLocaleDateString()}</div>
+                        <div class="timeline-content">
+                            <div class="timeline-action">Application Approved</div>
+                            <div class="timeline-note">${comment || 'Application approved by Admin'}</div>
+                        </div>
+                    `;
+                    timeline.prepend(newItem);
+                    
+                    // Disable buttons
+                    document.getElementById('rejectBtn').disabled = true;
+                    approveBtn.innerHTML = '<i class="fas fa-check"></i> Approved';
+                    approveBtn.className = 'btn btn-secondary';
+                    approveBtn.disabled = true;
+                    
+                    // Clear comment
+                    document.getElementById('adminComment').value = '';
+                    
+                    alert('Adoption request approved successfully!');
+                }, 1500);
+            }
+        });
+
+        // Reject adoption
+        document.getElementById('rejectBtn').addEventListener('click', function() {
+            const comment = document.getElementById('adminComment').value.trim();
+            
+            if (!comment) {
+                alert('Please provide a reason for rejection in the comments field.');
+                document.getElementById('adminComment').focus();
+                return;
+            }
+            
+            if (confirm('Are you sure you want to reject this adoption request?')) {
+                const rejectBtn = this;
+                const originalText = rejectBtn.innerHTML;
+                rejectBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Rejecting...';
+                rejectBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Update status badge
+                    const statusBadge = document.querySelector('.current-status .adoption-status-badge');
+                    statusBadge.className = 'adoption-status-badge status-rejected';
+                    statusBadge.innerHTML = '<i class="fas fa-times-circle"></i> Rejected';
+                    
+                    // Add to timeline
+                    const timeline = document.querySelector('.timeline');
+                    const newItem = document.createElement('div');
+                    newItem.className = 'timeline-item';
+                    newItem.innerHTML = `
+                        <div class="timeline-date">${new Date().toLocaleDateString()}</div>
+                        <div class="timeline-content">
+                            <div class="timeline-action">Application Rejected</div>
+                            <div class="timeline-note">${comment}</div>
+                        </div>
+                    `;
+                    timeline.prepend(newItem);
+                    
+                    // Disable buttons
+                    document.getElementById('approveBtn').disabled = true;
+                    rejectBtn.innerHTML = '<i class="fas fa-times"></i> Rejected';
+                    rejectBtn.className = 'btn btn-secondary';
+                    rejectBtn.disabled = true;
+                    
+                    // Clear comment
+                    document.getElementById('adminComment').value = '';
+                    
+                    alert('Adoption request rejected successfully!');
+                }, 1500);
+            }
+        });
+
+        // Save draft
+        document.getElementById('saveDraftBtn').addEventListener('click', function() {
+            const comment = document.getElementById('adminComment').value.trim();
+            if (!comment) {
+                alert('Please add comments before saving as draft.');
+                return;
+            }
+            
+            const saveBtn = this;
+            const originalText = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+            
+            setTimeout(() => {
+                saveBtn.innerHTML = originalText;
+                alert('Comments saved as draft successfully!');
+            }, 1000);
+        });
+
+        // Auto-save draft every 30 seconds
+        setInterval(() => {
+            const comment = document.getElementById('adminComment').value.trim();
+            if (comment) {
+                localStorage.setItem('adoptionCommentDraft', comment);
+            }
+        }, 30000);
+
+        // Load draft on page load
+        window.addEventListener('load', function() {
+            const savedDraft = localStorage.getItem('adoptionCommentDraft');
+            if (savedDraft) {
+                if (confirm('Found unsaved comments. Would you like to restore them?')) {
+                    document.getElementById('adminComment').value = savedDraft;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit Article - Ariniqo Buddies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user-style.css">
+    <style>
+        .article-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow-light);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .form-header h1 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .form-header p {
+            color: var(--text-light);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .form-group label.required::after {
+            content: " *";
+            color: var(--primary);
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--gray-border);
+            border-radius: var(--radius-small);
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            color: var(--text);
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(255, 126, 95, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+        
+        #content {
+            min-height: 300px;
+        }
+        
+        .form-help {
+            display: block;
+            margin-top: 5px;
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .form-help i {
+            color: var(--accent);
+            margin-right: 5px;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-border);
+        }
+        
+        .btn-submit {
+            padding: 16px 50px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-submit:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 126, 95, 0.3);
+        }
+        
+        .btn-cancel {
+            padding: 16px 50px;
+            background-color: transparent;
+            color: var(--text);
+            border: 2px solid var(--gray-border);
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .btn-cancel:hover {
+            background-color: #f8f9fa;
+            border-color: #d0d0d0;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 40px;
+            background: rgba(76, 175, 80, 0.05);
+            border-radius: var(--radius);
+            border: 2px solid var(--success);
+            margin: 30px 0;
+        }
+        
+        .success-icon i {
+            font-size: 64px;
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+        
+        .success-message h3 {
+            color: var(--success);
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .success-message p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .guest-info-note {
+            background: linear-gradient(135deg, rgba(93, 106, 251, 0.1) 0%, rgba(255, 126, 95, 0.1) 100%);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .guest-info-note h4 {
+            font-family: 'Nunito', sans-serif;
+            color: var(--dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .guest-info-note p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>Ariniqo Buddies</span>
+            </a>
+            
+            <div class="nav-container">
+                <div class="feature-buttons">
+                    <a href="../index.html" class="feature-btn">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="user-pet-list.html" class="feature-btn">
+                        <i class="fas fa-paw"></i> Pet Listing
+                    </a>
+                    <a href="user-lost-found.html" class="feature-btn">
+                        <i class="fas fa-search"></i> Lost & Found
+                    </a>
+                    <a href="user-rescue-articles.html" class="feature-btn active">
+                        <i class="fas fa-newspaper"></i> Articles
+                    </a>
+                </div>
+            </div>
+
+            <div class="user-actions">
+                <a href="../login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <a href="../signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="feature-buttons-mobile">
+        <a href="user-pet-list.html" class="feature-btn">
+            <i class="fas fa-paw"></i>
+            <span>Pet Listing</span>
+        </a>
+        <a href="../login.html" class="feature-btn">
+            <i class="fas fa-heart"></i>
+            <span>Adoption</span>
+        </a>
+        <a href="../login.html" class="feature-btn">
+            <i class="fas fa-search"></i>
+            <span>Lost & Found</span>
+        </a>
+        <a href="user-rescue-articles.html" class="feature-btn active">
+            <i class="fas fa-newspaper"></i>
+            <span>Articles</span>
+        </a>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- ARTICLE FORM (always shown, no login required) -->
+            <div id="articleForm">
+                <div class="form-header">
+                    <h1><i class="fas fa-edit"></i> Submit Your Article</h1>
+                    <p>Share your pet rescue stories, care tips, or adoption experiences. All submissions will be reviewed by our admin team before publishing.</p>
+                </div>
+                
+                <!-- Guest Information Note -->
+                <div class="guest-info-note">
+                    <h4><i class="fas fa-info-circle"></i> Note for Guest Users</h4>
+                    <p>You can submit articles without creating an account! Simply fill in your name and email below. We'll use your email to notify you when your article is reviewed and published. Creating an account allows you to track all your submissions and manage your profile.</p>
+                </div>
+                
+                <div class="article-form-container">
+                    <form id="articleSubmissionForm">
+                        <div class="form-group">
+                            <label for="title" class="required">Article Title</label>
+                            <input type="text" id="title" name="title" placeholder="e.g., My Journey with a Rescue Dog" required>
+                            <span class="form-help"><i class="fas fa-info-circle"></i> Make it descriptive and engaging</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category" class="required">Category</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select a category</option>
+                                <option value="care">Pet Care</option>
+                                <option value="training">Training</option>
+                                <option value="health">Health</option>
+                                <option value="rescue">Rescue Stories</option>
+                                <option value="adoption">Adoption Tips</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="form-help"><i class="fas fa-info-circle"></i> Choose the most relevant category</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="author" class="required">Your Name</label>
+                            <input type="text" id="author" name="author" placeholder="e.g., Jane Smith" required>
+                            <span class="form-help"><i class="fas fa-info-circle"></i> This will be displayed as the article author</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+                            <span class="form-help"><i class="fas fa-info-circle"></i> We'll notify you when your article is reviewed</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="excerpt" class="required">Short Description</label>
+                            <textarea id="excerpt" name="excerpt" placeholder="Brief summary of your article (2-3 sentences)" maxlength="200" required></textarea>
+                            <span class="form-help"><i class="fas fa-info-circle"></i> This will appear in the article preview</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="content" class="required">Article Content</label>
+                            <textarea id="content" name="content" placeholder="Write your full article here..." required></textarea>
+                            <span class="form-help"><i class="fas fa-info-circle"></i> You can include headings, paragraphs, and lists</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="image">Cover Image URL (Optional)</label>
+                            <input type="text" id="image" name="image" placeholder="https://example.com/image.jpg">
+                            <span class="form-help"><i class="fas fa-info-circle"></i> Add a link to a relevant image. Must be publicly accessible.</span>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-paper-plane"></i> Submit for Review
+                            </button>
+                            <a href="user-rescue-articles.html" class="btn-cancel">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- SUCCESS MESSAGE (shown after submission) -->
+            <div id="successMessage" class="success-message" style="display: none;">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Article Submitted Successfully!</h3>
+                <p>Your article has been submitted for review. Our admin team will review it within 24-48 hours. You'll receive an email once it's approved and published.</p>
+                <p style="color: var(--primary); font-weight: 600;">
+                    <i class="fas fa-envelope"></i> A confirmation email has been sent to <span id="submittedEmail"></span>
+                </p>
+                <div class="form-actions">
+                    <a href="user-rescue-articles.html" class="btn-submit">
+                        <i class="fas fa-newspaper"></i> Back to Articles
+                    </a>
+                    <button onclick="submitAnother()" class="btn-cancel">
+                        <i class="fas fa-plus"></i> Submit Another
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <i class="fas fa-paw"></i>
+                        <span>Ariniqo Buddies</span>
+                    </a>
+                    <p class="footer-tagline">
+                        Connecting loving homes with animals in need since 2023.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ariniqo Buddies Pet Adoption Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('articleSubmissionForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = {
+                    title: document.getElementById('title').value,
+                    category: document.getElementById('category').value,
+                    author: document.getElementById('author').value,
+                    email: document.getElementById('email').value,
+                    excerpt: document.getElementById('excerpt').value,
+                    content: document.getElementById('content').value,
+                    image: document.getElementById('image').value,
+                    status: 'pending',
+                    date: new Date().toISOString().split('T')[0],
+                    adminUrl: '../admin/admin-article-approval.html?new=true'
+                };
+                
+                // Show submitted email in success message
+                document.getElementById('submittedEmail').textContent = formData.email;
+                
+                // Show success message
+                document.getElementById('articleForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // In a real app, you would send this data to a server
+                console.log('Article submitted:', formData);
+                
+                // Save to localStorage for demo
+                const articles = JSON.parse(localStorage.getItem('pendingArticles') || '[]');
+                articles.push(formData);
+                localStorage.setItem('pendingArticles', JSON.stringify(articles));
+                
+                // Show admin notification
+                console.log('Article submitted! Admin can review it at: ' + formData.adminUrl);
+                
+                // Simulate sending email notification
+                setTimeout(function() {
+                    console.log('Email sent to:', formData.email, 'with submission confirmation.');
+                }, 1000);
+            });
+        });
+        
+        function submitAnother() {
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('articleForm').style.display = 'block';
+            document.getElementById('articleSubmissionForm').reset();
+        }
+    </script>
+</body>
+</html>

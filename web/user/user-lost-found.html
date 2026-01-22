@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ariniqo Buddies - Lost & Found</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user-style.css">
+    <style>
+        /* Additional styles for lost & found page */
+        .quick-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 20px 30px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-light);
+            min-width: 120px;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            display: block;
+            font-family: 'Nunito', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        .stat.lost .stat-number {
+            color: var(--primary);
+        }
+        
+        .stat.found .stat-number {
+            color: var(--accent);
+        }
+        
+        .stat.resolved .stat-number {
+            color: var(--success);
+        }
+        
+        .your-reports {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow-light);
+            margin-bottom: 40px;
+        }
+        
+        .your-reports h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .your-reports h2 i {
+            color: var(--primary);
+        }
+        
+        .no-reports {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+        }
+        
+        .no-reports i {
+            font-size: 48px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .emergency-contact {
+            background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(255, 87, 34, 0.1) 100%);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin: 40px 0;
+            border-left: 4px solid var(--danger);
+        }
+        
+        .emergency-contact h3 {
+            color: var(--danger);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .emergency-contact p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        
+        .emergency-numbers {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .emergency-number {
+            background: white;
+            padding: 15px 25px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: var(--shadow-light);
+        }
+        
+        .emergency-number i {
+            color: var(--danger);
+            font-size: 24px;
+        }
+        
+        .emergency-number span {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .emergency-number small {
+            display: block;
+            color: var(--text-light);
+            font-size: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .quick-stats {
+                gap: 20px;
+            }
+            
+            .stat {
+                padding: 15px 20px;
+                min-width: 100px;
+            }
+            
+            .stat-number {
+                font-size: 24px;
+            }
+            
+            .emergency-numbers {
+                flex-direction: column;
+            }
+            
+            .emergency-number {
+                width: 100%;
+            }
+            
+            .your-reports {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>Ariniqo Buddies</span>
+            </a>
+            
+            <!-- Navigation Container -->
+            <div class="nav-container">
+                <!-- Feature Buttons (Desktop) -->
+                <div class="feature-buttons">
+                    <a href="index.html" class="feature-btn active">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="user-pet-list.html" class="feature-btn">
+                        <i class="fas fa-paw"></i> Pet Listing
+                    </a>
+                    <a href="adoption-form.html" class="feature-btn">
+                        <i class="fas fa-heart"></i> Adoption
+                    </a>
+                    <a href="user-lost-found.html" class="feature-btn">
+                        <i class="fas fa-search"></i> Lost & Found
+                    </a>
+                    <a href="user-rescue-articles.html" class="feature-btn">
+                        <i class="fas fa-newspaper"></i> Articles
+                    </a>
+                </div>
+
+                    <!-- After (User Profile & Logout): -->
+                    <div class="user-actions">
+                        <div class="user-profile-header">
+                            <span class="user-welcome">
+                                <i class="fas fa-user"></i> Welcome, John Doe
+                            </span>
+                            <a href="../login.html" class="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Mobile Feature Buttons -->
+    <div class="feature-buttons-mobile">
+        <a href="index.html" class="feature-btn">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="user-pet-list.html" class="feature-btn">
+            <i class="fas fa-paw"></i>
+            <span>Pet Listing</span>
+        </a>
+        <a href="adoption-form.html" class="feature-btn">
+            <i class="fas fa-heart"></i>
+            <span>Adoption Form</span>
+        </a>
+        <a href="user-lost-found.html" class="feature-btn active">
+            <i class="fas fa-search"></i>
+            <span>Lost & Found</span>
+        </a>
+        <a href="user-rescue-articles.html" class="feature-btn">
+            <i class="fas fa-newspaper"></i>
+            <span>Rescue Articles</span>
+        </a>
+    </div>
+
+    <main class="main-content">
+        <div class="lost-found-container">
+            <div class="page-header">
+                <h1 class="page-title"><i class="fas fa-search"></i> Lost & Found Pets</h1>
+                <p class="page-subtitle">Help reunite lost pets with their families. Report lost or found animals and view recent reports in your area.</p>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="quick-stats">
+                <div class="stat lost">
+                    <div class="stat-number">47</div>
+                    <div class="stat-label">Active Lost Reports</div>
+                </div>
+                <div class="stat found">
+                    <div class="stat-number">32</div>
+                    <div class="stat-label">Active Found Reports</div>
+                </div>
+                <div class="stat resolved">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Pets Reunited</div>
+                </div>
+            </div>
+            
+            <!-- Action Cards -->
+            <div class="action-cards">
+                <a href="report-lost-pet.html" class="action-card" aria-label="Report lost pet">
+                    <div class="action-icon lost-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="action-title">Report Lost Pet</h3>
+                    <p class="action-description">Can't find your pet? Report them as lost so others can help you find them.</p>
+                    <div class="action-link">
+                        <span>Report Now</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+                
+                <a href="found-report.html" class="action-card" aria-label="Report found animal">
+                    <div class="action-icon found-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="action-title">Report Found Animal</h3>
+                    <p class="action-description">Found a lost animal? Help reunite them with their owner by reporting them.</p>
+                    <div class="action-link">
+                        <span>Report Found</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+                
+                <a href="view-all-report.html" class="action-card" aria-label="View all lost and found reports">
+                    <div class="action-icon view-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <h3 class="action-title">View All Reports</h3>
+                    <p class="action-description">Browse through all lost and found pet reports in our database.</p>
+                    <div class="action-link">
+                        <span>View Reports</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Your Reports Section -->
+            <div class="your-reports">
+                <h2><i class="fas fa-clipboard-list"></i> Your Recent Reports</h2>
+                
+                <div id="yourReportsList">
+                    <div class="no-reports">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>No Reports Yet</h3>
+                        <p>You haven't submitted any lost or found reports yet. Get started by reporting a lost or found pet.</p>
+                        <div style="margin-top: 25px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <a href="report-lost-pet.html" class="btn btn-primary" style="padding: 12px 25px;">
+                                <i class="fas fa-search"></i> Report Lost Pet
+                            </a>
+                            <a href="found-report.html" class="btn btn-success" style="padding: 12px 25px;">
+                                <i class="fas fa-hand-holding-heart"></i> Report Found Pet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Emergency Contact Section -->
+            <div class="emergency-contact">
+                <h3><i class="fas fa-exclamation-triangle"></i> Emergency Contacts</h3>
+                <p>If you find an injured animal or need immediate assistance, contact these emergency services:</p>
+                
+                <div class="emergency-numbers">
+                    <div class="emergency-number">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <span>999</span>
+                            <small>Police Emergency</small>
+                        </div>
+                    </div>
+                    
+                    <div class="emergency-number">
+                        <i class="fas fa-ambulance"></i>
+                        <div>
+                            <span>991</span>
+                            <small>Medical Emergency</small>
+                        </div>
+                    </div>
+                    
+                    <div class="emergency-number">
+                        <i class="fas fa-paw"></i>
+                        <div>
+                            <span>03-XXXX-XXXX</span>
+                            <small>Animal Rescue Hotline</small>
+                        </div>
+                    </div>
+                    
+                    <div class="emergency-number">
+                        <i class="fas fa-hospital"></i>
+                        <div>
+                            <span>03-XXXX-XXXX</span>
+                            <small>24/7 Emergency Vet</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Community Reports -->
+            <div class="reports-section">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-users"></i> Recent Community Reports</h2>
+                    <a href="view-all-report.html" class="view-all-link">
+                        View All <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <div class="report-header">
+                            <div class="report-type type-lost">Lost Pet</div>
+                            <div class="report-status">Active</div>
+                        </div>
+                        <h4 class="report-title">Missing Golden Retriever "Max"</h4>
+                        <div class="report-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Taman Tun Dr Ismail, KL</span>
+                        </div>
+                        <div class="report-info">
+                            <i class="fas fa-calendar"></i>
+                            <span>Lost: 2 days ago</span>
+                        </div>
+                        <div class="report-info">
+                            <i class="fas fa-dog"></i>
+                            <span>Breed: Golden Retriever</span>
+                        </div>
+                        <p class="report-date">Reported on: March 15, 2024</p>
+                        <button class="report-action-btn" onclick="viewReport(1)">View Details</button>
+                    </div>
+                    
+                    <div class="report-card found">
+                        <div class="report-header">
+                            <div class="report-type type-found">Found Pet</div>
+                            <div class="report-status">Active</div>
+                        </div>
+                        <h4 class="report-title">Found Persian Cat</h4>
+                        <div class="report-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bangsar South, KL</span>
+                        </div>
+                        <div class="report-info">
+                            <i class="fas fa-calendar"></i>
+                            <span>Found: 1 day ago</span>
+                        </div>
+                        <div class="report-info">
+                            <i class="fas fa-cat"></i>
+                            <span>Breed: Persian</span>
+                        </div>
+                        <p class="report-date">Reported on: March 16, 2024</p>
+                        <button class="report-action-btn" onclick="viewReport(2)">View Details</button>
+                    </div>
+                    
+                    <div class="report-card resolved">
+                        <div class="report-header">
+                            <div class="report-type type-lost">Lost Pet</div>
+                            <div class="report-status status-resolved">Resolved ✓</div>
+                        </div>
+                        <h4 class="report-title">Missing Tabby Cat "Whiskers"</h4>
+                        <div class="report-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Petaling Jaya</span>
+                        </div>
+                        <div class="report-info">
+                            <i class="fas fa-calendar"></i>
+                            <span>Reunited: Yesterday</span>
+                        </div>
+                        <div class="report-info">
+                            <i class="fas fa-cat"></i>
+                            <span>Breed: Tabby</span>
+                        </div>
+                        <p class="report-date">Reported on: March 10, 2024</p>
+                        <button class="report-action-btn" onclick="viewReport(3)">View Success Story</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tips Section -->
+            <div style="background: linear-gradient(135deg, rgba(65, 216, 191, 0.1) 0%, rgba(93, 106, 251, 0.1) 100%); border-radius: var(--radius); padding: 40px; margin-top: 40px;">
+                <h2 style="font-family: 'Nunito', sans-serif; font-size: 24px; font-weight: 700; color: var(--dark); margin-bottom: 25px; text-align: center;">
+                    <i class="fas fa-lightbulb" style="color: var(--accent); margin-right: 10px;"></i>
+                    Tips for Finding Lost Pets
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: var(--radius);">
+                        <div style="color: var(--primary); font-size: 24px; margin-bottom: 10px;">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 style="color: var(--dark); margin-bottom: 10px; font-size: 18px;">Search Immediately</h3>
+                        <p style="color: var(--text-light); font-size: 14px;">Start searching as soon as you realize your pet is missing. Most pets are found within a few blocks of home.</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: var(--radius);">
+                        <div style="color: var(--accent); font-size: 24px; margin-bottom: 10px;">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3 style="color: var(--dark); margin-bottom: 10px; font-size: 18px;">Notify Neighbors</h3>
+                        <p style="color: var(--text-light); font-size: 14px;">Ask neighbors to check their yards, garages, and sheds. Pets often hide nearby when scared.</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: var(--radius);">
+                        <div style="color: var(--secondary); font-size: 24px; margin-bottom: 10px;">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3 style="color: var(--dark); margin-bottom: 10px; font-size: 18px;">Social Media</h3>
+                        <p style="color: var(--text-light); font-size: 14px;">Share on local community groups and lost pet pages. Include clear photos and contact information.</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: var(--radius);">
+                        <div style="color: #ffc107; font-size: 24px; margin-bottom: 10px;">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <h3 style="color: var(--dark); margin-bottom: 10px; font-size: 18px;">ID Tags & Microchips</h3>
+                        <p style="color: var(--text-light); font-size: 14px;">Ensure your pet has updated ID tags and a registered microchip. This greatly increases reunion chances.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load user's reports from localStorage
+            loadUserReports();
+            
+            // Add hover effects to action cards
+            const actionCards = document.querySelectorAll('.action-card');
+            actionCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add hover effects to stats
+            const stats = document.querySelectorAll('.stat');
+            stats.forEach(stat => {
+                stat.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                stat.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add hover effects to report cards
+            const reportCards = document.querySelectorAll('.report-card');
+            reportCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+        
+        function loadUserReports() {
+            // Check localStorage for user's reports
+            const userReports = JSON.parse(localStorage.getItem('userLostFoundReports') || '[]');
+            const currentUser = 'John Doe'; // In real app, get from session
+            
+            const userReportsContainer = document.getElementById('yourReportsList');
+            
+            if (userReports.length === 0) {
+                // Show empty state (already in HTML)
+                return;
+            }
+            
+            // Filter reports for current user
+            const userFilteredReports = userReports.filter(report => report.reporter === currentUser);
+            
+            if (userFilteredReports.length === 0) {
+                return;
+            }
+            
+            // Clear empty state
+            userReportsContainer.innerHTML = '';
+            
+            // Create reports list
+            const reportsList = document.createElement('div');
+            reportsList.className = 'reports-grid';
+            
+            userFilteredReports.slice(0, 3).forEach(report => {
+                const reportCard = document.createElement('div');
+                reportCard.className = `report-card ${report.type === 'found' ? 'found' : ''} ${report.status === 'resolved' ? 'resolved' : ''}`;
+                
+                const statusClass = report.status === 'resolved' ? 'status-resolved' : '';
+                const statusText = report.status === 'resolved' ? 'Resolved ✓' : 'Active';
+                const typeClass = report.type === 'found' ? 'type-found' : 'type-lost';
+                const typeText = report.type === 'found' ? 'Found Pet' : 'Lost Pet';
+                const icon = report.type === 'found' ? 'fa-hand-holding-heart' : 'fa-search';
+                
+                reportCard.innerHTML = `
+                    <div class="report-header">
+                        <div class="report-type ${typeClass}">${typeText}</div>
+                        <div class="report-status ${statusClass}">${statusText}</div>
+                    </div>
+                    <h4 class="report-title">${report.title}</h4>
+                    <div class="report-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>${report.location}</span>
+                    </div>
+                    <div class="report-info">
+                        <i class="fas fa-calendar"></i>
+                        <span>${report.type === 'found' ? 'Found' : 'Lost'}: ${report.date}</span>
+                    </div>
+                    <div class="report-info">
+                        <i class="fas ${icon}"></i>
+                        <span>${report.petType}</span>
+                    </div>
+                    <p class="report-date">Reported on: ${report.reportDate}</p>
+                    <button class="report-action-btn" onclick="viewUserReport(${report.id})">View Details</button>
+                `;
+                
+                reportsList.appendChild(reportCard);
+            });
+            
+            userReportsContainer.appendChild(reportsList);
+            
+            // Add view all link if more than 3 reports
+            if (userFilteredReports.length > 3) {
+                const viewAllLink = document.createElement('div');
+                viewAllLink.style.textAlign = 'center';
+                viewAllLink.style.marginTop = '20px';
+                viewAllLink.innerHTML = `
+                    <a href="view-all-report.html?filter=myreports" class="view-all-link">
+                        View All Your Reports (${userFilteredReports.length}) <i class="fas fa-arrow-right"></i>
+                    </a>
+                `;
+                userReportsContainer.appendChild(viewAllLink);
+            }
+        }
+        
+        function viewReport(reportId) {
+            // In real app, navigate to report detail page
+            // For demo, show alert
+            alert(`Viewing report #${reportId}\n\nIn a real application, this would navigate to a detailed report page.`);
+        }
+        
+        function viewUserReport(reportId) {
+            // In real app, navigate to user's report detail page
+            alert(`Viewing your report #${reportId}\n\nYou can edit or update this report.`);
+        }
+        
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = '../index.html';
+            }
+        }
+    </script>
+</body>
+</html>

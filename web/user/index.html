@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ariniqo Buddies - User Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/user-style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>Ariniqo Buddies</span>
+            </a>
+            
+            <!-- Navigation Container -->
+            <div class="nav-container">
+                <!-- Feature Buttons (Desktop) -->
+                <div class="feature-buttons">
+                    <a href="index.html" class="feature-btn active">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="user-pet-list.html" class="feature-btn">
+                        <i class="fas fa-paw"></i> Pet Listing
+                    </a>
+                    <a href="adoption-form.html" class="feature-btn">
+                        <i class="fas fa-heart"></i> Adoption
+                    </a>
+                    <a href="user-lost-found.html" class="feature-btn">
+                        <i class="fas fa-search"></i> Lost & Found
+                    </a>
+                    <a href="user-rescue-articles.html" class="feature-btn">
+                        <i class="fas fa-newspaper"></i> Articles
+                    </a>
+                </div>
+
+                    <!-- After (User Profile & Logout): -->
+                    <div class="user-actions">
+                        <div class="user-profile-header">
+                            <span class="user-welcome">
+                                <i class="fas fa-user"></i> Welcome, John Doe
+                            </span>
+                            <a href="../login.html" class="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Feature Buttons -->
+    <div class="feature-buttons-mobile">
+        <a href="index.html" class="feature-btn active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="user-pet-list.html" class="feature-btn">
+            <i class="fas fa-paw"></i>
+            <span>Pet Listing</span>
+        </a>
+        <a href="adoption-form.html" class="feature-btn">
+            <i class="fas fa-heart"></i>
+            <span>Adoption Form</span>
+        </a>
+        <a href="user-lost-found.html" class="feature-btn">
+            <i class="fas fa-search"></i>
+            <span>Lost & Found</span>
+        </a>
+        <a href="user-rescue-articles.html" class="feature-btn">
+            <i class="fas fa-newspaper"></i>
+            <span>Articles</span>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-stats">
+                <div class="stat-box homeless">
+                    <span class="stat-number">32,120</span>
+                    <span class="stat-label">Homeless</span>
+                </div>
+                <div class="stat-box happy">
+                    <span class="stat-number">83,957</span>
+                    <span class="stat-label">Happy</span>
+                </div>
+            </div>
+            
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to Your <span>Dashboard</span>!</h1>
+                <p class="hero-subtitle">Browse pets, track your adoption applications, and help animals in need.</p>
+                <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <a href="user-pet-list.html" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Browse Pets
+                    </a>
+                    <a href="adoption-form.html" class="btn btn-success">
+                        <i class="fas fa-heart"></i> Start Adoption
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h2 class="page-title">Featured Pets Looking for Homes</h2>
+            
+            <div class="dashboard-cards">
+                <a href="pet-details.html" class="dashboard-card pets">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-dog"></i>
+                        </div>
+                        <h3 class="card-title">Max - Golden Retriever</h3>
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 15px;">Friendly 3-year-old Golden Retriever looking for an active family. Loves playing fetch and going on walks.</p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Years Old</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Available</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="pet-details.html" class="dashboard-card pets">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-cat"></i>
+                        </div>
+                        <h3 class="card-title">Luna - Persian Cat</h3>
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 15px;">Calm and affectionate Persian cat. Perfect for apartment living. Gets along with children.</p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">Years Old</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Available</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="pet-details.html" class="dashboard-card pets">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-dog"></i>
+                        </div>
+                        <h3 class="card-title">Rocky - Mixed Breed</h3>
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 15px;">Energetic 1-year-old mixed breed. Great with other dogs. Needs patient training.</p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">1</span>
+                            <span class="stat-label">Year Old</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Available</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Quick Access to Features -->
+            <div style="width: 100%; background-color: white; border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow-light); margin-bottom: 40px;">
+                <h2 style="font-family: 'Nunito', sans-serif; font-size: 28px; font-weight: 700; color: var(--dark); text-align: center; margin-bottom: 40px;">
+                    <i class="fas fa-star" style="color: var(--primary); margin-right: 10px;"></i>
+                    Quick Access to Our Features
+                </h2>
+                
+                <div class="features-grid">
+                    <a href="user-pet-list.html" class="dashboard-card" style="border-top-color: var(--accent);">
+                        <div class="card-header">
+                            <div class="card-icon" style="background-color: var(--accent);">
+                                <i class="fas fa-paw"></i>
+                            </div>
+                            <h3 class="card-title">Pet Listing</h3>
+                        </div>
+                        <p style="color: var(--text-light); margin-bottom: 15px;">Browse through our extensive collection of pets waiting for their forever homes.</p>
+                        <div style="color: var(--primary); font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                            <span>View Pets</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                    
+                    <a href="adoption-form.html" class="dashboard-card" style="border-top-color: var(--primary);">
+                        <div class="card-header">
+                            <div class="card-icon" style="background-color: var(--primary);">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3 class="card-title">Adoption Form</h3>
+                        </div>
+                        <p style="color: var(--text-light); margin-bottom: 15px;">Ready to adopt? Fill out our adoption application to start the process.</p>
+                        <div style="color: var(--primary); font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                            <span>Apply Now</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                    
+                    <a href="user-lost-found.html" class="dashboard-card" style="border-top-color: #ffc107;">
+                        <div class="card-header">
+                            <div class="card-icon" style="background-color: #ffc107;">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3 class="card-title">Lost & Found</h3>
+                        </div>
+                        <p style="color: var(--text-light); margin-bottom: 15px;">Report lost pets or help reunite found animals with their families.</p>
+                        <div style="color: var(--primary); font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                            <span>Report Now</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                    
+                    <a href="user-rescue-articles.html" class="dashboard-card" style="border-top-color: var(--secondary);">
+                        <div class="card-header">
+                            <div class="card-icon" style="background-color: var(--secondary);">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <h3 class="card-title">Rescue Articles</h3>
+                        </div>
+                        <p style="color: var(--text-light); margin-bottom: 15px;">Educational articles about animal rescue, care tips, and inspiring stories.</p>
+                        <div style="color: var(--primary); font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                            <span>Read Articles</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pet Categories Section -->
+            <div style="width: 100%; margin-bottom: 40px;">
+                <h2 style="font-family: 'Nunito', sans-serif; font-size: 28px; font-weight: 700; color: var(--dark); text-align: center; margin-bottom: 40px;">
+                    <i class="fas fa-th-large" style="color: var(--primary); margin-right: 10px;"></i>
+                    Browse by Pet Category
+                </h2>
+                
+                <div class="categories-grid">
+                    <a href="user-pet-list.html?type=dog" class="dashboard-card" style="border-top-color: var(--dog-color); text-align: center; padding: 30px 20px;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background-color: var(--dog-color); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 40px;">
+                            <i class="fas fa-dog"></i>
+                        </div>
+                        <h3 style="font-family: 'Nunito', sans-serif; font-size: 22px; font-weight: 700; color: var(--dark); margin-bottom: 10px;">Dogs</h3>
+                        <p style="color: var(--text-light); font-size: 14px;">Find your loyal canine companion</p>
+                        <div style="color: var(--dog-color); font-weight: 600; margin-top: 15px;">
+                            <span>Browse Dogs</span>
+                            <i class="fas fa-arrow-right" style="margin-left: 5px;"></i>
+                        </div>
+                    </a>
+                    
+                    <a href="user-pet-list.html?type=cat" class="dashboard-card" style="border-top-color: var(--cat-color); text-align: center; padding: 30px 20px;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background-color: var(--cat-color); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 40px;">
+                            <i class="fas fa-cat"></i>
+                        </div>
+                        <h3 style="font-family: 'Nunito', sans-serif; font-size: 22px; font-weight: 700; color: var(--dark); margin-bottom: 10px;">Cats</h3>
+                        <p style="color: var(--text-light); font-size: 14px;">Discover your purr-fect feline friend</p>
+                        <div style="color: var(--cat-color); font-weight: 600; margin-top: 15px;">
+                            <span>Browse Cats</span>
+                            <i class="fas fa-arrow-right" style="margin-left: 5px;"></i>
+                        </div>
+                    </a>
+                    
+                    <a href="user-pet-list.html?type=small" class="dashboard-card" style="border-top-color: var(--accent); text-align: center; padding: 30px 20px;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background-color: var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 40px;">
+                            <i class="fas fa-rabbit"></i>
+                        </div>
+                        <h3 style="font-family: 'Nunito', sans-serif; font-size: 22px; font-weight: 700; color: var(--dark); margin-bottom: 10px;">Small Pets</h3>
+                        <p style="color: var(--text-light); font-size: 14px;">Rabbits, birds, and other small friends</p>
+                        <div style="color: var(--accent); font-weight: 600; margin-top: 15px;">
+                            <span>Browse Small Pets</span>
+                            <i class="fas fa-arrow-right" style="margin-left: 5px;"></i>
+                        </div>
+                    </a>
+                    
+                    <a href="user-pet-list.html" class="dashboard-card" style="border-top-color: var(--secondary); text-align: center; padding: 30px 20px;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background-color: var(--secondary); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 40px;">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <h3 style="font-family: 'Nunito', sans-serif; font-size: 22px; font-weight: 700; color: var(--dark); margin-bottom: 10px;">All Pets</h3>
+                        <p style="color: var(--text-light); font-size: 14px;">View all available pets in one place</p>
+                        <div style="color: var(--secondary); font-weight: 600; margin-top: 15px;">
+                            <span>View All Pets</span>
+                            <i class="fas fa-arrow-right" style="margin-left: 5px;"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 50px 0;">
+                <a href="user-pet-list.html" class="btn btn-primary" style="padding: 15px 40px; font-size: 18px;">
+                    <i class="fas fa-search"></i> Browse All Available Pets
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-paw"></i>
+                        <span>Arinigo Buddies</span>
+                    </a>
+                    <p class="footer-tagline">
+                        Connecting loving homes with animals in need since 2023.
+                    </p>
+                </div>
+                
+<!--                <div class="footer-links-container">
+                    <div class="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+                            <li><a href="user-pet-list.html"><i class="fas fa-paw"></i>Browse Pets</a></li>
+                            <li><a href="user-lost-found.html"><i class="fas fa-search"></i>Lost & Found</a></li>
+                            <li><a href="adoption-form.html"><i class="fas fa-heart"></i>Adoption Form</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h3>About Us</h3>
+                        <ul>
+                            <li><a href="../about.html"><i class="fas fa-bullseye"></i>Our Mission</a></li>
+                            <li><a href="../team.html"><i class="fas fa-users"></i>Our Team</a></li>
+                            <li><a href="../partners.html"><i class="fas fa-handshake"></i>Partners</a></li>
+                            <li><a href="../success-stories.html"><i class="fas fa-star"></i>Success Stories</a></li>
+                        </ul>
+                    </div>
+                </div>-->
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Arinigo Buddies Pet Adoption Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate numbers
+            function animateNumbers() {
+                const homelessNumber = document.querySelector('.homeless .stat-number');
+                const happyNumber = document.querySelector('.happy .stat-number');
+                
+                if (homelessNumber && happyNumber) {
+                    let homelessCount = 0;
+                    let happyCount = 0;
+                    const homelessTarget = 32120;
+                    const happyTarget = 83957;
+                    const increment = 100;
+                    
+                    const timer = setInterval(() => {
+                        homelessCount += increment;
+                        happyCount += increment * 2;
+                        
+                        if (homelessCount >= homelessTarget) homelessCount = homelessTarget;
+                        if (happyCount >= happyTarget) happyCount = happyTarget;
+                        
+                        homelessNumber.textContent = homelessCount.toLocaleString();
+                        happyNumber.textContent = happyCount.toLocaleString();
+                        
+                        if (homelessCount >= homelessTarget && happyCount >= happyTarget) {
+                            clearInterval(timer);
+                        }
+                    }, 20);
+                }
+            }
+            
+            setTimeout(animateNumbers, 500);
+            
+            // Add hover effects to feature buttons
+            const featureBtns = document.querySelectorAll('.feature-btn');
+            featureBtns.forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+        
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                // In a real application, you would make an API call to logout
+                // For now, just redirect to main index.html
+                window.location.href = '../index.html';
+            }
+        }
+    </script>
+</body>
+</html>

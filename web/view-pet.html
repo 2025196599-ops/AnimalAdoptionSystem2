@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ariniqo Buddies - View Pet Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/user-style.css">
+    <style>
+        /* Add CSS variables if not already in user-style.css */
+        :root {
+            --primary: #ff7e5f;
+            --primary-light: #ff9a8b;
+            --dark: #333;
+            --text-light: #777;
+            --radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Login Required Modal Styles */
+        .login-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .login-modal-overlay.show {
+            display: flex;
+        }
+
+        .login-modal {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.4s ease;
+            transform: translateY(0);
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-modal-icon {
+            font-size: 64px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        .login-modal h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .login-modal p {
+            color: var(--text-light);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .login-modal ul {
+            text-align: left;
+            color: var(--text-light);
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .login-modal li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .login-modal-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .login-modal-btn {
+            padding: 15px 30px;
+            border-radius: var(--radius);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 150px;
+            border: none;
+        }
+
+        .login-modal-btn.primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+
+        .login-modal-btn.primary:hover {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 126, 95, 0.3);
+        }
+
+        .login-modal-btn.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .login-modal-btn.secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 126, 95, 0.2);
+        }
+
+        .login-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .login-modal-close:hover {
+            color: var(--primary);
+            background: rgba(255, 126, 95, 0.1);
+        }
+
+        /* Ensure the modal is on top of everything */
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+        <header class="header">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Ariniqo Buddies</span>
+                </a>
+
+                <!-- Navigation Container -->
+                <div class="nav-container">
+                    <!-- Feature Buttons (Desktop) -->
+                    <div class="feature-buttons">
+                        <a href="index.html" class="feature-btn">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                        <a href="rescue-articles.html" class="feature-btn active">
+                            <i class="fas fa-newspaper"></i> Articles
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Login/Signup on the right -->
+                <div class="user-actions">
+                    <a href="login.html" class="login-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="signup.html" class="signup-btn">
+                        <i class="fas fa-user-plus"></i> Sign Up
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Feature Buttons -->
+        <div class="feature-buttons-mobile">
+            <a href="pet-list.html" class="feature-btn">
+                <i class="fas fa-paw"></i>
+                <span>Pet Listing</span>
+            </a>
+            <a href="#login-required" class="feature-btn require-login" onclick="showLoginRequired()">
+                <i class="fas fa-heart"></i>
+                <span>Adoption</span>
+            </a>
+            <a href="#login-required" class="feature-btn require-login" onclick="showLoginRequired()">
+                <i class="fas fa-search"></i>
+                <span>Lost & Found</span>
+            </a>
+            <a href="rescue-articles.html" class="feature-btn active">
+                <i class="fas fa-newspaper"></i>
+                <span>Articles</span>
+            </a>
+        </div>
+
+
+    <main class="main-content">
+        <div class="container">
+            <div class="pet-detail-container">
+                <div class="pet-detail-card">
+                    <div class="pet-image-container">
+                        <img src="images/pet1.jpg" alt="Fluffy" class="pet-detail-image" />
+                    </div>
+                    
+                    <div class="pet-info-container">
+                        <div class="pet-status status-available">Available for Adoption</div>
+                        <h1 class="pet-name">Fluffy</h1>
+                        <div class="pet-breed">
+                            <i class="fas fa-cat"></i> Persian Cat
+                        </div>
+                        
+                        <div class="pet-details-grid">
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-birthday-cake"></i> Age
+                                </div>
+                                <div class="pet-detail-value">2 years old</div>
+                            </div>
+                            
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-venus-mars"></i> Gender
+                                </div>
+                                <div class="pet-detail-value">Female</div>
+                            </div>
+                            
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-ruler"></i> Size
+                                </div>
+                                <div class="pet-detail-value">Medium</div>
+                            </div>
+                            
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-syringe"></i> Vaccination Status
+                                </div>
+                                <div class="pet-detail-value">Fully Vaccinated</div>
+                            </div>
+                            
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-stethoscope"></i> Health Condition
+                                </div>
+                                <div class="pet-detail-value">Excellent</div>
+                            </div>
+                            
+                            <div class="pet-detail-item">
+                                <div class="pet-detail-label">
+                                    <i class="fas fa-calendar-alt"></i> Arrival Date
+                                </div>
+                                <div class="pet-detail-value">March 15, 2024</div>
+                            </div>
+                        </div>
+                        
+                        <div class="pet-description-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-info-circle"></i> About Fluffy
+                            </h3>
+                            <div class="pet-description">
+                                Fluffy is a beautiful Persian cat with a calm and affectionate personality. She loves being around people and enjoys gentle petting sessions. Fluffy gets along well with children and other cats, making her a perfect addition to any family. She's fully litter-trained and has been spayed. Fluffy enjoys playing with feather toys and lounging in sunny spots around the house.
+                            </div>
+                        </div>
+                        
+                        <div class="pet-requirements">
+                            <h3 class="section-title">
+                                <i class="fas fa-home"></i> Ideal Home
+                            </h3>
+                            <ul class="requirements-list">
+                                <li><i class="fas fa-check-circle"></i> Indoor-only environment preferred</li>
+                                <li><i class="fas fa-check-circle"></i> Family with older children (8+)</li>
+                                <li><i class="fas fa-check-circle"></i> Regular grooming required</li>
+                                <li><i class="fas fa-check-circle"></i> Quiet household preferred</li>
+                            </ul>
+                        </div>
+                        
+                    <!-- Updated adoption button section -->
+                    <div class="action-buttons">
+                        <div class="adoption-link-container">
+                            <button class="adoption-link" id="adoptButton" onclick="checkLoginForAdoption()">
+                                <i class="fas fa-heart"></i> Apply to Adopt Fluffy
+                            </button>
+                        </div>
+                        <div class="back-link-container">
+                            <a href="pet-list.html" class="back-link">
+                                <i class="fas fa-arrow-left"></i> Back to Pet Listing
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Login Required Modal -->
+    <div class="login-modal-overlay" id="loginModal">
+        <div class="login-modal">
+            <button class="login-modal-close" onclick="hideLoginModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="login-modal-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2>Login Required</h2>
+            <p>This feature requires you to be logged in. Please login or create an account to access:</p>
+            <ul>
+                <li>Pet Adoption Applications</li>
+                <li>Lost & Found Reports</li>
+                <li>Adoption Status Tracking</li>
+                <li>Saved Favorite Pets</li>
+                <li>Complete Pet Profiles</li>
+            </ul>
+            <div class="login-modal-buttons">
+                <a href="login.html" class="login-modal-btn primary">
+                    <i class="fas fa-sign-in-alt"></i> Login Now
+                </a>
+                <a href="signup.html" class="login-modal-btn secondary">
+                    <i class="fas fa-user-plus"></i> Sign Up Free
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Check login status when adopt button is clicked
+        function checkLoginForAdoption() {
+            // Check if user is logged in (you can modify this to check session/cookie/localStorage)
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true' || 
+                              sessionStorage.getItem('userLoggedIn') === 'true';
+            
+            if (!isLoggedIn) {
+                // Show login modal
+                showLoginModal();
+            } else {
+                // User is logged in, redirect to adoption form
+                const petName = document.querySelector('.pet-name').textContent;
+                window.location.href = `adoption-form.html?pet=${encodeURIComponent(petName)}`;
+            }
+        }
+        
+        // Show login modal
+        function showLoginModal() {
+            const modal = document.getElementById('loginModal');
+            modal.classList.add('show');
+            document.body.classList.add('modal-open');
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideLoginModal();
+                }
+            });
+            
+            // Close with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    hideLoginModal();
+                }
+            });
+        }
+        
+        // Hide login modal
+        function hideLoginModal() {
+            const modal = document.getElementById('loginModal');
+            modal.classList.remove('show');
+            document.body.classList.remove('modal-open');
+        }
+        
+        // Initialize pet details if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const petId = urlParams.get('id');
+            
+            if (petId) {
+                console.log('Loading details for pet ID:', petId);
+                // You could fetch pet details based on ID here
+            }
+        });
+    </script>
+</body>
+</html>

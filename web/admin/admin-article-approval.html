@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Approval - Ariniqo Buddies Admin</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .approval-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .approval-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .approval-header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .approval-header p {
+            color: #666;
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .article-review-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #ff7e5f;
+        }
+        
+        .article-review-card.pending {
+            border-left-color: #ff7e5f;
+        }
+        
+        .article-review-card.approved {
+            border-left-color: #41D8BF;
+        }
+        
+        .article-review-card.rejected {
+            border-left-color: #F44336;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .article-author {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .article-date {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .article-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .article-category {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(93, 106, 251, 0.1);
+            color: #5D6AFB;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .article-excerpt {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .article-full-content {
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f5f7fa;
+            border-radius: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .approval-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+        }
+        
+        .btn-approve {
+            padding: 12px 40px;
+            background: #41D8BF;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-reject {
+            padding: 12px 40px;
+            background: transparent;
+            color: #F44336;
+            border: 2px solid #F44336;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-approve:hover {
+            background: #36c9b8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-reject:hover {
+            background: #F44336;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .no-pending {
+            text-align: center;
+            padding: 60px 40px;
+            color: #666;
+            font-size: 18px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .no-pending i {
+            font-size: 48px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>    
+    <main class="admin-main-content">
+        <div class="approval-container">
+            <div class="approval-header">
+                <h1><i class="fas fa-clipboard-check"></i> Article Approval Queue</h1>
+                <p>Review user-submitted articles before they are published on the public site.</p>
+            </div>
+            
+            <div id="pendingArticles">
+                <!-- Articles will be loaded here dynamically -->
+                <div class="no-pending" id="noPendingMessage">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>No Pending Articles</h3>
+                    <p>There are no articles waiting for review.</p>
+                    <a href="admin-dashboard.html" class="btn-approve" style="margin-top: 20px;">
+                        <i class="fas fa-tachometer-alt"></i> Back to Dashboard
+                    </a>
+                </div>
+            </div>
+            
+            <div id="approvedRejectedSection" style="display: none;">
+                <h2 style="margin-top: 50px; margin-bottom: 30px; color: #333;">Recently Processed</h2>
+                <div id="processedArticles">
+                    <!-- Approved/Rejected articles will appear here -->
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Sample pending articles data
+        const pendingArticles = [
+            {
+                id: 1,
+                title: "How I Trained My Rescue Dog to Overcome Anxiety",
+                author: "Emma Wilson",
+                email: "emma@example.com",
+                date: "Nov 18, 2023",
+                category: "Training",
+                excerpt: "A personal journey of helping a rescue dog overcome past trauma through positive reinforcement training techniques.",
+                content: `When I first adopted Max, a 3-year-old German Shepherd mix, he was terrified of everything. Loud noises, strangers, even his own shadow would send him into a panic. This article shares the step-by-step process I used to help him overcome his anxiety.
+
+## Understanding Rescue Dog Trauma
+Many rescue dogs come from difficult backgrounds. Understanding their past is key to helping them heal.
+
+## Positive Reinforcement Techniques
+- Clicker training for positive associations
+- Gradual exposure to triggers
+- Creating a safe space at home
+
+## Celebrating Small Victories
+It took 6 months, but today Max is a confident, happy dog who loves going to the dog park.`,
+                status: "pending"
+            },
+            {
+                id: 2,
+                title: "Natural Remedies for Common Pet Ailments",
+                author: "Alex Johnson",
+                email: "alex@example.com",
+                date: "Nov 20, 2023",
+                category: "Health",
+                excerpt: "Safe and natural home remedies for minor pet health issues, from upset stomachs to dry skin.",
+                content: `As a holistic pet care practitioner, I've helped many pets with natural remedies...`,
+                status: "pending"
+            }
+        ];
+        
+        // Load articles from localStorage if available
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedArticles = JSON.parse(localStorage.getItem('pendingArticles') || '[]');
+            const allArticles = [...pendingArticles, ...storedArticles];
+            
+            displayPendingArticles(allArticles.filter(article => article.status === 'pending'));
+            displayProcessedArticles(allArticles.filter(article => article.status !== 'pending'));
+        });
+        
+        function displayPendingArticles(articles) {
+            const container = document.getElementById('pendingArticles');
+            const noPendingMsg = document.getElementById('noPendingMessage');
+            
+            if (articles.length === 0) {
+                noPendingMsg.style.display = 'block';
+                return;
+            }
+            
+            noPendingMsg.style.display = 'none';
+            container.innerHTML = '';
+            
+            articles.forEach(article => {
+                const articleCard = `
+                    <div class="article-review-card pending" id="article-${article.id}">
+                        <div class="article-meta">
+                            <div class="article-author">
+                                <i class="fas fa-user"></i> ${article.author} 
+                                <span style="color: #666; font-weight: normal;">(${article.email})</span>
+                            </div>
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i> Submitted: ${article.date}
+                            </div>
+                        </div>
+                        
+                        <h2 class="article-title">${article.title}</h2>
+                        
+                        <div class="article-category">
+                            ${article.category}
+                        </div>
+                        
+                        <div class="article-excerpt">
+                            <strong>Description:</strong> ${article.excerpt}
+                        </div>
+                        
+                        <div class="article-full-content">
+                            ${article.content}
+                        </div>
+                        
+                        <div class="approval-actions">
+                            <button class="btn-approve" onclick="approveArticle(${article.id})">
+                                <i class="fas fa-check"></i> Approve & Publish
+                            </button>
+                            <button class="btn-reject" onclick="rejectArticle(${article.id})">
+                                <i class="fas fa-times"></i> Reject
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                container.innerHTML += articleCard;
+            });
+        }
+        
+        function displayProcessedArticles(articles) {
+            const container = document.getElementById('processedArticles');
+            const section = document.getElementById('approvedRejectedSection');
+            
+            if (articles.length === 0) {
+                section.style.display = 'none';
+                return;
+            }
+            
+            section.style.display = 'block';
+            container.innerHTML = '';
+            
+            articles.forEach(article => {
+                const statusClass = article.status === 'approved' ? 'approved' : 'rejected';
+                const statusIcon = article.status === 'approved' ? 'fa-check' : 'fa-times';
+                const statusColor = article.status === 'approved' ? '#41D8BF' : '#F44336';
+                
+                const articleCard = `
+                    <div class="article-review-card ${statusClass}" style="opacity: 0.8;">
+                        <div class="article-meta">
+                            <div class="article-author">
+                                <i class="fas fa-user"></i> ${article.author}
+                            </div>
+                            <div class="article-date" style="color: ${statusColor};">
+                                <i class="fas ${statusIcon}"></i> ${article.status.toUpperCase()}
+                            </div>
+                        </div>
+                        <h3 class="article-title" style="font-size: 20px;">${article.title}</h3>
+                        <div class="article-category">${article.category}</div>
+                    </div>
+                `;
+                
+                container.innerHTML += articleCard;
+            });
+        }
+        
+        function approveArticle(articleId) {
+            if (confirm('Approve this article and publish it on the public site?')) {
+                // In real app: Send to server
+                // For demo: Update status
+                const card = document.getElementById(`article-${articleId}`);
+                card.classList.remove('pending');
+                card.classList.add('approved');
+                card.style.opacity = '0.6';
+                card.querySelector('.approval-actions').innerHTML = `
+                    <div style="color: #41D8BF; font-weight: 600; font-size: 18px;">
+                        <i class="fas fa-check-circle"></i> APPROVED
+                    </div>
+                `;
+                
+                // Move to processed
+                setTimeout(() => {
+                    card.remove();
+                    // Update counts
+                    updateArticleCounts();
+                    alert('Article approved! It will now appear on the public articles page.');
+                }, 1000);
+            }
+        }
+        
+        function rejectArticle(articleId) {
+            const reason = prompt('Please provide a reason for rejection (optional):');
+            
+            if (reason !== null) { // User didn't cancel
+                const card = document.getElementById(`article-${articleId}`);
+                card.classList.remove('pending');
+                card.classList.add('rejected');
+                card.style.opacity = '0.6';
+                card.querySelector('.approval-actions').innerHTML = `
+                    <div style="color: #F44336; font-weight: 600; font-size: 18px;">
+                        <i class="fas fa-times-circle"></i> REJECTED
+                        ${reason ? `<p style="color: #666; font-size: 14px; margin-top: 10px;">Reason: ${reason}</p>` : ''}
+                    </div>
+                `;
+                
+                setTimeout(() => {
+                    card.remove();
+                    updateArticleCounts();
+                    alert('Article rejected. Author will be notified.');
+                }, 1000);
+            }
+        }
+        
+        function updateArticleCounts() {
+            // Update badge count on admin dashboard
+            const pendingCount = document.querySelectorAll('.article-review-card.pending').length;
+            console.log(`${pendingCount} articles pending review`);
+        }
+    </script>
+</body>
+</html>

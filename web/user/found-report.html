@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Report Found Animal - Ariniqo Buddies</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user-style.css">
+    <link rel="stylesheet" href="../css/found-report.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>Ariniqo Buddies</span>
+            </a>
+            
+            <!-- Navigation Container -->
+            <div class="nav-container">
+                <!-- Feature Buttons (Desktop) -->
+                <div class="feature-buttons">
+                    <a href="index.html" class="feature-btn active">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="user-pet-list.html" class="feature-btn">
+                        <i class="fas fa-paw"></i> Pet Listing
+                    </a>
+                    <a href="adoption-form.html" class="feature-btn">
+                        <i class="fas fa-heart"></i> Adoption
+                    </a>
+                    <a href="user-lost-found.html" class="feature-btn">
+                        <i class="fas fa-search"></i> Lost & Found
+                    </a>
+                    <a href="user-rescue-articles.html" class="feature-btn">
+                        <i class="fas fa-newspaper"></i> Articles
+                    </a>
+                </div>
+
+                    <!-- After (User Profile & Logout): -->
+                    <div class="user-actions">
+                        <div class="user-profile-header">
+                            <span class="user-welcome">
+                                <i class="fas fa-user"></i> Welcome, John Doe
+                            </span>
+                            <a href="../login.html" class="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Feature Buttons -->
+    <div class="feature-buttons-mobile">
+        <a href="user-pet-list.html" class="feature-btn">
+            <i class="fas fa-paw"></i>
+            <span>Pet Listing</span>
+        </a>
+        <a href="adoption-form.html" class="feature-btn">
+            <i class="fas fa-heart"></i>
+            <span>Adoption Form</span>
+        </a>
+        <a href="user-lost-found.html" class="feature-btn">
+            <i class="fas fa-search"></i>
+            <span>Lost & Found</span>
+        </a>
+        <a href="user-rescue-articles.html" class="feature-btn">
+            <i class="fas fa-newspaper"></i>
+            <span>Rescue Articles</span>
+        </a>
+    </div>
+
+    <main class="main-content">
+        <div class="found-report-container">
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Pet Details</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Location & Time</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Contact Info</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Review & Submit</div>
+                </div>
+            </div>
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    Report Found Animal
+                </h1>
+                <p class="page-subtitle">Help reunite a lost pet with its owner. Fill out the form below with details about the animal you found.</p>
+            </div>
+
+            <!-- Form Container -->
+            <div class="form-container">
+                <form id="foundReportForm">
+                    <!-- Step 1: Pet Details -->
+                    <div class="form-step active" id="step1">
+                        <div class="step-header">
+                            <h2 class="step-title">
+                                <span class="step-icon">1</span>
+                                Animal Information
+                            </h2>
+                            <p class="step-description">Tell us about the animal you found</p>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-paw"></i>
+                                Basic Information
+                            </h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="animalType">
+                                        <i class="fas fa-cat"></i>
+                                        Animal Type
+                                    </label>
+                                    <div class="radio-group">
+                                        <label class="radio-option">
+                                            <input type="radio" name="animalType" value="dog">
+                                            <div class="radio-content">
+                                                <i class="fas fa-dog"></i>
+                                                <span>Dog</span>
+                                            </div>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="animalType" value="cat">
+                                            <div class="radio-content">
+                                                <i class="fas fa-cat"></i>
+                                                <span>Cat</span>
+                                            </div>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="animalType" value="other">
+                                            <div class="radio-content">
+                                                <i class="fas fa-dove"></i>
+                                                <span>Other</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="breed">
+                                        <i class="fas fa-dna"></i>
+                                        Breed (if known)
+                                    </label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-search"></i>
+                                        <input type="text" id="breed" name="breed" placeholder="e.g., Persian, Golden Retriever, Mixed Breed">
+                                    </div>
+                                    <div class="breed-suggestions">
+                                        <span class="suggestion-tag">Persian</span>
+                                        <span class="suggestion-tag">Siamese</span>
+                                        <span class="suggestion-tag">Golden Retriever</span>
+                                        <span class="suggestion-tag">Local Breed</span>
+                                        <span class="suggestion-tag">Mixed Breed</span>
+                                        <span class="suggestion-tag">Unknown</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="size">
+                                        <i class="fas fa-ruler-combined"></i>
+                                        Size
+                                    </label>
+                                    <div class="radio-group horizontal">
+                                        <label class="radio-option">
+                                            <input type="radio" name="size" value="small">
+                                            <div class="radio-content">
+                                                <i class="fas fa-weight"></i>
+                                                <span>Small</span>
+                                                <small>(Under 10kg)</small>
+                                            </div>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="size" value="medium">
+                                            <div class="radio-content">
+                                                <i class="fas fa-weight"></i>
+                                                <span>Medium</span>
+                                                <small>(10-25kg)</small>
+                                            </div>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="size" value="large">
+                                            <div class="radio-content">
+                                                <i class="fas fa-weight"></i>
+                                                <span>Large</span>
+                                                <small>(Over 25kg)</small>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="color">
+                                        <i class="fas fa-palette"></i>
+                                        Color/Markings
+                                    </label>
+                                    <input type="text" id="color" name="color" placeholder="e.g., White with brown spots, Black stripes">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender">
+                                        <i class="fas fa-venus-mars"></i>
+                                        Gender
+                                    </label>
+                                    <select id="gender" name="gender">
+                                        <option value="">Select gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="unknown">Unknown</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-clipboard-check"></i>
+                                Health & Condition
+                            </h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="condition">
+                                        <i class="fas fa-heartbeat"></i>
+                                        Overall Condition
+                                    </label>
+                                    <div class="radio-group horizontal">
+                                        <label class="radio-option">
+                                            <input type="radio" name="condition" value="healthy">
+                                            <div class="radio-content">
+                                                <i class="fas fa-smile"></i>
+                                                <span>Healthy</span>
+                                            </div>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="condition" value="injured">
+                                            <div class="radio-content">
+                                                <i class="fas fa-band-aid"></i>
+                                                <span>Injured</span>
+                                            </div>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="condition" value="sick">
+                                            <div class="radio-content">
+                                                <i class="fas fa-hospital"></i>
+                                                <span>Sick</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="injuries">
+                                    <i class="fas fa-first-aid"></i>
+                                    Visible Injuries or Issues
+                                </label>
+                                <textarea id="injuries" name="injuries" rows="3" placeholder="Describe any visible injuries, limping, signs of illness, etc."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="hasCollar">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-dog"></i>
+                                    Wearing collar or tags
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="isFriendly">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-handshake"></i>
+                                    Seems friendly and approachable
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="needsVet">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-clinic-medical"></i>
+                                    Needs veterinary attention
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-camera"></i>
+                                Upload Photos
+                            </h3>
+                            <p class="section-description">Clear photos help owners identify their pets faster.</p>
+                            
+                            <div class="photo-upload-area" id="photoUploadArea">
+                                <div class="upload-placeholder">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload photos</p>
+                                    <small>JPEG, PNG up to 5MB each</small>
+                                </div>
+                                <input type="file" id="photoUpload" name="photos" accept="image/*" multiple style="display: none;">
+                            </div>
+                            
+                            <div class="uploaded-photos" id="uploadedPhotos">
+                                <!-- Uploaded photos will appear here -->
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-next" onclick="nextStep()">
+                                Next: Location & Time
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Location & Time -->
+                    <div class="form-step" id="step2">
+                        <div class="step-header">
+                            <h2 class="step-title">
+                                <span class="step-icon">2</span>
+                                Where & When Found
+                            </h2>
+                            <p class="step-description">Tell us where and when you found the animal</p>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Location Details
+                            </h3>
+                            
+                            <div class="form-group">
+                                <label for="foundAddress">
+                                    <i class="fas fa-home"></i>
+                                    Found Address
+                                </label>
+                                <input type="text" id="foundAddress" name="foundAddress" placeholder="Street address, building name, or landmark">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="area">
+                                        <i class="fas fa-map"></i>
+                                        Area/Neighborhood
+                                    </label>
+                                    <input type="text" id="area" name="area" placeholder="e.g., Taman Tun Dr Ismail, Bangsar">
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">
+                                        <i class="fas fa-city"></i>
+                                        City
+                                    </label>
+                                    <input type="text" id="city" name="city" value="Kuala Lumpur">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="state">
+                                        <i class="fas fa-flag"></i>
+                                        State
+                                    </label>
+                                    <select id="state" name="state">
+                                        <option value="">Select state</option>
+                                        <option value="kuala-lumpur">Kuala Lumpur</option>
+                                        <option value="selangor">Selangor</option>
+                                        <option value="putrajaya">Putrajaya</option>
+                                        <option value="johor">Johor</option>
+                                        <option value="penang">Penang</option>
+                                        <option value="perak">Perak</option>
+                                        <option value="kedah">Kedah</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postcode">
+                                        <i class="fas fa-mail-bulk"></i>
+                                        Postcode
+                                    </label>
+                                    <input type="text" id="postcode" name="postcode" placeholder="e.g., 50480">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-calendar-alt"></i>
+                                Time Found
+                            </h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="foundDate">
+                                        <i class="fas fa-calendar"></i>
+                                        Date Found
+                                    </label>
+                                    <input type="date" id="foundDate" name="foundDate">
+                                </div>
+                                <div class="form-group">
+                                    <label for="foundTime">
+                                        <i class="fas fa-clock"></i>
+                                        Approximate Time
+                                    </label>
+                                    <input type="time" id="foundTime" name="foundTime">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="foundCircumstances">
+                                    <i class="fas fa-sticky-note"></i>
+                                    Circumstances of Finding
+                                </label>
+                                <textarea id="foundCircumstances" name="foundCircumstances" rows="3" placeholder="How did you find the animal? Were they wandering, trapped, injured, etc.?"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="animalSafe">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-shield-alt"></i>
+                                    Animal is currently in a safe location
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="canFoster">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-home"></i>
+                                    I can temporarily foster this animal
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-prev" onclick="prevStep()">
+                                <i class="fas fa-arrow-left"></i>
+                                Previous
+                            </button>
+                            <button type="button" class="btn-next" onclick="nextStep()">
+                                Next: Contact Information
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Contact Information -->
+                    <div class="form-step" id="step3">
+                        <div class="step-header">
+                            <h2 class="step-title">
+                                <span class="step-icon">3</span>
+                                Your Contact Information
+                            </h2>
+                            <p class="step-description">How can the owner reach you?</p>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-user"></i>
+                                Personal Details
+                            </h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="finderName">
+                                        <i class="fas fa-user-circle"></i>
+                                        Your Name
+                                    </label>
+                                    <input type="text" id="finderName" name="finderName" placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="finderEmail">
+                                        <i class="fas fa-envelope"></i>
+                                        Email Address
+                                    </label>
+                                    <input type="email" id="finderEmail" name="finderEmail" placeholder="your.email@example.com">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="finderPhone">
+                                        <i class="fas fa-phone"></i>
+                                        Phone Number
+                                    </label>
+                                    <input type="tel" id="finderPhone" name="finderPhone" placeholder="e.g., 0123456789">
+                                </div>
+                                <div class="form-group">
+                                    <label for="finderPhone2">
+                                        <i class="fas fa-phone-alt"></i>
+                                        Alternate Phone
+                                    </label>
+                                    <input type="tel" id="finderPhone2" name="finderPhone2" placeholder="Optional second number">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-comments"></i>
+                                Contact Preferences
+                            </h3>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="contactByPhone" checked>
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-phone"></i>
+                                    Contact by phone call
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="contactByWhatsApp" checked>
+                                    <span class="checkmark"></span>
+                                    <i class="fab fa-whatsapp"></i>
+                                    Contact by WhatsApp
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="contactByEmail" checked>
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-envelope"></i>
+                                    Contact by email
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactNotes">
+                                    <i class="fas fa-sticky-note"></i>
+                                    Additional Contact Notes
+                                </label>
+                                <textarea id="contactNotes" name="contactNotes" rows="2" placeholder="Any special instructions for contacting you"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-prev" onclick="prevStep()">
+                                <i class="fas fa-arrow-left"></i>
+                                Previous
+                            </button>
+                            <button type="button" class="btn-next" onclick="nextStep()">
+                                Next: Review & Submit
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Review & Submit -->
+                    <div class="form-step" id="step4">
+                        <div class="step-header">
+                            <h2 class="step-title">
+                                <span class="step-icon">4</span>
+                                Review & Submit Report
+                            </h2>
+                            <p class="step-description">Review all information before submitting</p>
+                        </div>
+
+                        <div class="review-section">
+                            <h3 class="review-title">
+                                <i class="fas fa-paw"></i>
+                                Found Animal Details
+                            </h3>
+                            <div class="review-content" id="reviewPetDetails">
+                                <!-- Will be filled by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="review-section">
+                            <h3 class="review-title">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Location & Time
+                            </h3>
+                            <div class="review-content" id="reviewLocation">
+                                <!-- Will be filled by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="review-section">
+                            <h3 class="review-title">
+                                <i class="fas fa-user"></i>
+                                Your Information
+                            </h3>
+                            <div class="review-content" id="reviewContact">
+                                <!-- Will be filled by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="success-message" id="successMessage" style="display: none;">
+                            <div class="success-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3>Report Submitted Successfully!</h3>
+                            <p>Your report has been published. We've sent a confirmation email with your report ID.</p>
+                            <div class="report-id">
+                                <strong>Report ID:</strong> <span id="generatedId">FOUND-2024-001</span>
+                            </div>
+                            <div class="success-actions">
+                                <a href="view-reports.html" class="btn-primary">
+                                    <i class="fas fa-eye"></i>
+                                    View Your Report
+                                </a>
+                                <a href="../index.html" class="btn-secondary">
+                                    <i class="fas fa-home"></i>
+                                    Return Home
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-prev" onclick="prevStep()">
+                                <i class="fas fa-arrow-left"></i>
+                                Previous
+                            </button>
+                            <button type="button" class="btn-submit" id="submitBtn" onclick="submitForm()">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Found Report
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Help & Tips Sidebar -->
+            <div class="help-sidebar">
+                <div class="help-card">
+                    <h3><i class="fas fa-question-circle"></i> Need Help?</h3>
+                    <p>Having trouble filling out the form? Contact our support team.</p>
+                    <a href="../contact.html" class="help-link">
+                        <i class="fas fa-headset"></i>
+                        Contact Support
+                    </a>
+                </div>
+
+                <div class="tips-card">
+                    <h3><i class="fas fa-lightbulb"></i> Important Tips</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Provide as much detail as possible</li>
+                        <li><i class="fas fa-check"></i> Clear photos increase chances of reunion</li>
+                        <li><i class="fas fa-check"></i> Keep the animal safe while waiting</li>
+                        <li><i class="fas fa-check"></i> Check for microchip at a vet clinic</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+    <script>
+        // Simple form navigation - NO VALIDATION, NO MAP, NO SHARE OPTIONS
+        
+        let currentStep = 0;
+        const steps = document.querySelectorAll('.form-step');
+        const progressSteps = document.querySelectorAll('.progress-steps .step');
+        
+        // Initialize with today's date
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const foundDateInput = document.getElementById('foundDate');
+            if (foundDateInput) {
+                foundDateInput.value = today;
+            }
+            
+            const now = new Date();
+            const foundTimeInput = document.getElementById('foundTime');
+            if (foundTimeInput) {
+                foundTimeInput.value = now.getHours().toString().padStart(2, '0') + ':' + 
+                                     now.getMinutes().toString().padStart(2, '0');
+            }
+        });
+        
+        // Next Step Function - NO VALIDATION
+        window.nextStep = function() {
+            // Save data before moving
+            saveStepData();
+            
+            // Hide current step
+            steps[currentStep].classList.remove('active');
+            progressSteps[currentStep].classList.remove('active');
+            
+            // Move to next step
+            currentStep++;
+            
+            // Show next step
+            steps[currentStep].classList.add('active');
+            progressSteps[currentStep].classList.add('active');
+            
+            // Mark previous step as completed
+            if (currentStep > 0) {
+                progressSteps[currentStep - 1].classList.add('completed');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Update review sections on step 4
+            if (currentStep === 3) {
+                updateReviewSections();
+            }
+        };
+        
+        // Previous Step Function
+        window.prevStep = function() {
+            // Hide current step
+            steps[currentStep].classList.remove('active');
+            progressSteps[currentStep].classList.remove('active');
+            progressSteps[currentStep].classList.remove('completed');
+            
+            // Move to previous step
+            currentStep--;
+            
+            // Show previous step
+            steps[currentStep].classList.add('active');
+            progressSteps[currentStep].classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        
+        // Save form data
+        function saveStepData() {
+            const currentStepElement = steps[currentStep];
+            const inputs = currentStepElement.querySelectorAll('input, select, textarea');
+            
+            // Store in localStorage for review
+            inputs.forEach(input => {
+                if (input.type === 'checkbox' || input.type === 'radio') {
+                    if (input.checked) {
+                        localStorage.setItem(input.name, input.value);
+                    }
+                } else if (input.type !== 'file') {
+                    localStorage.setItem(input.name, input.value);
+                }
+            });
+        }
+        
+        // Update review sections
+        function updateReviewSections() {
+            // Pet details
+            const petDetails = document.getElementById('reviewPetDetails');
+            if (petDetails) {
+                petDetails.innerHTML = `
+                    <div class="review-item">
+                        <div class="review-label">Animal Type:</div>
+                        <div class="review-value">${localStorage.getItem('animalType') || 'Not specified'}</div>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-label">Breed:</div>
+                        <div class="review-value">${localStorage.getItem('breed') || 'Unknown'}</div>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-label">Size:</div>
+                        <div class="review-value">${localStorage.getItem('size') || 'Not specified'}</div>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-label">Color:</div>
+                        <div class="review-value">${localStorage.getItem('color') || 'Not specified'}</div>
+                    </div>
+                `;
+            }
+            
+            // Location details
+            const locationReview = document.getElementById('reviewLocation');
+            if (locationReview) {
+                locationReview.innerHTML = `
+                    <div class="review-item">
+                        <div class="review-label">Location:</div>
+                        <div class="review-value">${localStorage.getItem('area') || ''} ${localStorage.getItem('city') || ''}</div>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-label">Date Found:</div>
+                        <div class="review-value">${localStorage.getItem('foundDate') || 'Not specified'}</div>
+                    </div>
+                `;
+            }
+            
+            // Contact details
+            const contactReview = document.getElementById('reviewContact');
+            if (contactReview) {
+                contactReview.innerHTML = `
+                    <div class="review-item">
+                        <div class="review-label">Name:</div>
+                        <div class="review-value">${localStorage.getItem('finderName') || 'Not specified'}</div>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-label">Phone:</div>
+                        <div class="review-value">${localStorage.getItem('finderPhone') || 'Not specified'}</div>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-label">Email:</div>
+                        <div class="review-value">${localStorage.getItem('finderEmail') || 'Not specified'}</div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Update the submitForm function in found-report.html
+        window.submitForm = function() {
+            // Check if user is logged in
+            if (!checkLogin()) {
+                alert('Please login to submit a report.');
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const currentStepElement = steps[currentStep];
+
+            // Show loading state
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                submitBtn.disabled = true;
+            }
+
+            // Simulate API call
+            setTimeout(() => {
+                // Generate report ID
+                const reportId = 'FOUND-' + new Date().getFullYear() + '-' + 
+                               String(Math.floor(Math.random() * 1000)).padStart(3, '0');
+
+                document.getElementById('generatedId').textContent = reportId;
+
+                // Hide form, show success message
+                if (currentStepElement && successMessage) {
+                    currentStepElement.style.display = 'none';
+                    successMessage.style.display = 'block';
+
+                    // Update all progress steps to completed
+                    progressSteps.forEach(step => step.classList.add('completed'));
+
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                }
+
+                // Reset submit button
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Found Report';
+                    submitBtn.disabled = false;
+                }
+
+            }, 1000); // 1 second delay
+        };
+        
+        // Photo upload functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const photoUploadArea = document.getElementById('photoUploadArea');
+            const photoUploadInput = document.getElementById('photoUpload');
+            const uploadedPhotos = document.getElementById('uploadedPhotos');
+            
+            if (photoUploadArea && photoUploadInput) {
+                photoUploadArea.addEventListener('click', function() {
+                    photoUploadInput.click();
+                });
+                
+                photoUploadInput.addEventListener('change', function(e) {
+                    const files = e.target.files;
+                    
+                    for (let file of files) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const img = document.createElement('img');
+                            img.src = e.target.result;
+                            img.style.width = '100px';
+                            img.style.height = '100px';
+                            img.style.objectFit = 'cover';
+                            img.style.margin = '5px';
+                            img.style.borderRadius = '5px';
+                            uploadedPhotos.appendChild(img);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+            
+            // Breed suggestions
+            document.querySelectorAll('.suggestion-tag').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    document.getElementById('breed').value = this.textContent;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
