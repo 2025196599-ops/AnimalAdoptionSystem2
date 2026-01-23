@@ -33,13 +33,17 @@ public class AdminAdoptionDetailServlet extends HttpServlet {
         }
 
         try {
-            Map adoption = new AdoptionDAO().getById(id); // must include phone/address/formJson
+            // ✅ correct method name in your AdoptionDAO
+            Map adoption = new AdoptionDAO().getById(id);
+
             if (adoption == null) {
                 resp.sendRedirect(ctx + "/admin/adoptions");
                 return;
             }
 
             req.setAttribute("adoption", adoption);
+
+            // ✅ correct jsp location
             req.getRequestDispatcher("/admin/adoption-request-detail.jsp").forward(req, resp);
 
         } catch (Exception e) {

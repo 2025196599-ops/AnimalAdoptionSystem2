@@ -35,8 +35,7 @@
           <i class="fas fa-paw"></i> Pet Listing
         </a>
 
-        <!-- ✅ FIX: adoption form needs petId, so route users to choose a pet first -->
-        <a href="<%= ctx %>/pets?ui=user" class="feature-btn">
+        <a href="<%= ctx %>/user/adoption-status" class="feature-btn">
           <i class="fas fa-heart"></i> Adoption
         </a>
 
@@ -48,6 +47,8 @@
         <a href="<%= ctx %>/articles?ui=user" class="feature-btn">
           <i class="fas fa-newspaper"></i> Articles
         </a>
+
+
       </div>
 
       <!-- Login/Signup or User/Logout on the right -->
@@ -99,6 +100,13 @@
         <i class="fas fa-newspaper"></i>
         <span>Articles</span>
     </a>
+
+        <!-- ✅ FIX: Adoption Status page -->
+    <a href="<%= ctx %>/user/adoption-status" class="feature-btn">
+        <i class="fas fa-heart"></i>
+        <span>Adoption</span>
+    </a>
+
 </div>
 
         

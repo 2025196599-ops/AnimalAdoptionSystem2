@@ -1,18 +1,7 @@
 <%-- 
     Document   : dashboard
-    Created on : Jan 18, 2026
-    Author     : User
+    Updated on : Jan 2026
 --%>
-<%
-boolean deleted = "1".equals(request.getParameter("deleted"));
-%>
-
-<% if (deleted) { %>
-<div style="background: rgba(65, 216, 191, 0.12); padding: 12px 15px; border-radius: 8px; border: 1px solid #41D8BF; margin: 10px 0; display: flex; align-items: center; gap: 10px; color: #2d8f7f; font-size: 14px;">
-    <i class="fas fa-check-circle"></i>
-    <span>Article deleted successfully.</span>
-</div>
-<% } %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.ariniqo.model.User" %>
@@ -22,25 +11,25 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
 <%
     String ctx = request.getContextPath();
 
-    // ✅ BASIC ADMIN GUARD (adjust role check if you have user.getRole())
+    // ✅ BASIC ADMIN GUARD
     User user = (User) session.getAttribute("user");
     if (user == null) {
         response.sendRedirect(ctx + "/login.jsp");
         return;
     }
 
+    boolean deleted = "1".equals(request.getParameter("deleted"));
+
     String adminName = (user.getName() != null && !user.getName().trim().isEmpty())
             ? user.getName()
             : "System Administrator";
 
-    // ===== REAL COUNTS =====
     int totalPets = 0;
     int totalUsers = 0;
     int approvedAdoptions = 0;
     int pendingArticles = 0;
     int pendingAdoptions = 0;
     int pendingApprovals = 0;
-
 
     Connection con = null;
     PreparedStatement ps = null;
@@ -49,35 +38,30 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
     try {
         con = DBConnection.getConnection();
 
-        // total pets
         ps = con.prepareStatement("SELECT COUNT(*) FROM PETS");
         rs = ps.executeQuery();
         if (rs.next()) totalPets = rs.getInt(1);
         try { rs.close(); } catch (Exception e) {}
         try { ps.close(); } catch (Exception e) {}
 
-        // total users
         ps = con.prepareStatement("SELECT COUNT(*) FROM USERS");
         rs = ps.executeQuery();
         if (rs.next()) totalUsers = rs.getInt(1);
         try { rs.close(); } catch (Exception e) {}
         try { ps.close(); } catch (Exception e) {}
 
-        // approved adoptions
         ps = con.prepareStatement("SELECT COUNT(*) FROM ADOPTIONS WHERE UPPER(STATUS)='APPROVED'");
         rs = ps.executeQuery();
         if (rs.next()) approvedAdoptions = rs.getInt(1);
         try { rs.close(); } catch (Exception e) {}
         try { ps.close(); } catch (Exception e) {}
 
-        // pending articles
         ps = con.prepareStatement("SELECT COUNT(*) FROM ARTICLES WHERE UPPER(STATUS)='PENDING'");
         rs = ps.executeQuery();
         if (rs.next()) pendingArticles = rs.getInt(1);
         try { rs.close(); } catch (Exception e) {}
         try { ps.close(); } catch (Exception e) {}
 
-        // pending adoptions
         ps = con.prepareStatement("SELECT COUNT(*) FROM ADOPTIONS WHERE UPPER(STATUS)='PENDING'");
         rs = ps.executeQuery();
         if (rs.next()) pendingAdoptions = rs.getInt(1);
@@ -85,9 +69,6 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
         try { ps.close(); } catch (Exception e) {}
 
         pendingApprovals = pendingArticles + pendingAdoptions;
-
-        try { rs.close(); } catch (Exception e) {}
-        try { ps.close(); } catch (Exception e) {}
 
     } catch (Exception e) {
         e.printStackTrace();
@@ -104,17 +85,36 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Ariniqo Buddies</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<%= ctx %>/css/admin-style.css">
+
+    <style>
+        /* ✅ compact spacing override */
+        .admin-dashboard { padding: 28px; }
+        .stats-container { gap: 16px; margin-bottom: 18px; }
+        .management-grid { gap: 16px; margin-top: 16px; }
+        .section-card { padding: 18px; border-radius: 16px; }
+        .section-card h2 { margin: 0 0 12px 0; }
+    </style>
 </head>
+
 <body class="admin-dashboard">
+
+    <% if (deleted) { %>
+    <div style="background: rgba(65, 216, 191, 0.12); padding: 12px 15px; border-radius: 8px; border: 1px solid #41D8BF; margin: 0 0 14px; display: flex; align-items: center; gap: 10px; color: #2d8f7f; font-size: 14px;">
+        <i class="fas fa-check-circle"></i>
+        <span>Article deleted successfully.</span>
+    </div>
+    <% } %>
 
     <header class="dashboard-header">
         <div class="header-content">
             <h1>Admin Dashboard</h1>
             <p>Manage your pet adoption platform with ease and efficiency</p>
         </div>
+
         <div class="admin-info">
             <div class="admin-avatar">
                 <i class="fas fa-user-shield"></i>
@@ -130,6 +130,7 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
         </div>
     </header>
 
+    <!-- STATS -->
     <div class="stats-container">
         <div class="stat-card stat-1">
             <div class="stat-content">
@@ -138,7 +139,7 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
                     <h2><%= totalPets %></h2>
                     <p>Total Pets</p>
                     <div class="stat-trend trend-up">
-                        <i class="fas fa-arrow-up"></i>
+                        <i class="fas fa-database"></i>
                         <span>Live DB</span>
                     </div>
                 </div>
@@ -152,7 +153,7 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
                     <h2><%= totalUsers %></h2>
                     <p>Registered Users</p>
                     <div class="stat-trend trend-up">
-                        <i class="fas fa-arrow-up"></i>
+                        <i class="fas fa-database"></i>
                         <span>Live DB</span>
                     </div>
                 </div>
@@ -164,9 +165,9 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
                 <div class="stat-icon"><i class="fas fa-heart"></i></div>
                 <div class="stat-numbers">
                     <h2><%= approvedAdoptions %></h2>
-                    <p>Successful Adoptions</p>
+                    <p>Approved Adoptions</p>
                     <div class="stat-trend trend-up">
-                        <i class="fas fa-arrow-up"></i>
+                        <i class="fas fa-check-circle"></i>
                         <span>Approved</span>
                     </div>
                 </div>
@@ -188,25 +189,27 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
         </div>
     </div>
 
+    <!-- MANAGEMENT -->
     <div class="management-grid">
 
+        <!-- Articles -->
         <section class="section-card articles-card">
             <h2 class="articles-title">
-                <i class="fas fa-newspaper"></i>
-                Articles Management
+                <i class="fas fa-newspaper"></i> Articles Management
             </h2>
             <div class="articles-grid">
+                <!-- ✅ this should point to your Article Approval servlet/page -->
                 <a href="<%= ctx %>/admin/articles" class="article-btn">
-                    <div class="article-icon"><i class="fas fa-eye"></i></div>
-                    <p class="article-text">View Articles</p>
+                    <div class="article-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <p class="article-text">Article Approval</p>
                 </a>
             </div>
         </section>
 
+        <!-- Pets -->
         <section class="section-card adoption-card-section">
             <h2 class="adoption-title">
-                <i class="fas fa-paw"></i>
-                Pet Management
+                <i class="fas fa-paw"></i> Pet Management
             </h2>
             <div class="adoption-grid">
                 <a href="<%= ctx %>/admin/pets" class="adoption-btn">
@@ -221,17 +224,19 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
             </div>
         </section>
 
+        <!-- Adoption -->
         <section class="section-card lostfound-card">
             <h2 class="lostfound-title">
-                <i class="fas fa-heart"></i>
-                Adoption Management
+                <i class="fas fa-heart"></i> Adoption Management
             </h2>
             <div class="lostfound-grid">
+                <!-- ✅ IMPORTANT: correct servlet -->
                 <a href="<%= ctx %>/admin/adoptions" class="lostfound-btn">
                     <div class="lostfound-icon"><i class="fas fa-list"></i></div>
                     <p class="lostfound-text">View Adoption Requests</p>
                 </a>
 
+                <!-- keep if you really have this page/servlet -->
                 <a href="<%= ctx %>/admin/adoption-reports" class="lostfound-btn">
                     <div class="lostfound-icon"><i class="fas fa-chart-line"></i></div>
                     <p class="lostfound-text">Adoption Reports</p>
@@ -239,10 +244,10 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
             </div>
         </section>
 
+        <!-- Lost & Found -->
         <section class="section-card users-card">
             <h2 class="users-title">
-                <i class="fas fa-search"></i>
-                Lost & Found
+                <i class="fas fa-search"></i> Lost & Found
             </h2>
             <div class="users-grid">
                 <a href="<%= ctx %>/admin/all-reports" class="user-btn">
@@ -251,24 +256,25 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
                 </a>
             </div>
         </section>
-    </div>
 
-<section class="section-card users-card">
-    <h2 class="users-title">
-        <i class="fas fa-users-cog"></i>
-        User Management
-    </h2>
-    <div class="users-grid">
-        <a href="<%= ctx %>/admin/users" class="user-btn">
-            <div class="user-icon"><i class="fas fa-list"></i></div>
-            <p class="user-text">View Users</p>
-        </a>
+        <!-- Users -->
+        <section class="section-card users-card">
+            <h2 class="users-title">
+                <i class="fas fa-users-cog"></i> User Management
+            </h2>
+            <div class="users-grid">
+                <a href="<%= ctx %>/admin/users" class="user-btn">
+                    <div class="user-icon"><i class="fas fa-users"></i></div>
+                    <p class="user-text">View Users</p>
+                </a>
+            </div>
+        </section>
+
     </div>
-</section>
 
     <script>
         function animateCounter(element, target, duration) {
-            if (!duration) duration = 1000;
+            if (!duration) duration = 900;
             var start = 0;
             var increment = target / (duration / 16);
             var timer = setInterval(function() {
@@ -288,16 +294,11 @@ boolean deleted = "1".equals(request.getParameter("deleted"));
                 (function(stat) {
                     var target = parseInt(stat.textContent, 10);
                     stat.textContent = '0';
-                    setTimeout(function() { animateCounter(stat, target); }, 300);
+                    setTimeout(function() { animateCounter(stat, target); }, 200);
                 })(stats[i]);
-            }
-
-            var buttons = document.querySelectorAll('.article-btn, .adoption-btn, .lostfound-btn, .user-btn, .user-management-btn');
-            for (var j = 0; j < buttons.length; j++) {
-                buttons[j].addEventListener('mouseenter', function() { this.style.transform = 'translateY(-5px)'; });
-                buttons[j].addEventListener('mouseleave', function() { this.style.transform = 'translateY(0)'; });
             }
         });
     </script>
+
 </body>
 </html>

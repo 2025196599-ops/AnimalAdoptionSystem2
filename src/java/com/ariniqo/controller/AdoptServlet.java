@@ -25,15 +25,14 @@ public class AdoptServlet extends HttpServlet {
             return;
         }
 
-        int petId;
-        try {
-            petId = Integer.parseInt(request.getParameter("petId"));
-        } catch (Exception e) {
-            response.sendRedirect(request.getContextPath() + "/pets");
+        int petId = 0;
+        try { petId = Integer.parseInt(request.getParameter("petId")); } catch (Exception ignore) {}
+
+        if (petId <= 0) {
+            response.sendRedirect(request.getContextPath() + "/pets?ui=user");
             return;
         }
 
-        // If the form includes details, save them. Otherwise do quick apply.
         String phone = safe(request.getParameter("phone"));
         String address = safe(request.getParameter("address"));
 
@@ -42,36 +41,27 @@ public class AdoptServlet extends HttpServlet {
         String reason = safe(request.getParameter("reason")).replace("\"", "\\\"");
 
         boolean hasFullForm =
-                !phone.isEmpty() || !address.isEmpty() || !houseType.isEmpty() || !experience.isEmpty() || !reason.isEmpty();
-
-        AdoptionDAO dao = new AdoptionDAO();
+                phone.length() > 0 || address.length() > 0 || houseType.length() > 0 || experience.length() > 0 || reason.length() > 0;
 
         try {
-            if (hasFullForm) {
-                int adoptionId = dao.createReturnId(user.getUserId(), petId);
+            AdoptionDAO dao = new AdoptionDAO();
 
+            int adoptionId = dao.createReturnId(user.getUserId(), petId);
+
+            if (hasFullForm && adoptionId > 0) {
                 String formJson = "{"
                         + "\"houseType\":\"" + houseType + "\","
                         + "\"experience\":\"" + experience + "\","
                         + "\"reason\":\"" + reason + "\""
                         + "}";
 
-                if (adoptionId > 0) {
-                    dao.insertDetails(adoptionId, phone, address, formJson);
-                }
-            } else {
-                dao.create(user.getUserId(), petId);
+                dao.insertDetails(adoptionId, phone, address, formJson);
             }
+
         } catch (Exception ex) {
             throw new ServletException(ex);
         }
 
-        // Keep UI consistent: if request came from user UI, keep ui=user in redirect
-        String ui = request.getParameter("ui");
-        if ("user".equalsIgnoreCase(ui)) {
-            response.sendRedirect(request.getContextPath() + "/pet?id=" + petId + "&ui=user&applied=1");
-        } else {
-            response.sendRedirect(request.getContextPath() + "/pet?id=" + petId + "&applied=1");
-        }
+        response.sendRedirect(request.getContextPath() + "/user/adoption-status?submitted=1");
     }
 }
